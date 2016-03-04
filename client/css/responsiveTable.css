@@ -1,0 +1,47 @@
+/* Bootstrap naming compatible */
+/* Added /9 hack for IE9 so the td´s display as rows */
+table.table-responsive { 
+  margin: 0 0 0 0;
+  border-collapse: collapse;
+  font-family: Agenda-Light, sans-serif;
+  font-weight: 100; 
+  background: #333; color: #fff;
+  text-rendering: optimizeLegibility;
+  border-radius: 5px; 
+}
+table.table-responsive caption { 
+  font-size: 2rem; color: #444;
+  margin: 1rem;
+}
+table.table-responsive thead th { font-weight: 600; }
+table.table-responsive thead th, table.table-responsive tbody td { 
+  padding: .8rem; font-size: 1.4rem;
+}
+table.table-responsive tbody td { 
+  padding: .8rem; font-size: 1.4rem;
+  color: #444; background: #eee;
+  
+}
+table.table-responsive tbody tr:not(:last-child) { 
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;  
+}
+
+@media screen and (max-width: 600px) {
+  table.table-responsive caption { background-image: none; }
+  table.table-responsive thead { display: none; }
+  table.table-responsive tbody td {
+    padding: .6rem; 
+    display: block;
+    width:100%\9;float:left\9;
+  }
+  table.table-responsive tbody tr td:first-child { 
+    background: #666; color: #fff; 
+  }
+	table.table-responsive tbody td:before { 
+    content: attr(data-th); 
+    font-weight: bold;
+    display: inline-block;
+    width: 6rem;  
+  }
+}

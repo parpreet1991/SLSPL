@@ -1,0 +1,79 @@
+/* body {
+  padding-top: 50px;
+} */
+.main-container {
+  padding: 40px 15px;
+}
+.skyblue {
+	background-color: #22c8ff;
+}
+.deepskyblue {
+	background-color: #00bfff;
+}
+.darkerskyblue {
+	background-color: #00a6dd;
+}
+.carousel-indicators {
+	bottom: 0;
+}
+.carousel-control.right,
+.carousel-control.left {
+	background-image: none;
+}
+.carousel .item {
+	min-height: 350px; 
+	height: 100%;
+	width:100%; 
+}
+.carousel-caption h3,
+.carousel .icon-container,
+/* .carousel-caption button {
+	background-color: #09c;
+} */
+.carousel-caption h3 {
+	padding: .5em;
+}
+.carousel .icon-container {
+	display: inline-block;
+	font-size: 25px;
+	line-height: 25px;
+	padding: 1em;
+	text-align: center;
+	
+	border-radius: 50%;
+}
+.carousel-caption button {
+	/* border-color: #00bfff; */
+	margin-top: 1em; 
+}
+
+/* Animation delays */
+.carousel-caption h3:first-child {
+	-webkit-animation-delay: 1s;
+	animation-delay: 1s;
+}
+.carousel-caption h3:nth-child(2) {
+	-webkit-animation-delay: 2s;
+	animation-delay: 2s;
+}
+.carousel-caption button {
+	-webkit-animation-delay: 3s;
+	animation-delay: 3s;
+}
+
+
+.blog-carousel .item { margin:20px; display:block; }
+.blog-carousel .item a.thumbnail { width:100%; height:200px; background-color:#e0e0e0; display:block; margin-bottom:15px; display:block; box-shadow:0 0 3px rgba(0, 0, 0, 0.08); position:relative; background-repeat:no-repeat; background-size:cover; background-position:50%; }
+.blog-carousel .item h3 { margin:0; padding:0; text-align:center; }
+.blog-carousel .item h3 a { color:#333; }
+.blog-carousel .item .text { margin:5px 0 0; padding:0; font-size:0.8em; line-height:125%; text-align:center; }
+.blog-carousel .item.trending .thumbnail:before { content:""; display:block; width:92px; height:92px; position:absolute; top:-5px; right:-5px; background:url(/img/homepage/trending-ribbon.png) no-repeat 50% 50%;  }
+
+/* Animations */
+/* @media (min-width:1000px) {
+    .blog-carousel .item h3, .blog-carousel .item .text  { position:relative; bottom:-50px; opacity:0; transition:opacity 1s, bottom 1s; }
+    .homepage .section.blogs.animate .blog-carousel .item h3, .homepage .section.blogs.animate .blog-carousel .item .text {bottom:0px; opacity:1; transition-delay:0.75s; }
+    .homepage .section.blogs.animate .blog-carousel .item .text { transition-delay:1.25s; }
+    .homepage .section.blogs .blog-carousel .item a.thumbnail { opacity:0; transition:opacity 1s; }
+    .homepage .section.blogs.animate .blog-carousel .item a.thumbnail { opacity:1; transition-delay:0.5s; }
+} */
