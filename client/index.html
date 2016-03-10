@@ -1,6 +1,6 @@
 <!-- Color blue #0070C0, green #00B050 -->
 <!DOCTYPE html>
-<html lang="en" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<html ng-app="myApp" lang="en" >
 
 <head>	
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,13 +10,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Silver Leaf Solutions</title>
+    <!-- Angular -->    
+	<script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-route.min.js"></script>
+    
+    <!-- Bower Depedencies -->
+		<script src="js/jquery.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <!-- <link href="css/modern-business.css" rel="stylesheet"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,12 +43,30 @@
     
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/script.js"></script>
+    
+    <link rel="stylesheet" href="css/top-bar.css">
+	
+	<script src="js/modernizr.js"></script>	
+	<!-- Load the plugin -->
+	<script src="js/jquery.animateSlider.js"></script>
+    
+    
+	
+	<!-- File Upload -->
+	<script src="lib/file-upload/FileAPI.min.js"></script>
+	<script src="lib/file-upload/ng-file-upload-all.min.js"></script>
+	<script src="lib/file-upload/ng-file-upload.min.js"></script>
+	<script src="lib/file-upload/ng-file-upload-shim.min.js"></script>
+	
+	<!-- App js files -->
+	<script src="main.js"></script>
+	<script src="services.js"></script>
+	<script src="controllers.js"></script>
 </head>
 
 <body >
 
 	<!-- Navigation -->
-    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #0070C0">
         <!-- <div class="container"> -->
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -53,14 +77,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Silver Leaf Solutions</a>
+                <a class="navbar-brand" href="#main">Silver Leaf Solutions</a>
             </div>
             <div id='cssmenu'>				
 				<ul>
-				   <li><a href="about.html">About</a></li>
-				   <li class='active has-sub'><a href='services.html'><span>Services</span></a>
+				   <li><a href="#about">About</a></li>
+				   <li class='active has-sub'><a href='#services'><span>Services</span></a>
 				      <ul>
-				         <li class='has-sub'><a href="advisory.html">Advisory</a>
+				         <li class='has-sub'><a href="#advisory">Advisory</a>
 				            <ul>
 				               <li><a href='#'><span>Software Licensing</span></a></li>
 				               <li><a href='#'><span>Asset Management</span></a></li>
@@ -70,7 +94,7 @@
 				               <li class='last'><a href='#'><span>Technology Evangenlization</span></a></li>
 				            </ul>
 				         </li>
-				         <li class='has-sub'><a href="it_services.html">IT Services</a>
+				         <li class='has-sub'><a href="#it_services">IT Services</a>
 				            <ul>
 				               <li><a href='#'><span>Product Implementation</span></a></li>
 				               <li><a href='#'><span>Cloud Deployment</span></a></li>
@@ -78,7 +102,7 @@
 				               <li class='last'><a href='#'><span>Training & Enablement</span></a></li>
 				            </ul>
 				         </li>
-				         <li class='has-sub'><a href="statregic_reselling.html">Strategic Reselling</a>
+				         <li class='has-sub'><a href="#statregic_reselling">Strategic Reselling</a>
 				            <ul>
 				               <li><a href='#'><span>Software Licenses</span></a></li>
 				               <li class='last'><a href='#'><span>Network & Software Appliances</span></a></li>
@@ -86,20 +110,31 @@
 				         </li>
 				      </ul>
 				   </li>
-				   <li><a href="parters.html">Partners</a></li>
+				   <li><a href="#partners">Partners</a></li>
 				   
-                    <li><a href="events.html">New & Events</a></li>
-                    <li><a href="carrier.html">Carriers</a></li>
-                    <li><a href="blog-home-2.html">Blogs</a></li>
-                    <li class='last'><a href="contact.html">Contact</a></li>
+                    <li><a href="#events">New & Events</a></li>
+                    <li><a href="#carrier">Carriers</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li class='last'><a href="#contact">Contact</a></li>
 				</ul>
+			</div>
+			
+			<div class="navbar-collapse collapse">				
+			    <ul ng-controller="logoutController" class="nav navbar-nav pull-right">
+			    	<li><a>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</a></li>
+			      	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login">Login</a></li>
+			      	<li ng-show="$root.AuthService.isLoggedIn">
+			      		<a ng-click='logout()' >Logout</a>
+			      	</li>
+			    </ul>
 			</div>
             <!-- /.navbar-collapse -->
         <!-- </div> -->
         <!-- /.container -->
     </nav>
-    
-    <ul class="anim-slider">
+    <!-- <div w3-include-HTML="main.html"></div> -->
+    <div ng-controller="mainController" >
+      <ul style='display:{{$root.currentPage}}' class="anim-slider">
 
 		<!-- Slide No1 -->
 		<li class="anim-slide animated fadeOutLeftBig anim-slide-this">
@@ -145,109 +180,13 @@
 		
 		<div class="anim-dots"><span class=""></span><span class="anim-dots-this"></span><span class=""></span></div>
 	</ul>
-
-    <!-- Page Content -->
-    <div class="container">
-
-        <!-- Marketing Icons Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    Our Services & Solutions Portfolio
-                </h1>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> ADVISORY</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> IT SERVICES</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> STRATEGIC RESELLING</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Blogs</h2>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
-                        </h3>
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
-                        </h3>
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
-                        </h3>
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Call to Action Section -->
-        <div class="well">
-            <div class="row">
-                <div class="col-md-8">
-                    <p>To enable business leaders with forward-thinking and simplified approach that helps drive efficient and effective IT decisions</p>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="#">Contact US</a>
-                </div>
-            </div>
-        </div>
+	</div>
+    
+   
+    
+   <div ng-view></div>
+   
+   
 
         <hr>
 
@@ -259,19 +198,14 @@
                 </div>
             </div>
         </footer>
-
-    </div>
-    <!-- /.container -->
     
     <!-- Bower Depedencies -->
-		<script src="js/jquery.min.js"></script>
+		<!-- <script src="js/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-		<script src="js/modernizr.js"></script>	
-		<!-- Load the plugin -->
-		<script src="js/jquery.animateSlider.js"></script>
-		<script src="lib/w3-include-HTML.js"></script>
+    Bootstrap Core JavaScript
+    <script src="js/bootstrap.min.js"></script> -->
+    
+	<!-- <script src="lib/w3-include-HTML.js"></script> -->
 		<script>
 		 $(".anim-slider").animateSlider(
 		 	{

@@ -1,7 +1,7 @@
 angular.module('myApp').controller('loginController',
-  ['$scope', '$location', 'AuthService',
-  function ($scope, $location, AuthService) {
-
+  ['$scope', '$rootScope', '$location', 'AuthService',
+  function ($scope, $rootScope, $location, AuthService) {
+	  $rootScope.currentPage = "none";
     console.log("UserName:::"+AuthService.getUserName());
 
     $scope.login = function () {
@@ -17,6 +17,7 @@ angular.module('myApp').controller('loginController',
           $location.path('/');
           $scope.disabled = false;
           $scope.loginForm = {};
+          $rootScope.AuthService = AuthService;
         })
         // handle error
         .catch(function () {
@@ -31,9 +32,9 @@ angular.module('myApp').controller('loginController',
 }]);
 
 angular.module('myApp').controller('logoutController',
-  ['$scope', '$location', 'AuthService',
-  function ($scope, $location, AuthService) {
-
+  ['$scope', '$rootScope', '$location', 'AuthService',
+  function ($scope, $rootScope, $location, AuthService) {
+	  $rootScope.currentPage = "none";
     $scope.logout = function () {
 
       console.log(AuthService.getUserStatus());
@@ -49,9 +50,9 @@ angular.module('myApp').controller('logoutController',
 }]);
 
 angular.module('myApp').controller('registerController',
-  ['$scope', '$location', 'AuthService',
-  function ($scope, $location, AuthService) {
-
+  ['$scope', '$rootScope', '$location', 'AuthService',
+  function ($scope, $rootScope, $location, AuthService) {
+	  $rootScope.currentPage = "none";
     console.log(AuthService.getUserStatus());
 
     $scope.register = function () {
@@ -79,6 +80,30 @@ angular.module('myApp').controller('registerController',
     };
 
 }]);
+
+angular.module('myApp').controller('mainController',
+		  ['$scope', '$rootScope','$location', 'AuthService',
+		  function ($scope, $rootScope, $location, AuthService) {
+			  $rootScope.currentPage = "show";
+		}]);
+
+angular.module('myApp').controller('contactController',
+		  ['$scope', '$rootScope','$location', 'AuthService',
+		  function ($scope, $rootScope, $location, AuthService) {
+			  $rootScope.currentPage = "none";
+		}]);
+
+angular.module('myApp').controller('servicesController',
+		  ['$scope', '$rootScope','$location', 'AuthService',
+		  function ($scope, $rootScope, $location, AuthService) {
+			  $rootScope.currentPage = "none";
+		}]);
+
+angular.module('myApp').controller('blogsController',
+		  ['$scope', '$rootScope','$location', 'AuthService',
+		  function ($scope, $rootScope, $location, AuthService) {
+			  $rootScope.currentPage = "none";
+		}]);
 
 
 

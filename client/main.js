@@ -4,6 +4,7 @@ myApp.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
     	templateUrl: 'partials/main.html',
+    	controller: 'mainController',
         access: {restricted: false}
     })
     .when('/login', {
@@ -20,14 +21,41 @@ myApp.config(function ($routeProvider) {
       controller: 'registerController',
       access: {restricted: false}
     })
-    .when('/one', {
-      template: '<h1>This is page one!</h1>',
+    .when('/main', {
+    	templateUrl: 'partials/main.html',
+    	controller: 'mainController',
+        access: {restricted: false}
+    })
+    .when('/about', {
+    	templateUrl: 'partials/about.html',
+    	controller: 'aboutController',
+        access: {restricted: false}
+    })
+    .when('/services', {
+    	templateUrl: 'partials/services.html',
+      controller: 'servicesController',
       access: {restricted: true}
     })
-    .when('/two', {
-      template: '<h1>This is page two!</h1>',
+    .when('/partners', {
+    	templateUrl: 'partials/partners.html',
+      controller: 'servicesController',
       access: {restricted: false}
     })
+    .when('/blogs', {
+    	templateUrl: 'partials/blog-home-2.html',
+      controller: 'blogsController',
+      access: {restricted: false}
+    })
+    .when('/blog-post', {
+    	templateUrl: 'partials/blog-post.html',
+      controller: 'blogPostController',
+      access: {restricted: false}
+    })
+    .when('/contact', {
+    	templateUrl: 'partials/contact.html',
+        controller: 'contactController',
+        access: {restricted: false}
+      })
     .when('/ListPosts', {
         templateUrl: 'partials/ListPosts.html',
         controller: '',
@@ -48,10 +76,11 @@ myApp.config(function ($routeProvider) {
 
 
 myApp.run(function ($rootScope, $location, $route, AuthService) {
-  $rootScope.$on('$routeChangeStart', function (event, next, current) {
+	//$rootScope.currentPage = "main";
+	$rootScope.$on('$routeChangeStart', function (event, next, current) {
     if (next.access.restricted && AuthService.isLoggedIn() === false) {
       $location.path('/login');
-    }
+    }    
   });
 });
 
