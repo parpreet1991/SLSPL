@@ -12,8 +12,8 @@ var express = require('express'),
     multer = require('multer');
 
 // mongoose
-//mongoose.connect('mongodb://localhost:27017/village');
-mongoose.connect('mongodb://silverline:silverline123@ds019658.mlab.com:19658/silverline');
+mongoose.connect('mongodb://localhost:27017/village');
+//mongoose.connect('mongodb://silverline:silverline123@ds019658.mlab.com:19658/silverline');
 
 // user schema/model
 var User = require('./models/user.js');
@@ -59,7 +59,7 @@ app.use('/post/', postroutes);
 
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../client', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client', 'Carousel_Template_for_Bootstrap.htm'));
 });
 
 // error hndlers

@@ -1,0 +1,32 @@
+<section class="content" ng-controller = "PostDataCtrl as up">
+		
+		<!-- Modal window -->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- <div class="box box-widget"> -->
+						
+						<form  name="up.upload_form">
+					              	<div class="modal-body">
+							                <p>Single Image with validations&hellip;</p>
+							            <input type="textarea" ng-model="post.postDetails"/>
+							            <input type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'*/*'" accept="*" ngf-max-size="20MB"/>
+							            Image thumbnail: <img style="width:100px;" ng-show="!!up.file" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+							            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+							            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+							            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+							        </div>
+							           <!--  Multiple files
+							            <div class="button" ngf-select ng-model="up.files" ngf-multiple="true">Select</div>
+							            Drop files: <div ngf-drop ng-model="up.files" class="drop-box">Drop</div> -->
+							        <div class="modal-footer">
+								        <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="hideModal()">Close</button>
+					                   <!--  <button type="button" class="btn btn-primary" ng-click="postData()">Post</button> -->
+							            <button type="submit" ng-click="up.submit()">submit</button>
+							            <p>{{up.progress}}</p>
+							        </div>
+						        </form>
+			          <!-- </div> -->
+			      </div>
+			</div>
+			<!-- Modal window code ended here -->
+		</section><!-- /.content -->

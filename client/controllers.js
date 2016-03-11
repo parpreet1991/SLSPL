@@ -105,6 +105,12 @@ angular.module('myApp').controller('blogsController',
 			  $rootScope.currentPage = "none";
 		}]);
 
+angular.module('myApp').controller('adminController',
+		  ['$scope', '$rootScope','$location', 'AuthService',
+		  function ($scope, $rootScope, $location, AuthService) {
+			  $rootScope.currentPage = "none";
+		}]);
+
 
 
 
@@ -139,23 +145,24 @@ angular.module('myApp').controller('PostDataCtrl',
 	$scope.username = AuthService.getUserName();
 	$scope.modalPosts = [];
 	// send a post request to the server
-	$http.get('/post/Posts', {})
+	/*$http.get('/post/Posts', {})
 	  // handle success
 	      .success(function (data, status) {
 	        if(status == 200){
 	        	$scope.posts = data;
 	        }
-	      });
+	      });*/
 	    
 	
 	  var vm = this;
 	    vm.submit = function(){ //function to call on form submit
-	    if (vm.upload_form.file.$valid && vm.file) { //check if from is valid
+	    if (vm.upload_form.file.$valid && vm.file) { //check if form is valid
 	        vm.upload(vm.file); //call upload function
 	    }
 	}
 	
 	vm.upload = function (file) {
+		
 	    Upload.upload({
 	        url: '/post/upload', //webAPI exposed to upload the file
 	        data:{file:file, fileName: file.name, postDetails: $scope.post.postDetails, username: AuthService.getUserName()} //pass file as data, should be user ng-model

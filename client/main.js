@@ -56,6 +56,11 @@ myApp.config(function ($routeProvider) {
         controller: 'contactController',
         access: {restricted: false}
       })
+      .when('/admin', {
+    	  templateUrl: 'partials/admin.html',
+    	  controller: 'adminController',
+          access: {restricted: false}
+        })
     .when('/ListPosts', {
         templateUrl: 'partials/ListPosts.html',
         controller: '',
