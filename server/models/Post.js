@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 var postSchema = new Schema({
   username: { type: String, required: true },
   displayPost: String,
+  postTitle: String,
   postDetails: String,
   imagePaths: String,
   isDeleted: String,

@@ -14,13 +14,16 @@
     <!-- Angular -->    
 	<script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular/angular-route.min.js"></script>
-  <script src="lib/angular/angular-sanitize.min.js"></script>
-  <script src='lib/textAngular.min.js'></script>
     <!-- Bower Depedencies -->
 		<script src="js/jquery.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/ui-navbar.css" />
+	
+	
+    <script src="lib/ui-bootstrap-tpls-1.2.4.min.js"></script>
 
     <!-- Custom CSS -->
     <!-- <link href="css/modern-business.css" rel="stylesheet"> -->
@@ -63,80 +66,65 @@
 	<script src="main.js"></script>
 	<script src="services.js"></script>
 	<script src="controllers.js"></script>
-	
-	
-    <script src="lib/ui-bootstrap-tpls-1.2.4.min.js"></script>
+    
+    <script src="lib/ui-navbar.js"></script>
 </head>
 
 <body >
 
 	<!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #0070C0">
-        <!-- <div class="container"> -->
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Silver Leaf Solutions</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#main">Silver Leaf Solutions</a>
-            </div>
-            <div id='cssmenu'>				
-				<ul>
-				   <li><a href="#about">About</a></li>
-				   <li class='active has-sub'><a href='#services'><span>Services</span></a>
-				      <ul>
-				         <li class='has-sub'><a href="#advisory">Advisory</a>
-				            <ul>
-				               <li><a href='#'><span>Software Licensing</span></a></li>
-				               <li><a href='#'><span>Asset Management</span></a></li>
-				               <li><a href='#'><span>Strategic Sourcing</span></a></li>
-				               <li><a href='#'><span>Cloud</span></a></li>
-				               <li><a href='#'><span>Network Services</span></a></li>
-				               <li class='last'><a href='#'><span>Technology Evangenlization</span></a></li>
-				            </ul>
-				         </li>
-				         <li class='has-sub'><a href="#it_services">IT Services</a>
-				            <ul>
-				               <li><a href='#'><span>Product Implementation</span></a></li>
-				               <li><a href='#'><span>Cloud Deployment</span></a></li>
-				               <li><a href='#'><span>Support & Maintenance</span></a></li>
-				               <li class='last'><a href='#'><span>Training & Enablement</span></a></li>
-				            </ul>
-				         </li>
-				         <li class='has-sub'><a href="#statregic_reselling">Strategic Reselling</a>
-				            <ul>
-				               <li><a href='#'><span>Software Licenses</span></a></li>
-				               <li class='last'><a href='#'><span>Network & Software Appliances</span></a></li>
-				            </ul>
-				         </li>
-				      </ul>
-				   </li>
-				   <li><a href="#partners">Partners</a></li>
-				   
-                    <li><a href="#events">New & Events</a></li>
-                    <li><a href="#carrier">Carriers</a></li>
-                    <li><a href="#blogs">Blogs</a></li>
-                    <li><a href="#admin">Admin</a></li>
-                    <li class='last'><a href="#contact">Contact</a></li>
-				</ul>
-			</div>
-			
-			<div class="navbar-collapse collapse">				
-			    <ul ng-controller="logoutController" class="nav navbar-nav pull-right">
-			    	<li><a>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</a></li>
-			      	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login">Login</a></li>
-			      	<li ng-show="$root.AuthService.isLoggedIn">
-			      		<a ng-click='logout()' >Logout</a>
-			      	</li>
-			    </ul>
-			</div>
-            <!-- /.navbar-collapse -->
-        <!-- </div> -->
-        <!-- /.container -->
+    <div ng-controller="NavigationController">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-init="navCollapsed = true"
+                    ng-click="navCollapsed = !navCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home">Brand</a>
+        </div>
+ 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+ 
+            <ul class="nav navbar-nav">
+                <li uib-dropdown>
+                    <a href="#" uib-dropdown-toggle>
+                        Dropdown
+                        <b class='caret'></b>
+                    </a>
+                    <tree tree='tree'></tree>
+                </li>
+                <li uib-dropdown>
+                    <a href="#" uib-dropdown-toggle>
+                        Just a clone
+                        <span class='caret'></span>
+                    </a>
+                    <tree tree='tree'></tree>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li uib-dropdown>
+                    <a href="#" uib-dropdown-toggle>
+                        Dropdown right
+                        <b class='caret'></b>
+                    </a>
+                    <tree tree='tree'></tree>
+                </li>
+                <li uib-dropdown>
+                    <a href="#" uib-dropdown-toggle>
+                        Just a clone right
+                        <span class='caret'></span>
+                    </a>
+                    <tree tree='tree'></tree>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </nav>
+</div>
     <!-- <div w3-include-HTML="main.html"></div> -->
     <div ng-controller="mainController" >
       <ul style='display:{{$root.currentPage}}' class="anim-slider">

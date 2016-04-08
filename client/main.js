@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngFileUpload']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngFileUpload', 'ui.bootstrap', 'textAngular']);
 
 myApp.config(function ($routeProvider) {
   $routeProvider
@@ -34,7 +34,7 @@ myApp.config(function ($routeProvider) {
     .when('/services', {
     	templateUrl: 'partials/services.html',
       controller: 'servicesController',
-      access: {restricted: true}
+      access: {restricted: false}
     })
     .when('/partners', {
     	templateUrl: 'partials/partners.html',
@@ -46,7 +46,7 @@ myApp.config(function ($routeProvider) {
       controller: 'blogsController',
       access: {restricted: false}
     })
-    .when('/blog-post', {
+    .when('/blog-post/:_id', {
     	templateUrl: 'partials/blog-post.html',
       controller: 'blogPostController',
       access: {restricted: false}
@@ -57,7 +57,7 @@ myApp.config(function ($routeProvider) {
         access: {restricted: false}
       })
       .when('/admin', {
-    	  templateUrl: 'partials/admin.html',
+    	  templateUrl: 'partials/admin-controls.html',
     	  controller: 'adminController',
           access: {restricted: false}
         })

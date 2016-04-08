@@ -13,6 +13,17 @@ router.get('/Posts', function(req, res) {
 		});	  
 });
     
+router.get('/getPostDetails', function(req, res) {
+	// object of all the users
+	debugger;
+	console.log('inside getPostDetails '+req.id);
+	Post.findById(req.body.id, function(err, post) {
+		  if (err) throw err;
+		  res.status(200).json(post);
+		  console.log('inside getPostDetails');
+		});
+});
+    
 router.post('/PostData', function(req, res) {
 	var post = new Post({
 		  username: req.body.username,
@@ -80,7 +91,7 @@ router.post('/PostReply', function(req, res) {
 
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-        cb(null, './uploads/');
+        cb(null, './client/uploads/');
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
@@ -101,9 +112,10 @@ router.post('/upload', function(req, res) {
         }
         var post = new Post({
   		  username: req.body.username,
+  		  postTitle: req.body.postTitle,
   		  postDetails: req.body.postDetails,
   		  displayPost: req.body.postDetails.substring(0,15)+'.....',
-  		  imagePaths: req.file.path,
+  		  imagePaths: req.file.path.substring(7),
   		  isDeleted: 'N'
   		});
   	post.save(function(err) {

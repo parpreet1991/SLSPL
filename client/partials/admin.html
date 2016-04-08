@@ -10,7 +10,7 @@
 							                <p>Single Image with validations&hellip;</p>
 							            <input type="textarea" ng-model="post.postDetails"/>
 							            <input type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'*/*'" accept="*" ngf-max-size="20MB"/>
-							            Image thumbnail: <img style="width:100px;" ng-show="!!up.file" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+							            
 							            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
 							            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
 							            {{up.file.size / 1000000|number:1}}MB: max 20M</i>

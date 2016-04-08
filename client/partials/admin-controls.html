@@ -1,0 +1,126 @@
+ <style>
+.ta-editor {
+  min-height: 300px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+}
+</style>
+ 
+ <div class="row">
+	<div class="col-lg-12">
+	    <h2 class="page-header">Admin Controls</h2>
+	</div>
+	<div class="col-lg-12">	
+		<uib-tabset active="activeJustified" justified="true">
+		    <uib-tab index="0" heading="Blogs">
+			    <uib-accordion>
+			    	<uib-accordion-group is-open="status.open">
+				      <uib-accordion-heading>
+				        Upload Blogs Here <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				      </uib-accordion-heading>
+				      <div ng-controller = "PostDataCtrl as up">
+				      
+						<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+						<div ng-show="success" class="alert alert-success">{{successMessage}}</div>
+					      <form name="up.upload_form" class="form-horizontal" role="form">
+			              		<div class="modal-body"><div class="form-group">
+			              			<label for="inputName1" class="col-sm-2 control-label">Blog Title</label>
+			              			<div class="col-sm-10">
+							          <input class="form-control" id="inputName1" placeholder="Blog Title" ng-model="post.postTitle">
+							        </div>
+					            </div>
+		              			<div class="form-group">
+			              			<label for="inputName1" class="col-sm-2 control-label">Blog Text</label>
+			              			<div class="col-sm-10">
+							          <!-- <input class="form-control" id="inputName1" placeholder="Blog Text" ng-model="post.postDetails"> -->
+							          <div text-angular="text-angular" name="htmlcontent" ng-model="post.postDetails" ta-disabled='disabled'></div>
+							        </div>
+					            </div>
+					            <div class="form-group">
+			              			<label for="inputName2" class="col-sm-2 control-label">Banner</label>
+			              			<div class="col-sm-4">
+							          	<input class="form-control" id="inputName2" type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB"/>
+							            <img style="width:100px;" ng-show="!!up.file" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+							            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+							            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+							            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+							        </div>
+					            </div>
+				         	</div>
+					           <!--  Multiple files
+					            <div class="button" ngf-select ng-model="up.files" ngf-multiple="true">Select</div>
+					            Drop files: <div ngf-drop ng-model="up.files" class="drop-box">Drop</div> -->
+					        <div class="modal-footer">
+						        <button type="button" class="btn btn-default pull-left" ng-click="up.submit()">Save</button>
+			                   <!--  <button type="button" class="btn btn-primary" ng-click="postData()">Post</button> -->
+					            <button type="submit" ng-click="up.submit()">submit</button>
+					            <p>{{up.progress}}</p>
+					        </div>
+				        </form>
+			        </div>
+				    </uib-accordion-group>
+				 </uib-accordion>
+		    
+		    </uib-tab>
+		    <uib-tab index="1" heading="Events">
+			    <uib-accordion close-others="oneAtATime">
+			    	<uib-accordion-group is-open="status.open">
+				      <uib-accordion-heading>
+				        Upload Events Here <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				      </uib-accordion-heading>
+					    <form  name="up.upload_form" class="form-horizontal" role="form">
+			              	<div class="modal-body">
+		              			<div class="form-group">
+			              			<label for="inputName1" class="col-sm-2 control-label">Blog Text</label>
+			              			<div class="col-sm-10">
+							          <!-- <input class="form-control" id="inputName1" placeholder="Blog Text" ng-model="post.postDetails"> -->
+							          <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'></div>
+							        </div>
+					            </div>
+					            <div class="form-group">
+			              			<label for="inputName2" class="col-sm-2 control-label">Banner</label>
+			              			<div class="col-sm-4">
+							          	<input class="form-control" id="inputName2" type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'*/*'" accept="*" ngf-max-size="20MB"/>
+						            
+							            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+							            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+							            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+							        </div>
+					            </div>
+		              			<div class="form-group">
+			              			<label for="inputName3" class="col-sm-2 control-label">Date</label>
+			              			<div class="col-sm-4">
+			              				<p class="input-group">
+							           		<input type="text" id="inputName3" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+									          <span class="input-group-btn">
+									            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+									          </span>
+									     </p>
+							        </div>
+					            </div>
+		              			<div class="form-group">
+			              			<label for="inputName4" class="col-sm-2 control-label">Time</label>
+			              			<div class="col-sm-4">
+						           		<uib-timepicker id="inputName4" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+							        </div>
+					            </div>
+				         	</div>
+					           <!--  Multiple files
+					            <div class="button" ngf-select ng-model="up.files" ngf-multiple="true">Select</div>
+					            Drop files: <div ngf-drop ng-model="up.files" class="drop-box">Drop</div> -->
+					        <div class="modal-footer">
+						        <button type="button" class="btn btn-default pull-left" ng-click="up.submit()">Save</button>
+			                   <!--  <button type="button" class="btn btn-primary" ng-click="postData()">Post</button> -->
+					            <button type="submit" ng-click="up.submit()">submit</button>
+					            <p>{{up.progress}}</p>
+					        </div>
+				        </form>
+				    </uib-accordion-group>
+				 </uib-accordion>
+		    </uib-tab>
+		    <uib-tab index="2" heading="Licences">Upload user specific licences here</uib-tab>
+		</uib-tabset>
+	</div>
+</div>

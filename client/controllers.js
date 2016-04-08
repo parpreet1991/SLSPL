@@ -105,10 +105,71 @@ angular.module('myApp').controller('blogsController',
 			  $rootScope.currentPage = "none";
 		}]);
 
+angular.module('myApp').controller('blogPostController',
+		  ['$scope', '$routeParams', '$rootScope','$location', 'AuthService', '$http',
+		  function ($scope, $routeParams, $rootScope, $location, AuthService,  $http) {
+			  $rootScope.currentPage = "none";
+			  
+			  $http.get('/post/getPostDetails?id=' + $routeParams._id).success(function(data) {
+			      $scope.post = data;
+			    });
+		}]);
+
 angular.module('myApp').controller('adminController',
 		  ['$scope', '$rootScope','$location', 'AuthService',
 		  function ($scope, $rootScope, $location, AuthService) {
 			  $rootScope.currentPage = "none";
+			  
+			  $scope.mytime = new Date();
+
+			  $scope.hstep = 1;
+			  $scope.mstep = 15;
+			  
+			  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+			  $scope.format = $scope.formats[0];
+			  $scope.altInputFormats = ['M!/d!/yyyy'];
+
+			  $scope.popup1 = {
+			    opened: false
+			  };
+			  
+			  $scope.open1 = function() {
+				    $scope.popup1.opened = true;
+				  };
+				  
+				  
+
+
+			  $scope.dateOptions = {
+			    dateDisabled: disabled,
+			    formatYear: 'yy',
+			    maxDate: new Date(2020, 5, 22),
+			    minDate: new Date(),
+			    startingDay: 1
+			  };
+
+			  // Disable weekend selection
+			  function disabled(data) {
+			    var date = data.date,
+			      mode = data.mode;
+			    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+			  }
+			  
+			  $scope.status = {
+					    isopen: false
+					  };
+
+					  $scope.toggled = function(open) {
+					    $log.log('Dropdown is now: ', open);
+					  };
+
+					  $scope.toggleDropdown = function($event) {
+					    $event.preventDefault();
+					    $event.stopPropagation();
+					    $scope.status.isopen = !$scope.status.isopen;
+					  };
+
+					  $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
 		}]);
 
 
@@ -145,13 +206,13 @@ angular.module('myApp').controller('PostDataCtrl',
 	$scope.username = AuthService.getUserName();
 	$scope.modalPosts = [];
 	// send a post request to the server
-	/*$http.get('/post/Posts', {})
+	$http.get('/post/Posts', {})
 	  // handle success
 	      .success(function (data, status) {
 	        if(status == 200){
 	        	$scope.posts = data;
 	        }
-	      });*/
+	      });
 	    
 	
 	  var vm = this;
@@ -165,20 +226,26 @@ angular.module('myApp').controller('PostDataCtrl',
 		
 	    Upload.upload({
 	        url: '/post/upload', //webAPI exposed to upload the file
-	        data:{file:file, fileName: file.name, postDetails: $scope.post.postDetails, username: AuthService.getUserName()} //pass file as data, should be user ng-model
+	        data:{file:file, fileName: file.name, postTitle: $scope.post.postTitle, postDetails: $scope.post.postDetails, username: AuthService.getUserName()} //pass file as data, should be user ng-model
 	    }).then(function (resp) { //upload function returns a promise
 	        if(resp.status === 200){ //validate success
 	        	$scope.posts = resp.data;
 	        	 $scope.showModalWindow=false;
 		       	  $scope.modalPosts = [];
 		       	  $scope.post.postDetails = "";
+		       	  $scope.post.postTitle = "";
+		       	  $scope.file = "";
+		       	  $scope.success = true;
+		       	  $scope.successMessage = "Blog saved successfuly.";
 	            //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
 	        } else {
-	            $window.alert('an error occured');
+	        	$scope.error = true;
+		       	$scope.errorMessage = "Some problem occurred.";
 	        }
 	    }, function (resp) { //catch error
 	        console.log('Error status: ' + resp.status);
-	        $window.alert('Error status: ' + resp.status);
+	        $scope.error = true;
+	       	$scope.errorMessage = "Some problem occurred.";
 	    }, function (evt) { 
 	        console.log(evt);
 	        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);

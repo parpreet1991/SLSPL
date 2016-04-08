@@ -34,6 +34,7 @@ var routes = require('./routes/api.js');
 var postroutes = require('./routes/PostController.js');
 
 // define middleware
+//app.use(express.static(__dirname + '/uploads'));
 app.use(express.static(path.join(__dirname, '../client')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
