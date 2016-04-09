@@ -109,9 +109,9 @@ angular.module('myApp').controller('blogPostController',
 		  ['$scope', '$routeParams', '$rootScope','$location', 'AuthService', '$http',
 		  function ($scope, $routeParams, $rootScope, $location, AuthService,  $http) {
 			  $rootScope.currentPage = "none";
-			  
-			  $http.get('/post/getPostDetails?id=' + $routeParams._id).success(function(data) {
+			  $http.get('/post/getPostDetails?postId=' + $routeParams._id).success(function(data) {
 			      $scope.post = data;
+			      document.getElementById("demo").innerHTML = $scope.post.postDetails;
 			    });
 		}]);
 
@@ -200,8 +200,9 @@ function chatCtrl($scope, $http){
 }
 
 angular.module('myApp').controller('PostDataCtrl',
-		  ['Upload','$window','$scope', '$http', 'AuthService',
-		  function (Upload, $window, $scope, $http, AuthService) {
+		  ['Upload','$window','$scope', '$rootScope', '$http', 'AuthService',
+		  function (Upload, $window, $scope, $rootScope, $http, AuthService) {
+			  $rootScope.currentPage = "none";
 	$scope.showModalWindow=false;
 	$scope.username = AuthService.getUserName();
 	$scope.modalPosts = [];
@@ -216,17 +217,16 @@ angular.module('myApp').controller('PostDataCtrl',
 	    
 	
 	  var vm = this;
-	    vm.submit = function(){ //function to call on form submit
+	    vm.submit = function(postType){ //function to call on form submit
 	    if (vm.upload_form.file.$valid && vm.file) { //check if form is valid
-	        vm.upload(vm.file); //call upload function
+	        vm.upload(vm.file, postType); //call upload function
 	    }
 	}
 	
-	vm.upload = function (file) {
-		
+	vm.upload = function (file, postType) {
 	    Upload.upload({
 	        url: '/post/upload', //webAPI exposed to upload the file
-	        data:{file:file, fileName: file.name, postTitle: $scope.post.postTitle, postDetails: $scope.post.postDetails, username: AuthService.getUserName()} //pass file as data, should be user ng-model
+	        data:{file:file, fileName: file.name, postTitle: $scope.post.postTitle, postDetails: $scope.post.postDetails, username: AuthService.getUserName(), postDate: $scope.post.postDate, postTime: $scope.post.postTime, postType: postType} //pass file as data, should be user ng-model
 	    }).then(function (resp) { //upload function returns a promise
 	        if(resp.status === 200){ //validate success
 	        	$scope.posts = resp.data;
@@ -290,6 +290,91 @@ angular.module('myApp').controller('PostDataCtrl',
 	  }
   
  }]);
+
+angular.module('myApp').controller('EventDataCtrl',
+		  ['$window', '$scope', '$rootScope', '$http', 'AuthService',
+		  function ($window, $scope, $rootScope, $http, AuthService) {
+			  $rootScope.currentPage = "none";
+	  $scope.postData = function() 
+	  {
+		// send a post request to the server
+		$http.get('/post/Events', {})
+		  // handle success
+		      .success(function (data, status) {
+		        if(status == 200){
+		        	$scope.posts = data;
+		        }
+		      });
+	  }
+
+}]);
+
+angular.module('myApp').controller('ContactCtrl',
+		  ['$window', '$scope', '$rootScope', '$http', 'AuthService',
+		  function ($window, $scope, $rootScope, $http, AuthService) {
+			  $rootScope.currentPage = "none";
+	
+	  $scope.saveContact = function(){
+		  // send a post request to the server
+		$http.post('/post/ContactSave', {name: $scope.contact.name, phone: $scope.contact.phone, email: $scope.contact.email, message: $scope.contact.message})
+	    // handle success
+	    .success(function (data, status) {
+	    	if(status == 200){ 
+		       	  $scope.success = true;
+		       	  $scope.successMessage = "Message Sent.";
+		       	  document.getElementById('contactForm').reset();
+	        } else {
+	        	$scope.error = true;
+		       	$scope.errorMessage = "Some problem occurred.";
+	        }
+	    });
+	  }
+
+}]);
+
+angular.module('myApp').controller('CareerCtrl',
+		  ['$window', '$scope', '$rootScope', '$http', 'AuthService',
+		  function ($window, $scope, $rootScope, $http, AuthService) {
+			  $rootScope.currentPage = "none";
+	
+			  var vm = this;
+			    vm.submit = function(){ //function to call on form submit
+			    if (vm.upload_form.file.$valid && vm.file) { //check if form is valid
+			        vm.upload(vm.file, postType); //call upload function
+			    }
+			}
+			
+			vm.upload = function (file) {
+			    Upload.upload({
+			        url: '/post/uploadResume', //webAPI exposed to upload the file
+			        data:{file:file, fileName: file.name, name: $scope.career.name, email: $scope.career.email, phone: $scope.career.phone, message: $scope.career.message} //pass file as data, should be user ng-model
+			    }).then(function (resp) { //upload function returns a promise
+			        if(resp.status === 200){ //validate success
+				       	  $scope.career.name = "";
+				       	  $scope.career.email = "";
+				       	  $scope.career.phone = "";
+				       	  $scope.career.message = "";
+				       	  $scope.file = "";
+				       	  $scope.success = true;
+				       	  $scope.successMessage = "Profile uploaded successfuly.";
+			            //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+			        } else {
+			        	$scope.error = true;
+				       	$scope.errorMessage = "Some problem occurred.";
+			        }
+			    }, function (resp) { //catch error
+			        console.log('Error status: ' + resp.status);
+			        $scope.error = true;
+			       	$scope.errorMessage = "Some problem occurred.";
+			    }, function (evt) { 
+			        console.log(evt);
+			        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+			        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+			        vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+			        });
+			    };
+
+}]);
 
 
 

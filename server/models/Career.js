@@ -3,22 +3,19 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // create a schema
-var postSchema = new Schema({
-  username: { type: String, required: true },
-  displayPost: String,
-  postTitle: String,
-  postDetails: String,
-  imagePaths: String,
+var careerSchema = new Schema({
+  name: { type: String, required: true },
+  phone: String,
+  email: String,
+  message: String,
+  filePath: String,
   isDeleted: String,
   created_at: Date,
-  updated_at: Date,
-  postDate: Date,
-  postTime: String,
-  postType: String
+  updated_at: Date
 });
 
 //on every save, add the date
-postSchema.pre('save', function(next) {
+careerSchema.pre('save', function(next) {
   // get the current date
   var currentDate = new Date();
   
@@ -34,7 +31,7 @@ postSchema.pre('save', function(next) {
 
 // the schema is useless so far
 // we need to create a model using it
-var Post = mongoose.model('Post', postSchema);
+var Career = mongoose.model('Career', careerSchema);
 
 // make this available to our users in our Node applications
-module.exports = Post;
+module.exports = Career;

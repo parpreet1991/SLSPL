@@ -29,120 +29,127 @@
         </div>
         <!-- /.row -->
 
-        <!-- Image Header -->
-        <!-- <div class="row">
-            <div class="col-lg-12">
-                <img class="img-responsive" src="http://placehold.it/1200x300" alt="">
-            </div>
-        </div> -->
-        <!-- /.row -->
-
-        <!-- Service Panels -->
-        <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
-        <!-- <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Services Panels</h2>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </div>
-                    <div class="panel-body">
-                        <h4>Service One</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-car fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </div>
-                    <div class="panel-body">
-                        <h4>Service Two</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-support fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </div>
-                    <div class="panel-body">
-                        <h4>Service Three</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-database fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </div>
-                    <div class="panel-body">
-                        <h4>Service Four</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
         <!-- Service Tabs -->
         <div class="row">
             <div class="col-lg-12">
-
-                <ul id="myTab" class="nav nav-tabs nav-justified">
-                    <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> ADVISORY</a>
-                    </li>
-                    <li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-car"></i> Service Two</a>
-                    </li>
-                    <li class=""><a href="#service-three" data-toggle="tab"><i class="fa fa-support"></i> Service Three</a>
-                    </li>
-                    <li class=""><a href="#service-four" data-toggle="tab"><i class="fa fa-database"></i> Service Four</a>
-                    </li>
-                </ul>
-
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade active in" id="service-one">
-                        <h4>ADVISORY</h4>
-                        <p>Today organizations face intense pressure to stay agile and responsive to a volatile business environment. Emerging technologies cloud, virtualization, mobility, big data and analytics are driving new avenues of innovations and forcing organizations to rethink the way they do business. It is critical that your IT systems are aligned and geared up to meet your business needs. For today and future.</p>
-                        <p>At Silverleaf, we’re committed to meet this need by helping you make informed decisions across the lifecycle of infrastructure services delivery. Our team of consultants provide the rare blend of strategic vision, proven expertise and practical experience to empower the value of your business with technology.</p>
-                        <p></p>
-                    </div>
-                    <div class="tab-pane fade" id="service-two">
-                        <h4>Service Two</h4>
+            
+            <uib-tabset active="active" >
+			    <uib-tab index="0" heading="Advisory">
+                       <h4>ADVISORY</h4>
+                       <p>Today organizations face intense pressure to stay agile and responsive to a volatile business environment. Emerging technologies cloud, virtualization, mobility, big data and analytics are driving new avenues of innovations and forcing organizations to rethink the way they do business. It is critical that your IT systems are aligned and geared up to meet your business needs. For today and future.</p>
+                       <p>At Silverleaf, we are committed to meet this need by helping you make informed decisions across the lifecycle of infrastructure services delivery. Our team of consultants provide the rare blend of strategic vision, proven expertise and practical experience to empower the value of your business with technology.</p>
+                       <p></p>
+                       <uib-accordion close-others="true">
+				    	<uib-accordion-group is-open="false" is-disabled="false">
+					      <uib-accordion-heading>
+					        Software Licencing <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+					      </uib-accordion-heading>
+					      <p>
+					      	License Advisory Services are IT consulting services that provide software licensing best practices to organizations with mid-to-large sized enterprise application portfolios such as Oracle, Microsoft, IBM, VMWare, SAP and Networking. Benefits include reduced waste, mitigated risks, increased awareness and transparency, and efficiency gains.
+					      </p>
+					      <p><h2>Silver Leaf Solutions License Advisory Services</h2></p>
+					      <p>
+					      	SLS license advisory services cover the full Microsoft, Oracle , IBM and SAP suite, on premises to cloud, and include a comprehensive licensing optimization engagement as well as its individual components: high-level licensing strategy, license sales, software compliance, software audit assistance, and software asset management (SAM).
+					      </p>
+					      <p><h2>Why Choose Silver Leaf Solutions?</h2></p>
+					      <p>Silver Leaf Solutions team has been working with major Software OEMs for decades. For an affordable fixed rate, we conduct an end-to-end licensing review, recommend paths to compliance, and implement a thorough, confidential, efficient, and repeatable process that takes future changes and initiatives into account. The result is superior peace of mind, time management, transparency, and risk mitigation in the ever-changing world of  Software Licensing.</p>
+					      <p><h2>What Is Software License Sales?</h2></p>
+					      <p>Software License sales consulting encompasses everything involved in the procurement of various software. This includes new software sales, software upgrades, planning, pricing, licensing policies, distribution and end-user agreements, ordering, and business/best practices.</p>
+					      <p><h2>Silver Leaf Solutions Software License Sales</h2></p>
+					      <p>Silver Leaf is an authorized License Reseller with Microsoft and IBM. We offer consulting on new Oracle license sales as well as upgrades for the entire Oracle software suite. Choose a comprehensive software sales engagement or one of its components: high-level strategy and planning, license metrics, usage rights, support agreements, license migrations, cloud vs. on-prem, and numerous others.</p>
+					      <p><b>Tail End / Industry Specific - Software Procurement Services</b></p>
+					      <p>The 'tail' end Inductry Specific spend refers to the 20% of noncore transactions that go unmanaged, usually due to a high volume of suppliers and limited in-house resources dedicated to managing them.  In fact, many of these transactions are either too small or made too infrequently to be handled by internal strategic sourcing staff.  Effectively managing the tail end Software spend remains both a great challenge and opportunity for many procurement departments.  Improved process efficiency and better allocation of time and resources for tail end Software spend can result in significant cost savings and increased ROI for the company as a whole.</p>
+					     <p><b>Real Time Online Portal for Software Licenses</b></p>
+					      <p>Obtain real-time visibility of all software assets procured to increase procurement control. You can Track all software assets procured along with all documents related to procurement of Software like contract documents, agreements, purchase orders and respective invoices.</p>
+					     </uib-accordion-group>
+					     <uib-accordion-group>
+					      <uib-accordion-heading>
+					        Asset Management <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+					      </uib-accordion-heading>
+					     </uib-accordion-group>
+					     <uib-accordion-group>
+					      <uib-accordion-heading>
+					        Strategic Sourcing <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+					      </uib-accordion-heading>
+					     </uib-accordion-group>
+					     <uib-accordion-group>
+					      <uib-accordion-heading>
+					        Cloud <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+					      </uib-accordion-heading>
+						      <p><h2>CLOUD Strategy MADE SIMPLE -Start building a rock-solid cloud deploymentstrategy with one conversation.</h2></p>
+								<p><h2>Cloud Design -Why You Need It</h2></p>
+								<p>You have a strategic plan in place to solve critical business challenges by leveraging cloud computing but your current physical architecture may not allow for a straightforward lift and shift migration. And, you’d like to maximize your benefit by architecting your site to get the most of the available cloud resources. Factors like latency, fault tolerance, monitoring and management, database sizing, and disk I/O requirements all must be taken into consideration for an effective site design.</p>						     
+						     	<p><h2>Our Approach</h2></p>
+						     	<p>Silver Leaf Solutions follows a proven methodology to discover your requirements and design a suitable cloud architecture to meet those requirements.</p>
+						     	<p>
+						     		<ui>
+						     			<li>Business requirements</li>
+						     			<li>Technical requirements</li>
+						     			<li>Security requirements</li>
+						     			<li>DR requirements</li>
+						     			<li>Current state</li>
+						     			<li>Target state</li>
+						     		</ui>
+						     	</p>
+						     	<p>The design process is iterative and flexible. Foghorn can work collaboratively with your existing IT team or provide a turnkey design—whichever fits your IT model best.</p>
+						 </uib-accordion-group>
+					     <uib-accordion-group>
+					      <uib-accordion-heading>
+					        Network Services <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+					      </uib-accordion-heading>
+					     </uib-accordion-group>
+					     <uib-accordion-group>
+					      <uib-accordion-heading>
+					        Technology Evangenlization <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+					      </uib-accordion-heading>
+					     </uib-accordion-group>
+					</uib-accordion>
+			    </uib-tab>
+			    <uib-tab index="1" heading="IT Services">
+			    	<h4>IT Services</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae repudiandae fugiat illo cupiditate excepturi esse officiis consectetur, laudantium qui voluptatem. Ad necessitatibus velit, accusantium expedita debitis impedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At quia quaerat asperiores.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae repudiandae fugiat illo cupiditate excepturi esse officiis consectetur, laudantium qui voluptatem. Ad necessitatibus velit, accusantium expedita debitis impedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At quia quaerat asperiores.</p>
-                    </div>
-                    <div class="tab-pane fade" id="service-three">
-                        <h4>Service Three</h4>
+                        <uib-accordion close-others="true">
+					    	<uib-accordion-group is-open="true" is-disabled="false">
+						      <uib-accordion-heading>
+						        Product Implementation <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						      </uib-accordion-heading>
+						     </uib-accordion-group>
+					    	<uib-accordion-group>
+						      <uib-accordion-heading>
+						        Cloud Deployment <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						      </uib-accordion-heading>
+						      </uib-accordion-group>
+					    	<uib-accordion-group>
+						      <uib-accordion-heading>
+						        Support & Maintenance <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						      </uib-accordion-heading>
+						     </uib-accordion-group>
+					    	<uib-accordion-group>
+						      <uib-accordion-heading>
+						        Training & Enablement <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						      </uib-accordion-heading>
+						     </uib-accordion-group>
+						 </uib-accordion>
+			    </uib-tab>
+			    <uib-tab index="2" heading="Strategic Reselling">
+			    	<h4>Strategic Reselling</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae repudiandae fugiat illo cupiditate excepturi esse officiis consectetur, laudantium qui voluptatem. Ad necessitatibus velit, accusantium expedita debitis impedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At quia quaerat asperiores.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae repudiandae fugiat illo cupiditate excepturi esse officiis consectetur, laudantium qui voluptatem. Ad necessitatibus velit, accusantium expedita debitis impedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At quia quaerat asperiores.</p>
-                    </div>
-                    <div class="tab-pane fade" id="service-four">
-                        <h4>Service Four</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae repudiandae fugiat illo cupiditate excepturi esse officiis consectetur, laudantium qui voluptatem. Ad necessitatibus velit, accusantium expedita debitis impedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At quia quaerat asperiores.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae repudiandae fugiat illo cupiditate excepturi esse officiis consectetur, laudantium qui voluptatem. Ad necessitatibus velit, accusantium expedita debitis impedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At quia quaerat asperiores.</p>
-                    </div>
-                </div>
+                        <uib-accordion close-others="true">
+					    	<uib-accordion-group is-open="true" is-disabled="false">
+						      <uib-accordion-heading>
+						        Software Licenses <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						      </uib-accordion-heading>
+						     </uib-accordion-group>
+					    	<uib-accordion-group>
+						      <uib-accordion-heading>
+						        Network & Software Appliances <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						      </uib-accordion-heading>
+						     </uib-accordion-group>
+						</uib-accordion>
+			    </uib-tab>
+			  </uib-tabset>
 
             </div>
         </div>

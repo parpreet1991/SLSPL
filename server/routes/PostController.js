@@ -1,13 +1,23 @@
 var express = require('express'),
     router = express.Router(),
     Post = require('../models/Post.js');
+	Contact = require('../models/Contact.js');
+	Career = require('../models/Career.js');
     Reply = require('../models/Reply.js');
     multer  = require('multer');
 var fileName = "";
     
 router.get('/Posts', function(req, res) {
 	// object of all the users
-	  Post.find({isDeleted:'N'}, function(err, posts) {
+	  Post.find({isDeleted:'N', postType:'blog'}, function(err, posts) {
+		  if (err) throw err;
+		  res.status(200).json(posts);
+		});	  
+});
+
+router.get('/Events', function(req, res) {
+	// object of all the users
+	  Post.find({isDeleted:'N', postType:'event'}, function(err, posts) {
 		  if (err) throw err;
 		  res.status(200).json(posts);
 		});	  
@@ -15,9 +25,8 @@ router.get('/Posts', function(req, res) {
     
 router.get('/getPostDetails', function(req, res) {
 	// object of all the users
-	debugger;
-	console.log('inside getPostDetails '+req.id);
-	Post.findById(req.body.id, function(err, post) {
+	console.log('inside getPostDetails '+req.query.postId);
+	Post.findById(req.query.postId, function(err, post) {
 		  if (err) throw err;
 		  res.status(200).json(post);
 		  console.log('inside getPostDetails');
@@ -116,7 +125,10 @@ router.post('/upload', function(req, res) {
   		  postDetails: req.body.postDetails,
   		  displayPost: req.body.postDetails.substring(0,15)+'.....',
   		  imagePaths: req.file.path.substring(7),
-  		  isDeleted: 'N'
+  		  isDeleted: 'N',
+  		  postDate: req.body.postDate,
+  		  postTime: req.body.postTime,
+  		  postType: req.body.postType
   		});
   	post.save(function(err) {
   		  if (err) throw err;
@@ -127,6 +139,43 @@ router.post('/upload', function(req, res) {
 		});
          //res.json({error_code:0,err_desc:null});
     });
+});
+
+/** API path that will upload the files */
+router.post('/uploadResume', function(req, res) {
+    upload(req,res,function(err){
+        if(err){
+             res.json({error_code:1,err_desc:err});
+             return;
+        }
+        var career = new Career({
+      	  name: req.body.name,
+      	  email: req.body.email,
+      	  phone: req.body.phone,
+      	  message: req.body.message,
+      	  filePath: req.file.path.substring(7),
+      	  isDeleted: 'N'
+      	});
+          career.save(function(err) {
+	      	  if (err) throw err;
+	      	  res.status(200).json(career);
+	      	});
+    });
+});
+
+/** API path that will save contact */
+router.post('/ContactSave', function(req, res) {
+    var contact = new Contact({
+	  name: req.body.name,
+	  email: req.body.email,
+	  phone: req.body.phone,
+	  message: req.body.message,
+	  isDeleted: 'N'
+	});
+    contact.save(function(err) {
+	  if (err) throw err;
+	res.status(200).json(contact);
+	});
 });
 
 module.exports = router;

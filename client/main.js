@@ -51,11 +51,26 @@ myApp.config(function ($routeProvider) {
       controller: 'blogPostController',
       access: {restricted: false}
     })
+    .when('/events', {
+    	templateUrl: 'partials/events.html',
+      controller: 'EventDataCtrl',
+      access: {restricted: false}
+    })
+    .when('/blog-post/:_id', {
+    	templateUrl: 'partials/blog-post.html',
+      controller: 'blogPostController',
+      access: {restricted: false}
+    })
     .when('/contact', {
     	templateUrl: 'partials/contact.html',
-        controller: 'contactController',
+        controller: 'ContactCtrl',
         access: {restricted: false}
       })
+      .when('/career', {
+      	templateUrl: 'partials/career.html',
+          controller: 'CareerCtrl',
+          access: {restricted: false}
+        })
       .when('/admin', {
     	  templateUrl: 'partials/admin-controls.html',
     	  controller: 'adminController',
