@@ -18,7 +18,7 @@
 
         <!-- Contact Form -->
         <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-        <div class="row" ng-controller="CareerCtrl">
+        <div class="row" ng-controller="CareerCtrl as up">
             <div class="col-md-8">
                 <h3>Send us your profile</h3>
                 <form name="up.upload_form" id="careerForm" novalidate role="form">
@@ -43,9 +43,9 @@
                             <input type="email" ng-model="career.email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
                         </div>
                     </div>
-		            <div class="form-group">
-              			<label >Upload Resume:</label>
-              			<div class="col-sm-4">
+		            <div class="control-group form-group">
+              			<div class="controls">
+              				<label >Upload Resume:</label>
 				          	<input class="form-control" id="inputName2" type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'*/*'" accept="*/*" ngf-max-size="2MB"/>
 				            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
 				            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
@@ -55,12 +55,12 @@
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Message:</label>
-                            <textarea rows="10" cols="100" ng-model="career	`.message" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                            <textarea rows="10" cols="100" ng-model="career.message" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
                         </div>
                     </div>
                     <div id="success"></div>
                     <!-- For success/fail messages -->
-                    <button class="btn btn-primary" ng-click="up.submit">Submit</button>
+                    <button class="btn btn-primary" ng-click="up.submit()">Submit</button>
                 </form>
             </div>
 

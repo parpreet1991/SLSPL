@@ -333,14 +333,14 @@ angular.module('myApp').controller('ContactCtrl',
 }]);
 
 angular.module('myApp').controller('CareerCtrl',
-		  ['$window', '$scope', '$rootScope', '$http', 'AuthService',
-		  function ($window, $scope, $rootScope, $http, AuthService) {
+		  ['Upload','$window', '$scope', '$rootScope', '$http', 'AuthService',
+		  function (Upload, $window, $scope, $rootScope, $http, AuthService) {
 			  $rootScope.currentPage = "none";
 	
 			  var vm = this;
 			    vm.submit = function(){ //function to call on form submit
 			    if (vm.upload_form.file.$valid && vm.file) { //check if form is valid
-			        vm.upload(vm.file, postType); //call upload function
+			        vm.upload(vm.file); //call upload function
 			    }
 			}
 			

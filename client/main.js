@@ -42,7 +42,7 @@ myApp.config(function ($routeProvider) {
       access: {restricted: false}
     })
     .when('/blogs', {
-    	templateUrl: 'partials/blog-home-2.html',
+    	templateUrl: 'partials/blogs.html',
       controller: 'blogsController',
       access: {restricted: false}
     })
