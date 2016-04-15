@@ -1,19 +1,19 @@
     <!-- Page Content -->
-    <div class="container" ng-controller = "PostDataCtrl">
+    <div class="container" ng-controller = "ShowBlogCtrl">
 
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Blogs home
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
+                    <li><a href="#main">Home</a>
                     </li>
                     <li class="active">Blog Home</li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
-
+		<div ng-show="posts.length<=0"><i><h2>Yet to write.</h2></i></div>
         <!-- Blog Post Row -->
         <div class="row" ng-repeat = "post in posts | orderBy:'-updated_at' track by $index">
             <div class="col-md-2 text-center">
@@ -40,14 +40,14 @@
         <!-- /.row -->
 
         <!-- Pager -->
-        <div class="row">
+        <!-- <div class="row">
             <ul class="pager">
                 <li class="previous"><a href="#">&larr; Older</a>
                 </li>
                 <li class="next"><a href="#">Newer &rarr;</a>
                 </li>
             </ul>
-        </div>
+        </div> -->
         <!-- /.row -->
 
     </div>

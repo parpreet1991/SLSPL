@@ -15,12 +15,16 @@
         <input type="text" class="form-control" name="name" ng-model="registerForm.detail.name" required>
     </div>
     <div class="form-group">
+      <label>Email</label>
+        <input type="email" class="form-control" name="email" ng-model="registerForm.detail.email" required>
+    </div>
+    <div class="form-group">
       <label>Age</label>
-        <input type="number" class="form-control" name="age" ng-model="registerForm.detail.age" required>
+        <input type="number" class="form-control" name="age" ng-model="registerForm.detail.age">
     </div>
     <div class="form-group">
       <label>Something about yourself</label>
-        <input type="textarea" class="form-control" name="details" ng-model="registerForm.detail.details" required>
+        <input type="textarea" class="form-control" name="details" ng-model="registerForm.detail.details">
     </div>
       <div>
         <button type="submit" class="btn btn-default" ng-disabled="disabled">Register</button>

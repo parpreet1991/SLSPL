@@ -17,7 +17,7 @@
                         <p>
                         	Today organizations face intense pressure to stay agile and responsive to a volatile business environment. Emerging technologies cloud, virtualization, mobility, big data and analytics are driving new avenues of innovations and forcing organizations to rethink the way they do business. It is critical that your IT systems are aligned and geared up to meet your business needs. For today and future.
                         </p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                        <a href="#services" class="btn btn-default">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <p>
                         	Complex technologies, dynamic business environments and process excellence are among the main challenges organizations face on their path to growth. Understanding the complexities of the IT environment, Silverleaf extends its expertise in IT services to ensure that the technology is in line with your business objectives, no matter the size and nature of your organization.
                         </p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                        <a href="#services" class="btn btn-default">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -40,54 +40,32 @@
                         <h4><i class="fa fa-fw fa-compass"></i> STRATEGIC RESELLING</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                        <p>It is impossible to manage software suppliers effectively unless you can influence sourcing. The major players are so big and powerful that they usually have the upper hand in discussions about maintenance renewals and service levels. Even small software providers can build immovable, entrenched positions in their chosen niches. Silver Leaf Solutions explains how to build this connection, by creating formal categorization of your software suppliers and using it to influence software category sourcing strategies. You therefore need different people handling each side, but collaborating closely with each other.</p>
+                        <a href="#services" class="btn btn-default">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /.row -->
 
-        <div class="row">
+        <div class="row" ng-controller = "ShowBlogCtrl">
             <div class="col-lg-12">
                 <h2 class="page-header">Blogs</h2>
             </div>
-            <div class="col-md-4 text-center">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
-                        </h3>
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
-                        </h3>
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
-                        </h3>
-                        <p>Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample dataSample data, Sample data, Sample data, Sample data, Sample data, Sample data, Sample data</p>
-                        
-                    </div>
-                </div>
-            </div>
+            <div ng-repeat = "post in posts | orderBy:'-updated_at' track by $index">
+	            <div class="col-md-4 text-center">
+	                <div class="thumbnail">
+	                    <img class="img-responsive" src="{{post.imagePaths}}" alt="">
+	                    <div class="caption">
+	                        <h3>{{post.postTitle}}<br>
+	                            <small>{{post.username}}</small>
+	                        </h3>
+	                        <p>{{post.displayPost}}</p>
+	                        <a class="btn btn-primary" href="#blog-post/{{post._id}}">Read More <i class="fa fa-angle-right"></i></a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
         </div>
         <!-- /.row -->
 

@@ -5,6 +5,7 @@ angular.module('myApp').factory('AuthService',
     // create user variable
     var user = null;
     var username = null;
+    var admin = null;
     // return available functions for use in controllers
     return ({
       isLoggedIn: isLoggedIn,
@@ -12,7 +13,8 @@ angular.module('myApp').factory('AuthService',
       login: login,
       logout: logout,
       register: register,
-      getUserName: getUserName
+      getUserName: getUserName,
+      isAdmin: isAdmin
     });
 
     function isLoggedIn() {
@@ -31,6 +33,15 @@ angular.module('myApp').factory('AuthService',
       return username;
     }
 
+    function isAdmin() {
+    	if(admin) {
+            return true;
+          } else {
+            return false;
+          }
+      return admin;
+    }
+
     function login(username1, password) {
 
       // create a new instance of deferred
@@ -43,6 +54,7 @@ angular.module('myApp').factory('AuthService',
           if(status === 200 && data.status){
             user = true;
             username = username1;
+            admin = data.userdetails.admin;
             deferred.resolve();
           } else {
             user = false;
@@ -52,6 +64,7 @@ angular.module('myApp').factory('AuthService',
         // handle error
         .error(function (data) {
           user = false;
+          admin = false;
           deferred.reject();
         });
 
@@ -70,12 +83,14 @@ angular.module('myApp').factory('AuthService',
         // handle success
         .success(function (data) {
           user = false;
+          admin = false;
           username = null;
           deferred.resolve();
         })
         // handle error
         .error(function (data) {
           user = false;
+          admin = false;
           username = null;
           deferred.reject();
         });
@@ -89,7 +104,7 @@ angular.module('myApp').factory('AuthService',
 
       // create a new instance of deferred
       var deferred = $q.defer();
-      alert(detail.age);
+      //alert(detail.age);
       // send a post request to the server
       $http.post('/user/register', {username: username, password: password, detail: detail})
         // handle success

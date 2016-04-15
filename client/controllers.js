@@ -14,7 +14,11 @@ angular.module('myApp').controller('loginController',
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         // handle success
         .then(function () {
-          $location.path('/');
+	    	if(AuthService.isAdmin()){
+	    		$location.path('/admin');
+	    	}else{
+	    		$location.path('/');
+	    	}
           $scope.disabled = false;
           $scope.loginForm = {};
           $rootScope.AuthService = AuthService;
@@ -87,6 +91,13 @@ angular.module('myApp').controller('mainController',
 			  $rootScope.currentPage = "show";
 		}]);
 
+angular.module('myApp').controller('aboutController',
+		  ['$scope', '$rootScope','$location', 'AuthService',
+		  function ($scope, $rootScope, $location, AuthService) {
+			  $rootScope.currentPage = "none";
+		}]);
+
+
 angular.module('myApp').controller('contactController',
 		  ['$scope', '$rootScope','$location', 'AuthService',
 		  function ($scope, $rootScope, $location, AuthService) {
@@ -117,11 +128,9 @@ angular.module('myApp').controller('blogPostController',
 
 angular.module('myApp').controller('adminController',
 		  ['$scope', '$rootScope','$location', 'AuthService',
-		  function ($scope, $rootScope, $location, AuthService) {
-			  $rootScope.currentPage = "none";
-			  
+		  function ($scope, $rootScope, $location, AuthService) {			  
+			  $rootScope.currentPage = "none";			  
 			  $scope.mytime = new Date();
-
 			  $scope.hstep = 1;
 			  $scope.mstep = 15;
 			  
@@ -199,13 +208,29 @@ function chatCtrl($scope, $http){
 	
 }
 
+
+
+angular.module('myApp').controller('ShowBlogCtrl',
+		  ['$scope', '$http', 'AuthService',
+		  function ($scope, $http, AuthService) {
+	// send a post request to the server
+	$http.get('/post/Posts', {})
+	  // handle success
+	      .success(function (data, status) {
+	        if(status == 200){
+	        	$scope.posts = data;
+	        }
+	      });
+  
+ }]);
+
 angular.module('myApp').controller('PostDataCtrl',
 		  ['Upload','$window','$scope', '$rootScope', '$http', 'AuthService',
 		  function (Upload, $window, $scope, $rootScope, $http, AuthService) {
 			  $rootScope.currentPage = "none";
-	$scope.showModalWindow=false;
+	//$scope.showModalWindow=false;
 	$scope.username = AuthService.getUserName();
-	$scope.modalPosts = [];
+	//$scope.modalPosts = [];
 	// send a post request to the server
 	$http.get('/post/Posts', {})
 	  // handle success
@@ -255,7 +280,7 @@ angular.module('myApp').controller('PostDataCtrl',
 	    };
 	    
 	    
-	  $scope.postData = function() 
+	  /*$scope.postData = function() 
 	  {
 		  $scope.comment=true;
 		  $http.post('/post/PostData', {postDetails: $scope.post.postDetails, username: AuthService.getUserName()})
@@ -287,7 +312,7 @@ angular.module('myApp').controller('PostDataCtrl',
 		  $scope.showModalWindow=false;
 		  $scope.modalPosts = [];
 		  $scope.post.postDetails = "";
-	  }
+	  }*/
   
  }]);
 
@@ -295,17 +320,14 @@ angular.module('myApp').controller('EventDataCtrl',
 		  ['$window', '$scope', '$rootScope', '$http', 'AuthService',
 		  function ($window, $scope, $rootScope, $http, AuthService) {
 			  $rootScope.currentPage = "none";
-	  $scope.postData = function() 
-	  {
-		// send a post request to the server
+	 // send a post request to the server
 		$http.get('/post/Events', {})
 		  // handle success
-		      .success(function (data, status) {
-		        if(status == 200){
-		        	$scope.posts = data;
-		        }
-		      });
-	  }
+	      .success(function (data, status) {
+	        if(status == 200){
+	        	$scope.posts = data;
+	        }
+	      });
 
 }]);
 
@@ -357,6 +379,59 @@ angular.module('myApp').controller('CareerCtrl',
 				       	  $scope.file = "";
 				       	  $scope.success = true;
 				       	  $scope.successMessage = "Profile uploaded successfuly.";
+			            //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+			        } else {
+			        	$scope.error = true;
+				       	$scope.errorMessage = "Some problem occurred.";
+			        }
+			    }, function (resp) { //catch error
+			        console.log('Error status: ' + resp.status);
+			        $scope.error = true;
+			       	$scope.errorMessage = "Some problem occurred.";
+			    }, function (evt) { 
+			        console.log(evt);
+			        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+			        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+			        vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+			        });
+			    };
+
+}]);
+
+angular.module('myApp').controller('LicenceCtrl',
+		  ['Upload','$window', '$scope', '$rootScope', '$http', 'AuthService',
+		  function (Upload, $window, $scope, $rootScope, $http, AuthService) {
+			  $rootScope.currentPage = "none";
+			  
+			  $http.post('/post/fetchLicences', {username: AuthService.getUserName(), isAdmin: AuthService.isAdmin()})
+			// handle success
+			.success(function (data, status) {
+				if(status == 200){ 
+			       	  $scope.success = true;
+			       	  $scope.licences = data;
+			    } else {
+			    	$scope.error = true;
+			       	$scope.errorMessage = "Some problem occurred.";
+			        }
+			    });
+			
+			  var vm = this;
+			    vm.submit = function(){ //function to call on form submit
+			if (vm.upload_form.file.$valid && vm.file) { //check if form is valid
+			    vm.upload(vm.file); //call upload function
+			    }
+			}
+			
+			vm.upload = function (file) {
+			    Upload.upload({
+			        url: '/post/uploadLicence', //webAPI exposed to upload the file
+			        data:{file:file, fileName: file.name, displayInfo: $scope.licence.displayInfo, uploadedBy: AuthService.getUserName(), assignedToUser: $scope.licence.assignToUser, assignedToName: $scope.licence.assignedToName, additionalInfo: $scope.licence.additionalInfo} //pass file as data, should be user ng-model
+			    }).then(function (resp) { //upload function returns a promise
+			        if(resp.status === 200){ //validate success
+				       	  $scope.success = true;
+				       	  $scope.successMessage = "Profile uploaded successfuly.";
+				       	  $scope.licences = resp.data.licences;
+				       	  
 			            //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
 			        } else {
 			        	$scope.error = true;

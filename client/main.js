@@ -51,14 +51,14 @@ myApp.config(function ($routeProvider) {
       controller: 'blogPostController',
       access: {restricted: false}
     })
+    .when('/event/:_id', {
+    	templateUrl: 'partials/event.html',
+      controller: 'blogPostController',
+      access: {restricted: false}
+    })
     .when('/events', {
     	templateUrl: 'partials/events.html',
       controller: 'EventDataCtrl',
-      access: {restricted: false}
-    })
-    .when('/blog-post/:_id', {
-    	templateUrl: 'partials/blog-post.html',
-      controller: 'blogPostController',
       access: {restricted: false}
     })
     .when('/contact', {
@@ -74,8 +74,13 @@ myApp.config(function ($routeProvider) {
       .when('/admin', {
     	  templateUrl: 'partials/admin-controls.html',
     	  controller: 'adminController',
-          access: {restricted: false}
+          access: {restricted: true}
         })
+        .when('/licences', {
+      	  templateUrl: 'partials/licences.html',
+      	  controller: 'LicenceCtrl',
+            access: {restricted: true}
+          })
     .when('/ListPosts', {
         templateUrl: 'partials/ListPosts.html',
         controller: '',

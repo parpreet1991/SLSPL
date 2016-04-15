@@ -62,7 +62,7 @@
 			        </div>
 				    </uib-accordion-group>
 				 </uib-accordion>
-				 <div ng-include src="'blogs.html'"></div>
+				 <ng-include src="'/partials/blogs.html'" scope="" onload=""></ng-include>
 		    </uib-tab>
 		    <uib-tab index="1" heading="Events">
 			    <uib-accordion close-others="oneAtATime">
@@ -130,8 +130,68 @@
 				        </div>
 				    </uib-accordion-group>
 				 </uib-accordion>
+				 <ng-include src="'/partials/events.html'" scope="" onload=""></ng-include>
 		    </uib-tab>
-		    <uib-tab index="2" heading="Licences">Upload user specific licences here</uib-tab>
+		    <uib-tab index="2" heading="Licences">
+		    	<uib-accordion close-others="oneAtATime">
+			    	<uib-accordion-group is-open="status.open">
+				      <uib-accordion-heading>
+				        Upload Licences Here <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				      </uib-accordion-heading>
+				      <div ng-controller = "LicenceCtrl as up">
+				      
+						<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+						<div ng-show="success" class="alert alert-success">{{successMessage}}</div>
+					    <form  name="up.upload_form" class="form-horizontal" role="form">
+			              	<div class="modal-body">
+			              		<div class="form-group">
+			              			<label for="inputName1" class="col-sm-2 control-label">Display Info</label>
+			              			<div class="col-sm-10">
+							          <input class="form-control" id="inputName1" placeholder="Display Info" ng-model="licence.displayInfo">
+							        </div>
+					            </div>
+			              		<div class="form-group">
+			              			<label for="inputName1" class="col-sm-2 control-label">Assigned To User</label>
+			              			<div class="col-sm-10">
+							          <input class="form-control" id="inputName2" placeholder="Assigned To User" ng-model="licence.assignedToUser">
+							        </div>
+					            </div>
+			              		<div class="form-group">
+			              			<label for="inputName1" class="col-sm-2 control-label">Assigned with name</label>
+			              			<div class="col-sm-10">
+							          <input class="form-control" id="inputName3" placeholder="Assigned with name" ng-model="licence.assignedToName">
+							        </div>
+					            </div>
+			              		<div class="form-group">
+			              			<label for="inputName1" class="col-sm-2 control-label">Additional Info</label>
+			              			<div class="col-sm-10">
+							          <input class="form-control" id="inputName4" placeholder="Additional Info" ng-model="licence.additionalInfo">
+							        </div>
+					            </div>
+					            <div class="form-group">
+			              			<label for="inputName2" class="col-sm-2 control-label">Banner</label>
+			              			<div class="col-sm-4">
+							          	<input class="form-control" id="inputName5" type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'*/*'" accept="*" ngf-max-size="20MB"/>
+						            
+							            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+							            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+							            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+							        </div>
+					            </div>
+				         	</div>
+					           <!--  Multiple files
+					            <div class="button" ngf-select ng-model="up.files" ngf-multiple="true">Select</div>
+					            Drop files: <div ngf-drop ng-model="up.files" class="drop-box">Drop</div> -->
+					        <div class="modal-footer">
+						        <button type="button" class="btn btn-default pull-left" ng-click="up.submit()">Save</button>
+					            <p>{{up.progress}}</p>
+					        </div>
+				        </form>
+				        </div>
+				    </uib-accordion-group>
+				 </uib-accordion>
+				 <ng-include src="'/partials/licences.html'" scope="" onload=""></ng-include>
+		    </uib-tab>
 		</uib-tabset>
 	</div>
 </div>

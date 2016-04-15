@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Silver Leaf Solutions</title>
+    <title>S L S</title>
     <script src="lib/w3-include-HTML.js"></script>
     <!-- Angular -->    
 	<script src="lib/angular/angular.min.js"></script>
@@ -77,12 +77,12 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Silver Leaf Solutions</span>
+                    <span class="sr-only"><i><b>S L S</b></i></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#main">Silver Leaf Solutions</a>
+                <a class="navbar-brand" href="#main">S L S</a>
             </div>
             <div id='cssmenu'>				
 				<ul>
@@ -115,22 +115,22 @@
 				         </li>
 				      </ul>
 				   </li>
-				   <li><a href="#partners">Partners</a></li>
+				   <!-- <li><a href="#partners">Partners</a></li> -->
 				   
                     <li><a href="#events">New & Events</a></li>
                     <li><a href="#career">Career</a></li>
                     <li><a href="#blogs">Blogs</a></li>
-                    <li><a href="#admin">Admin</a></li>
+                    <li ng-show="$root.AuthService.isAdmin()"><a href="#admin">Admin</a></li>
                     <li class='last'><a href="#contact">Contact</a></li>
 				</ul>
 			</div>
 			
 			<div class="navbar-collapse collapse">				
 			    <ul ng-controller="logoutController" class="nav navbar-nav pull-right">
-			    	<li><a>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</a></li>
-			      	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login">Login</a></li>
+			    	<li><a  href="#licences"><i><b>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</b></i></a></li>
+			      	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login"><i><b>Login</b></i></a></li>
 			      	<li ng-show="$root.AuthService.isLoggedIn">
-			      		<a ng-click='logout()' >Logout</a>
+			      		<a ng-click='logout()' ><i><b>Logout</b></i></a>
 			      	</li>
 			    </ul>
 			</div>

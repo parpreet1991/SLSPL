@@ -6,12 +6,12 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Blogs
+                <h1 class="page-header">Event
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#main">Home</a>
                     </li>
-                    <li class="active">Blogs</li>
+                    <li class="active">Event</li>
                 </ol>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <hr>
 
                 <!-- Date/Time -->
-                <p><i class="fa fa-clock-o"></i> Posted on {{post.created_at}}</p>
+                <p><i class="fa fa-clock-o"></i> Posted on {{post.created_at}} by {{post.username}}</p>
 
                 <hr>
 
@@ -39,6 +39,9 @@
 
                 <!-- Post Content -->
                 <div id="demo"></div>
+                
+                <hr>
+                <p>Event Date & time : {{post.postDate}}</p>
 
             </div>
 

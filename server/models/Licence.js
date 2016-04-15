@@ -3,20 +3,20 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // create a schema
-var userDetailsSchema = new Schema({
-  name: String,
-  username: { type: String, required: true, unique: true },
-  admin: Boolean,
-  details: String,
-  email: String,
-  age: Number,
-  website: String,
+var licenceSchema = new Schema({
+  displayInfo: { type: String, required: true },
+  uploadedBy: String,
+  assignedToUser: String,
+  assignedToName: String,
+  filePath: String,
+  additionalInfo: String,
+  isDeleted: String,
   created_at: Date,
   updated_at: Date
 });
 
 //on every save, add the date
-userDetailsSchema.pre('save', function(next) {
+licenceSchema.pre('save', function(next) {
   // get the current date
   var currentDate = new Date();
   
@@ -32,7 +32,7 @@ userDetailsSchema.pre('save', function(next) {
 
 // the schema is useless so far
 // we need to create a model using it
-var UserDetails = mongoose.model('UserDetails', userDetailsSchema);
+var Licence = mongoose.model('Licence', licenceSchema);
 
 // make this available to our users in our Node applications
-module.exports = UserDetails;
+module.exports = Licence;

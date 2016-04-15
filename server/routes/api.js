@@ -14,7 +14,8 @@ router.post('/register', function(req, res) {
     	var userDetail = new UserDetails({
     		  name: req.body.detail.name,
     		  username: req.body.username,
-    		  admin: true,
+    		  name: req.body.detail.email,
+    		  admin: false,
     		  details: req.body.detail.details,
     		  age: req.body.detail.age    		  
     		});
@@ -39,7 +40,12 @@ router.post('/login', function(req, res, next) {
       if (err) {
         return res.status(500).json({err: 'Could not log in user'});
       }
-      res.status(200).json({status: 'Login successful!'});
+      UserDetails.find({username:user.username}, function(err, details) {
+		  if (err) throw err;
+		  console.log("User logged in with username : "+ user.username + " | Is Admin : "+details[0].admin);
+		  res.status(200).json({status: 'Login successful!', userdetails: details[0]});
+		});
+      
     });
   })(req, res, next);
 });

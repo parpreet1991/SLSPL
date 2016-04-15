@@ -3,6 +3,7 @@ var express = require('express'),
     Post = require('../models/Post.js');
 	Contact = require('../models/Contact.js');
 	Career = require('../models/Career.js');
+	Licence = require('../models/Licence.js');
     Reply = require('../models/Reply.js');
     multer  = require('multer');
 var fileName = "";
@@ -21,6 +22,21 @@ router.get('/Events', function(req, res) {
 		  if (err) throw err;
 		  res.status(200).json(posts);
 		});	  
+});
+
+router.post('/fetchLicences', function(req, res) {
+	// object of all the users
+	if(req.query.isAdmin){
+	  Licence.find({isDeleted:'N'}, function(err, licences) {
+			  if (err) throw err;
+			  res.status(200).json(licences);
+		});	 
+	}else{
+		Licence.find({isDeleted:'N', assignedToUser: req.query.username}, function(err, licences) {
+		  if (err) throw err;
+		  res.status(200).json(licences);
+		});	
+	}
 });
     
 router.get('/getPostDetails', function(req, res) {
@@ -159,6 +175,32 @@ router.post('/uploadResume', function(req, res) {
           career.save(function(err) {
 	      	  if (err) throw err;
 	      	  res.status(200).json(career);
+	      	});
+    });
+});
+
+/** API path that will upload the files */
+router.post('/uploadLicence', function(req, res) {
+    upload(req,res,function(err){
+        if(err){
+             res.json({error_code:1,err_desc:err});
+             return;
+        }
+        var licence = new Licence({
+        	displayInfo: req.body.displayInfo,
+        	uploadedBy: req.body.uploadedBy,
+        	assignedToUser: req.body.assignedToUser,
+        	assignedToName: req.body.assignedToName,
+        	additionalInfo: req.body.additionalInfo,
+        	filePath: req.file.path.substring(7),
+        	isDeleted: 'N'
+      	});
+        licence.save(function(err) {
+	      	  if (err) throw err;	      	  
+				Licence.find({isDeleted:'N'}, function(err, licences) {
+					  if (err) throw err;
+					  res.status(200).json({licences: licences});
+				});
 	      	});
     });
 });
