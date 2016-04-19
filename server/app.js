@@ -3,6 +3,7 @@ var express = require('express'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
+    //expressValidator = require('express-validator'),
     expressSession = require('express-session'),
     mongoose = require('mongoose'),
     hash = require('bcrypt-nodejs'),
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(expressValidator);
 app.use(cookieParser());
 app.use(require('express-session')({
     secret: 'keyboard cat',

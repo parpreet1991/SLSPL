@@ -54,7 +54,7 @@ angular.module('myApp').factory('AuthService',
           if(status === 200 && data.status){
             user = true;
             username = username1;
-            admin = data.userdetails.admin;
+            admin = data.user.admin;
             deferred.resolve();
           } else {
             user = false;
@@ -100,13 +100,22 @@ angular.module('myApp').factory('AuthService',
 
     }
 
-    function register(username, password, detail) {
+    function register(registerForm) {
 
       // create a new instance of deferred
       var deferred = $q.defer();
       //alert(detail.age);
       // send a post request to the server
-      $http.post('/user/register', {username: username, password: password, detail: detail})
+      $http.post('/user/register', {
+    	  username: registerForm.username, 
+    	  password: registerForm.password, 
+    	  confirmPassword: registerForm.confirmPassword,
+    	  name: registerForm.name,
+    	  company: registerForm.company,
+    	  phone: registerForm.phone,
+    	  designation: registerForm.designation,
+    	  department: registerForm.department
+    	  })
         // handle success
         .success(function (data, status) {
           if(status === 200 && data.status){

@@ -21,6 +21,11 @@ myApp.config(function ($routeProvider) {
       controller: 'registerController',
       access: {restricted: false}
     })
+    .when('/register/:token', {
+        templateUrl: 'partials/registerValidation.html',
+        controller: 'registerValidationController',
+        access: {restricted: false}
+      })
     .when('/main', {
     	templateUrl: 'partials/main.html',
     	controller: 'mainController',

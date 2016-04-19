@@ -9,7 +9,6 @@ angular.module('myApp').controller('loginController',
       // initial values
       $scope.error = false;
       $scope.disabled = true;
-
       // call login from service
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         // handle success
@@ -63,27 +62,61 @@ angular.module('myApp').controller('registerController',
 
       // initial values
       $scope.error = false;
+      $scope.success = false;
       $scope.disabled = true;
 
-      // call register from service
-      AuthService.register($scope.registerForm.username, $scope.registerForm.password, $scope.registerForm.detail)
-        // handle success
-        .then(function () {
-          $location.path('/login');
+      if($scope.registerForm.password != $scope.registerForm.confirmPassword){
+    	  $scope.error = true;
+          $scope.errorMessage = "Missmatch Password & Confirm Password";
           $scope.disabled = false;
-          $scope.registerForm = {};
-        })
-        // handle error
-        .catch(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Something went wrong!";
-          $scope.disabled = false;
-          $scope.registerForm = {};
-        });
+      }else{
+		  // call register from service
+		  AuthService.register($scope.registerForm)
+		    // handle success
+		    .then(function () {
+		      //$location.path('/login');
+		    	$scope.success = true;
+		        $scope.successMessage = "Registration successful! Validation link is sent to email";
+		        $scope.disabled = false;
+		      $scope.registerForm = {};
+		    })
+		    // handle error
+		    .catch(function () {
+		      $scope.error = true;
+		      $scope.errorMessage = "Something went wrong!";
+		      $scope.disabled = false;
+		      $scope.registerForm = {};
+		    });
+      }
 
     };
 
 }]);
+
+
+
+angular.module('myApp').controller('registerValidationController',
+		  ['$scope', '$routeParams', '$rootScope', '$http',
+		  function ($scope, $routeParams, $rootScope, $http) {
+			  $rootScope.currentPage = "none";
+			  
+			  $http({
+				  method: 'GET',
+				  url: '/user/register?token=' + $routeParams.token
+				}).then(function successCallback(response) {
+						if(response.status == 200){
+							$scope.successMessage = response.data.message;
+							$scope.success = true;
+						}else{
+							$scope.errorMessage = response.data.message;
+							$scope.error = true;
+						}
+				  }, function errorCallback(response) {
+					  $scope.errorMessage = response.data.message;
+						$scope.error = true;
+				  });
+			  
+		}]);
 
 angular.module('myApp').controller('mainController',
 		  ['$scope', '$rootScope','$location', 'AuthService',
