@@ -1,36 +1,18 @@
-<!-- Main content -->
-<section class="content">
-  <div class="row">
-    <!-- left column -->
-    <div class="col-md-6">
- <!-- Horizontal Form -->
-              <div class="box box-info">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Login</h3>
-                </div><!-- /.box-header -->
-                <!-- form start -->
-                <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-                <form class="form-horizontal" ng-submit="login()">
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="Login" name="username" ng-model="loginForm.username" required>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                      <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password" ng-model="loginForm.password" required>
-                      </div>
-                    </div>
-                  </div><!-- /.box-body -->
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-info pull-left" ng-disabled="disabled">Sign in</button>
-                    <a href="#register"><i class="btn btn-info pull-right">Register</i></a>
-                  </div><!-- /.box-footer -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title">Sign in to continue</h1>
+            <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+            <div class="account-wall">
+                <form class="form-signin" ng-submit="login()">
+                <input type="text" class="form-control" placeholder="Email" ng-model="loginForm.username" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" ng-model="loginForm.password" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Sign in</button>
+                <a href="#forgotPassword" class="pull-right need-help">Forgot Password</a><span class="clearfix"></span>
                 </form>
-              </div><!-- /.box -->
-    	</div>
-	</div>
-</section>
+            </div>
+            <a href="#register" class="text-center new-account">Create an account </a>
+        </div>
+    </div>
+</div>

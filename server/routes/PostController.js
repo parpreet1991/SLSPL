@@ -6,6 +6,10 @@ var express = require('express'),
 	Licence = require('../models/Licence.js');
     Reply = require('../models/Reply.js');
     multer  = require('multer');
+    
+    var path = require('path');
+    var mime = require('mime');
+    var fs = require('fs');
 var fileName = "";
     
 router.get('/Posts', function(req, res) {
@@ -26,17 +30,37 @@ router.get('/Events', function(req, res) {
 
 router.post('/fetchLicences', function(req, res) {
 	// object of all the users
+	if (!req.isAuthenticated()) {
+		res.redirect('/login');
+	  }
+	  
 	if(req.query.isAdmin){
 	  Licence.find({isDeleted:'N'}, function(err, licences) {
 			  if (err) throw err;
 			  res.status(200).json(licences);
 		});	 
 	}else{
-		Licence.find({isDeleted:'N', assignedToUser: req.query.username}, function(err, licences) {
+		Licence.find({isDeleted:'N', assignedToUser: req.body.username}, function(err, licences) {
 		  if (err) throw err;
 		  res.status(200).json(licences);
 		});	
 	}
+});
+
+
+router.post('/download', function(req, res) {
+	if (!req.isAuthenticated()) {
+		res.redirect('/login');
+	  }
+	var filename = path.basename(req.body.path);
+  var mimetype = mime.lookup(req.body.path);
+console.log("mime type = "+mimetype+" File name = "+filename);
+  res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+  res.setHeader('Content-type', mimetype);
+
+  var filestream = fs.createReadStream(req.body.path);
+  filestream.pipe(res);
+	//res.download(req.body.path);
 });
     
 router.get('/getPostDetails', function(req, res) {
@@ -116,7 +140,7 @@ router.post('/PostReply', function(req, res) {
 
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-        cb(null, './client/uploads/');
+        cb(null, './uploads/');
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
@@ -140,7 +164,7 @@ router.post('/upload', function(req, res) {
   		  postTitle: req.body.postTitle,
   		  postDetails: req.body.postDetails,
   		  displayPost: req.body.postDetails.substring(0,15)+'.....',
-  		  imagePaths: req.file.path.substring(7),
+  		  imagePaths: 'uploads'+req.file.path.substring(7),
   		  isDeleted: 'N',
   		  postDate: req.body.postDate,
   		  postTime: req.body.postTime,
@@ -169,7 +193,7 @@ router.post('/uploadResume', function(req, res) {
       	  email: req.body.email,
       	  phone: req.body.phone,
       	  message: req.body.message,
-      	  filePath: req.file.path.substring(7),
+      	  filePath: 'uploads'+req.file.path.substring(7),
       	  isDeleted: 'N'
       	});
           career.save(function(err) {
@@ -192,7 +216,7 @@ router.post('/uploadLicence', function(req, res) {
         	assignedToUser: req.body.assignedToUser,
         	assignedToName: req.body.assignedToName,
         	additionalInfo: req.body.additionalInfo,
-        	filePath: req.file.path.substring(7),
+        	filePath: 'uploads'+req.file.path.substring(7),
         	isDeleted: 'N'
       	});
         licence.save(function(err) {
@@ -219,5 +243,7 @@ router.post('/ContactSave', function(req, res) {
 	res.status(200).json(contact);
 	});
 });
+
+
 
 module.exports = router;

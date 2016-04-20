@@ -25,7 +25,17 @@ myApp.config(function ($routeProvider) {
         templateUrl: 'partials/registerValidation.html',
         controller: 'registerValidationController',
         access: {restricted: false}
-      })
+    })
+    .when('/forgotPassword', {
+        templateUrl: 'partials/forgotPassword.html',
+        controller: 'forgotPasswordController',
+        access: {restricted: false}
+	  })
+	  .when('/validateForgotPassword/:token', {
+		  templateUrl: 'partials/forgotPassword.html',
+		  controller: 'validateForgotPasswordController',
+	      access: {restricted: false}
+	  })
     .when('/main', {
     	templateUrl: 'partials/main.html',
     	controller: 'mainController',
@@ -86,6 +96,10 @@ myApp.config(function ($routeProvider) {
       	  controller: 'LicenceCtrl',
             access: {restricted: true}
           })
+     .when('/uploads/:filename',{
+    	 templateUrl: '404.html',
+    	 controller: ''
+     })
     .when('/ListPosts', {
         templateUrl: 'partials/ListPosts.html',
         controller: '',

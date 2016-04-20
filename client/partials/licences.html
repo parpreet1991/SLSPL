@@ -14,34 +14,36 @@
         </div>
         <!-- /.row -->
 		<div ng-show="licences.length<=0"><i><h2>No License Purchased</h2></i></div>
-        <!-- Blog Post Row -->
-        <div class="row" ng-repeat = "licence in licences | orderBy:'-updated_at' track by $index">
-            <div class="col-md-2 text-center">
-                <p>{{licence.created_at}}</p>
-            </div>
-            <div class="col-md-7">
-                <h3>
-                    {{licence.displayInfo}}
-                </h3>
-                <p>Assigned to <i>{{licence.assignedToName}}</i>
-                </p>
-            </div>
-            <div class="col-md-3">
-            	<a href="/{{licence.filePath}}" download>Download License</a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Pager -->
-        <!-- <div class="row">
-            <ul class="pager">
-                <li class="previous"><a href="#">&larr; Older</a>
-                </li>
-                <li class="next"><a href="#">Newer &rarr;</a>
-                </li>
-            </ul>
-        </div> -->
-        <!-- /.row -->
+        
+        <table ng-show="licences.length>0" class = "table table-striped">
+		   
+		   <thead>
+		      <tr>
+		         <th>Date</th>
+		         <th>Details</th>
+		         <th>License</th>
+		         <th>Invoice 1</th>
+		         <th>Invoice 2</th>
+		      </tr>
+		   </thead>
+		   
+		   <tbody>
+		      <tr ng-repeat = "licence in licences | orderBy:'-updated_at' track by $index">
+		         <td>{{licence.created_at | date:"MM/dd/yyyy"}}</td>
+		         <td>
+			         <h3>
+	                    {{licence.displayInfo}}
+	                </h3>
+	                <p>Assigned to <i>{{licence.assignedToName}}</i>
+	                </p>
+                </td>
+		         <td>
+		         	<button ng-click="download(licence.filePath)">Download</button>
+				</td>
+		      </tr>
+		   </tbody>
+		   
+		</table>
 
     </div>
     <!-- /.container -->

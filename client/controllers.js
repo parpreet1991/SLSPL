@@ -99,10 +99,10 @@ angular.module('myApp').controller('registerValidationController',
 		  ['$scope', '$routeParams', '$rootScope', '$http',
 		  function ($scope, $routeParams, $rootScope, $http) {
 			  $rootScope.currentPage = "none";
-			  
+			  var token = $routeParams.token;
 			  $http({
 				  method: 'GET',
-				  url: '/user/register?token=' + $routeParams.token
+				  url: '/user/register?token=' + token
 				}).then(function successCallback(response) {
 						if(response.status == 200){
 							$scope.successMessage = response.data.message;
@@ -115,6 +115,59 @@ angular.module('myApp').controller('registerValidationController',
 					  $scope.errorMessage = response.data.message;
 						$scope.error = true;
 				  });
+			  
+		}]);
+
+
+
+angular.module('myApp').controller('forgotPasswordController',
+		  ['$scope', '$routeParams', '$rootScope', '$http',
+		  function ($scope, $routeParams, $rootScope, $http) {
+			  $rootScope.currentPage = "none";
+			  $scope.submit = function(){
+				  $http({
+					  method: 'GET',
+					  url: '/user/forgotPassword?username=' + $scope.username
+					}).then(function successCallback(response) {
+							if(response.status == 200){
+								$scope.successMessage = response.data.message;
+								$scope.success = true;
+							}else{
+								$scope.errorMessage = response.data.message;
+								$scope.error = true;
+							}
+					  }, function errorCallback(response) {
+						  $scope.errorMessage = response.data.message;
+							$scope.error = true;
+					  });
+			  }
+			  
+		}]);
+
+
+angular.module('myApp').controller('validateForgotPasswordController',
+		  ['$scope', '$routeParams', '$rootScope', '$http',
+		  function ($scope, $routeParams, $rootScope, $http) {
+			  $rootScope.currentPage = "none";
+			  $scope.submit = function(){
+				  $http.post('/user/validateForgotPassword', {
+					  username: $scope.username, 
+					  password: $scope.password, 
+					  confirmPassword: $scope.confirmPassword, 
+					  token: $routeParams.token
+					  
+					  })
+				    // handle success
+				    .success(function (data, status) {
+				    	if(status == 200){ 
+					       	  $scope.success = true;
+					       	  $scope.successMessage = "Password reset is success, you can login now.";
+				        } else {
+				        	$scope.error = true;
+					       	$scope.errorMessage = "Some problem occurred.";
+				        }
+				    });
+			  }
 			  
 		}]);
 
@@ -458,7 +511,7 @@ angular.module('myApp').controller('LicenceCtrl',
 			vm.upload = function (file) {
 			    Upload.upload({
 			        url: '/post/uploadLicence', //webAPI exposed to upload the file
-			        data:{file:file, fileName: file.name, displayInfo: $scope.licence.displayInfo, uploadedBy: AuthService.getUserName(), assignedToUser: $scope.licence.assignToUser, assignedToName: $scope.licence.assignedToName, additionalInfo: $scope.licence.additionalInfo} //pass file as data, should be user ng-model
+			        data:{file:file, fileName: file.name, displayInfo: $scope.licence.displayInfo, uploadedBy: AuthService.getUserName(), assignedToUser: $scope.licence.assignedToUser, assignedToName: $scope.licence.assignedToName, additionalInfo: $scope.licence.additionalInfo} //pass file as data, should be user ng-model
 			    }).then(function (resp) { //upload function returns a promise
 			        if(resp.status === 200){ //validate success
 				       	  $scope.success = true;
@@ -481,6 +534,29 @@ angular.module('myApp').controller('LicenceCtrl',
 			        vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
 			        });
 			    };
+			    
+	$scope.download = function($path){
+		$http.post('/post/download', {path: $path},{responseType: 'arraybuffer'} ).
+		  success(function(data, status, headers, config) {
+		    //$window.open('/download'); //does the download
+			  
+			  var file = new Blob([ data ], {
+                  type : 'application/pdf'
+              });
+              //trick to download store a file having its URL
+              var fileURL = URL.createObjectURL(file);
+              var a         = document.createElement('a');
+              a.href        = fileURL; 
+              a.target      = '_blank';
+              a.download    = 'license.pdf';
+              document.body.appendChild(a);
+              a.click();
+			  
+		  }).
+		  error(function(data, status, headers, config) {
+		    console.log('ERROR: could not download file');
+		  });
+	}
 
 }]);
 

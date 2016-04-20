@@ -13,7 +13,7 @@ var express = require('express'),
     multer = require('multer');
 
 // mongoose
-mongoose.connect('mongodb://localhost:27017/village');
+mongoose.connect('mongodb://localhost:27017/silver');
 //mongoose.connect('mongodb://silverline:silverline123@ds019658.mlab.com:19658/silverline');
 
 // user schema/model
