@@ -503,15 +503,15 @@ angular.module('myApp').controller('LicenceCtrl',
 			
 			  var vm = this;
 			    vm.submit = function(){ //function to call on form submit
-			if (vm.upload_form.file.$valid && vm.file) { //check if form is valid
-			    vm.upload(vm.file); //call upload function
+			if (vm.upload_form.file.$valid && vm.file && vm.upload_form.file1.$valid && vm.file1 && vm.upload_form.file2.$valid && vm.file2) { //check if form is valid
+			    vm.upload(vm.file, vm.file1, vm.file2); //call upload function
 			    }
 			}
 			
-			vm.upload = function (file) {
+			vm.upload = function (file, file1, file2) {
 			    Upload.upload({
 			        url: '/post/uploadLicence', //webAPI exposed to upload the file
-			        data:{file:file, fileName: file.name, displayInfo: $scope.licence.displayInfo, uploadedBy: AuthService.getUserName(), assignedToUser: $scope.licence.assignedToUser, assignedToName: $scope.licence.assignedToName, additionalInfo: $scope.licence.additionalInfo} //pass file as data, should be user ng-model
+			        data:{file:file, fileName: file.name, file1:file1, fileName1: file.name1, file2:file2, fileName2: file.name2, displayInfo: $scope.licence.displayInfo, uploadedBy: AuthService.getUserName(), assignedToUser: $scope.licence.assignedToUser, assignedToName: $scope.licence.assignedToName, additionalInfo: $scope.licence.additionalInfo} //pass file as data, should be user ng-model
 			    }).then(function (resp) { //upload function returns a promise
 			        if(resp.status === 200){ //validate success
 				       	  $scope.success = true;
@@ -548,7 +548,7 @@ angular.module('myApp').controller('LicenceCtrl',
               var a         = document.createElement('a');
               a.href        = fileURL; 
               a.target      = '_blank';
-              a.download    = 'license.pdf';
+              a.download    = 'file.pdf';
               document.body.appendChild(a);
               a.click();
 			  

@@ -140,7 +140,7 @@ router.post('/PostReply', function(req, res) {
 
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-        cb(null, './uploads/');
+        cb(null, './client/uploads/');
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
@@ -164,7 +164,7 @@ router.post('/upload', function(req, res) {
   		  postTitle: req.body.postTitle,
   		  postDetails: req.body.postDetails,
   		  displayPost: req.body.postDetails.substring(0,15)+'.....',
-  		  imagePaths: 'uploads'+req.file.path.substring(7),
+  		  imagePaths: req.file.path.substring(7),
   		  isDeleted: 'N',
   		  postDate: req.body.postDate,
   		  postTime: req.body.postTime,
@@ -203,30 +203,67 @@ router.post('/uploadResume', function(req, res) {
     });
 });
 
+var storageLicense = multer.diskStorage({ //multers disk storage settings
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        var datetimestamp = Date.now();
+        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+    }
+});
+
+var uploadLicense = multer({ //multer settings
+                storage: storageLicense
+            }).fields([{ name: 'file', maxCount: 1 }, { name: 'file1', maxCount: 1 }, { name: 'file2', maxCount: 1 }]);
+/*var uploadInvoice = multer({ //multer settings
+		    storage: storageLicense
+		}).single('file1');*/
+
 /** API path that will upload the files */
-router.post('/uploadLicence', function(req, res) {
-    upload(req,res,function(err){
+router.post('/uploadLicence', uploadLicense, function(req, res) {
+	var licence = new Licence({
+    	displayInfo: req.body.displayInfo,
+    	uploadedBy: req.body.uploadedBy,
+    	assignedToUser: req.body.assignedToUser,
+    	assignedToName: req.body.assignedToName,
+    	additionalInfo: req.body.additionalInfo,
+    	filePath: 'uploads/'+req.files['file'][0].filename,
+    	invoicePath: 'uploads/'+req.files['file1'][0].filename,
+    	otherPath: 'uploads/'+req.files['file2'][0].filename,
+    	isDeleted: 'N'
+  	});
+	/*uploadLicense(req,res,function(err){
         if(err){
              res.json({error_code:1,err_desc:err});
              return;
         }
-        var licence = new Licence({
-        	displayInfo: req.body.displayInfo,
-        	uploadedBy: req.body.uploadedBy,
-        	assignedToUser: req.body.assignedToUser,
-        	assignedToName: req.body.assignedToName,
-        	additionalInfo: req.body.additionalInfo,
-        	filePath: 'uploads'+req.file.path.substring(7),
-        	isDeleted: 'N'
-      	});
-        licence.save(function(err) {
-	      	  if (err) throw err;	      	  
-				Licence.find({isDeleted:'N'}, function(err, licences) {
-					  if (err) throw err;
-					  res.status(200).json({licences: licences});
-				});
-	      	});
-    });
+        console.log("License File name : "+req.files['file'][0].filename);
+        console.log("Invoice File name : "+req.files['file1'][0].filename);
+    	//licence.filePath = 'uploads'+req.filename.substring(7);
+    	
+    });*/
+	/*uploadInvoice(req,res,function(err){
+        if(err){
+             res.json({error_code:1,err_desc:err});
+             return;
+        }
+
+    	//licence.invoicePath = 'uploads'+req.filename.substring(7);
+    	console.log("invoice File name : "+uploadInvoice.filename);
+        
+    });*/
+	console.log("licence : "+licence);
+	
+	licence.save(function(err) {
+    	  if (err) throw err;	      	  
+			
+    	});
+    
+    Licence.find({isDeleted:'N'}, function(err, licences) {
+		  if (err) throw err;
+		  res.status(200).json({licences: licences});
+	});
 });
 
 /** API path that will save contact */

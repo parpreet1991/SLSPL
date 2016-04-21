@@ -9,6 +9,8 @@ var licenceSchema = new Schema({
   assignedToUser: String,
   assignedToName: String,
   filePath: String,
+  invoicePath: String,
+  otherPath: String,
   additionalInfo: String,
   isDeleted: String,
   created_at: Date,
