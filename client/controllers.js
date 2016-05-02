@@ -337,7 +337,7 @@ angular.module('myApp').controller('PostDataCtrl',
 	vm.upload = function (file, postType) {
 	    Upload.upload({
 	        url: '/post/upload', //webAPI exposed to upload the file
-	        data:{file:file, fileName: file.name, postTitle: $scope.post.postTitle, postDetails: $scope.post.postDetails, username: AuthService.getUserName(), postDate: $scope.post.postDate, postTime: $scope.post.postTime, postType: postType} //pass file as data, should be user ng-model
+	        data:{file:file, fileName: file.name, postTitle: $scope.post.postTitle, sampleText: $scope.post.sampleText, postDetails: $scope.post.postDetails, username: AuthService.getUserName(), postDate: $scope.post.postDate, postTime: $scope.post.postTime, postType: postType} //pass file as data, should be user ng-model
 	    }).then(function (resp) { //upload function returns a promise
 	        if(resp.status === 200){ //validate success
 	        	$scope.posts = resp.data;

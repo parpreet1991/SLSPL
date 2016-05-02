@@ -57,23 +57,36 @@
     <script src="lib/ui-bootstrap-tpls-1.2.4.min.js"></script>
 		<link rel="stylesheet" href="css/signin.css">
 		
+		<!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
+		
     <link href="css/bootstrap.min.css" rel="stylesheet">
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<style type="text/css">
+			.text-center {
+			  text-align: center;
+			}
 			.nav.navbar-nav.navbar-right li a {
-			    color: white;
+			    color: gray;
+			}
+			.navbar-default .navbar-nav > li > a:hover,
+			.navbar-default .navbar-nav > li > a:focus {
+			    color: black;
 			}
 			.carousel-inner{
 			  width: 120%;
 			  margin-left: -10%;
-			  height: 300px;
+			  height: 350px;
 			}
 			
 			@media (min-width: 768px){
 			  .carousel-inner{
 			    width: 100%;
 			    margin: 0;
+			  	margin-top: 1%;
 			  }
 			}
 			
@@ -108,7 +121,7 @@
 
 <body oncontextmenu="return false">
 
-<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #0070C0">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" style="background-color: white">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -136,9 +149,9 @@
         <li ng-show="$root.AuthService.isLoggedIn"><a href="#licences" title="IT Asset Management Portal"><b>ITAMP</b></a></li>
         <li class='last'><a href="#contact"><b>Contact Us</b></a></li>
       </ul>
-      <ul ng-controller="logoutController" class="nav navbar-nav navbar-right">        
+      <ul ng-controller="logoutController" class="nav navbar-nav navbar-right" style="text-color: gray">        
         <!-- <li><a href="#licences"><span class="glyphicon"></span><i><b>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</b></i></a></li> -->
-        <li><a href="#licences"><span class="glyphicon"></span><i><b>{{$root.AuthService.getUserName()}}</b></i></a></li>
+        <li><a href="#licences" ><span class="glyphicon"></span><i><b>{{$root.AuthService.getUserName()}}</b></i></a></li>
       	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login"><span class="glyphicon glyphicon-user"></span><i><b>Customer Login</b></i></a></li>
       	<li ng-show="$root.AuthService.isLoggedIn"><a href="#" ng-click='logout()' ><span class="glyphicon glyphicon-user"></span><i><b>Logout</b></i></a></li>
       </ul>
@@ -147,43 +160,23 @@
 </nav>
 
 <div ng-controller="mainController">
-	<div id="carousel-example" class="carousel slide" data-ride="carousel" style='display:{{$root.currentPage}}'>
-	  <ol class="carousel-indicators">
-	    <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-	    <li data-target="#carousel-example" data-slide-to="1"></li>
-	    <li data-target="#carousel-example" data-slide-to="2"></li>
-	  </ol>
-	
-	  <div class="carousel-inner">
-	    <div class="item active">
-	      <a href="#"><img src="img/aboutus.png" /></a>
-	     <!--  <div class="carousel-caption">
-	        <p>To enable business leaders with forward-thinking and simplified approach that helps drive efficient and effective IT decisions</p>
-	      </div> -->
-	    </div>
-	    <div class="item">
-	      <a href="#"><img src="img/summer-experience.jpg" /></a>
-	      <div class="carousel-caption">
-	        <h3>Meow</h3>
-	        <p>Just Kitten Around</p>
-	      </div>
-	    </div>
-	    <div class="item">
-	      <a href="#"><img src="http://placekitten.com/1600/600" /></a>
-	      <div class="carousel-caption">
-	        <h3>Meow</h3>
-	        <p>Just Kitten Around</p>
-	      </div>
-	    </div>
-	  </div>
-	
-	  <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-	    <span class="glyphicon glyphicon-chevron-left"></span>
-	  </a>
-	  <a class="right carousel-control" href="#carousel-example" data-slide="next">
-	    <span class="glyphicon glyphicon-chevron-right"></span>
-	  </a>
-	</div>
+
+<!-- Start WOWSlider.com BODY section -->
+<div id="wowslider-container1"  style='display:{{$root.currentPage}}'>
+<div class="ws_images"><ul>
+		<li><a href="http://wowslider.com"><img src="data1/images/aboutus.png" alt="http://wowslider.com/" title="" id="wows1_0"/></a></li>
+		<li><img src="data1/images/main_2.png" alt="" title="" id="wows1_1"/>sample text to come here</li>
+	</ul></div>
+	<div class="ws_bullets"><div>
+		<a href="#" title=""><span><img src="data1/tooltips/aboutus.png" alt=""/>1</span></a>
+		<a href="#" title=""><span><img src="data1/tooltips/main_2.png" alt=""/>2</span></a>
+	</div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">jquery slideshow</a> by WOWSlider.com v8.7</div>
+<div class="ws_shadow"></div>
+</div>	
+<script type="text/javascript" src="engine1/wowslider.js"></script>
+<script type="text/javascript" src="engine1/script.js"></script>
+<!-- End WOWSlider.com BODY section -->
+
 </div>
     
    
@@ -199,7 +192,7 @@
             <div class="row">
             	<img class="img-responsive img-hover" style="width:100%; padding-top:5px" src="img/footer_line.JPG"/>
             	<div class="col-lg-8">
-            		<img class="img-responsive img-hover pull-right" style="width:60%; padding-top:5px" src="img/footer_image.JPG"/>
+            		<img class="img-responsive img-hover pull-right" style="width:40%; padding-top:5px" src="img/footer_image.JPG"/>
             	</div>
                 <div class="col-lg-4" style="align: right">
                     <p class="pull-right">Copyright &copy; Silver Leaf Solutions 2016</p>

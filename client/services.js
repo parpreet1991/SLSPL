@@ -113,6 +113,8 @@ angular.module('myApp').factory('AuthService',
     	  name: registerForm.name,
     	  company: registerForm.company,
     	  phone: registerForm.phone,
+    	  landline: registerForm.landline,
+    	  companyAddress: registerForm.companyAddress,
     	  designation: registerForm.designation,
     	  department: registerForm.department
     	  })

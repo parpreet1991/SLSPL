@@ -3,8 +3,9 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Blogs home
-                </h1>
+		         <h1 class="page-header  text-center">
+		             <small>Blogs</small>
+		         </h1>
             </div>
         </div>
         <!-- /.row -->
@@ -14,7 +15,7 @@
             <div class="col-md-2 text-center">
                 <p><i class="fa fa-camera fa-4x"></i>
                 </p>
-                <p>{{post.created_at}}</p>
+                <p>{{post.created_at | date:"MM/dd/yyyy"}}</p>
             </div>
             <div class="col-md-3">
                 <a href="#blog-post/{{post._id}}">
@@ -28,7 +29,7 @@
                 </h3>
                 <p>by <i>{{post.username}}</i>
                 </p>
-                <p>{{post.displayPost}}</p>
+                <p>{{post.sampleText}}</p>
                 <a class="btn btn-primary" href="#blog-post/{{post._id}}">Read More <i class="fa fa-angle-right"></i></a>
             </div>
         </div>

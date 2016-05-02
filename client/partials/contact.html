@@ -5,8 +5,8 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Contact
-                    <small>Our Current Offices</small>
+                <h1 class="page-header text-center">
+                    <small>Contact Our Current Offices</small>
                 </h1>
             </div>
         </div>
@@ -27,25 +27,6 @@
                 </p>
                 <p><i class="fa fa-phone"></i> 
                     <abbr title="Phone">P</abbr>: +91-124-2222197</p>
-                <!-- <p><i class="fa fa-envelope-o"></i> 
-                    <abbr title="Email">E</abbr>: <a href="mailto:name@example.com">name@example.com</a>
-                </p>
-                <p><i class="fa fa-clock-o"></i> 
-                    <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
-                <ul class="list-unstyled list-inline list-social-icons">
-                    <li>
-                        <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-linkedin-square fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
-                    </li>
-                </ul> -->
             </div>
             <div class="col-md-3">
                 <h3>Mumbai</h3>
@@ -78,7 +59,9 @@
         <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
         <div class="row" ng-controller="ContactCtrl">
             <div class="col-md-8">
-                <h3>Send us a Message</h3>
+		         <h1 class="page-header">
+		             <small class="page-header">Send us a Message</small>
+		         </h1>
                 <form name="sentMessage" id="contactForm" novalidate>
                 <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 						<div ng-show="success" class="alert alert-success">{{successMessage}}</div>

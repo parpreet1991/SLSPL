@@ -4,9 +4,9 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
-                    Our Services & Solutions Portfolio
-                </h1>
+		         <h1 class="page-header">
+		             <small class="page-header">Our Services & Solutions Portfolio</small>
+		         </h1>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="panel-body">
                         <p>
-                        	Complex technologies, dynamic business environments and process excellence are among the main challenges organizations face on their path to growth. Understanding the complexities of the IT environment, Silverleaf extends its expertise in IT services to ensure that the technology is in line with your business objectives, no matter the size and nature of your organization.
+                        	Complex technologies, dynamic business environments and process excellence are among the main challenges organizations face on their path to growth. Understanding the complexities of the IT environment, Silver Leaf Solutions extends its expertise in IT services to ensure that the technology is in line with your business objectives, no matter the size and nature of your organization.
                         </p>
                         <a href="#services" class="btn btn-default">Learn More</a>
                     </div>
@@ -50,15 +50,12 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Partnership</h2>
+		         <h1 class="page-header">
+		             <small class="page-header">Partnership</small>
+		         </h1>
             </div>
 	            <div class="col-md-2 text-center">
-	                <div class="thumbnail">
-	                    <img class="img-responsive" src="http://placehold.it/500x300" alt="">
-	                    <div class="caption">
-	                        <p>Partner details will come here</p>
-	                    </div>
-	                </div>
+	                    <img class="img-responsive" src="img/O-Gold-Partner-clrrev.png" alt="">
 	            </div>
 	            <div class="col-md-2 text-center">
 	                <div class="thumbnail">
@@ -105,7 +102,9 @@
         
         <div class="row" ng-controller = "ShowBlogCtrl">
             <div class="col-lg-12">
-                <h2 class="page-header">Blogs</h2>
+		         <h1 class="page-header text-center">
+		             <small>Blogs</small>
+		         </h1>
             </div>
             <div ng-repeat = "post in posts | orderBy:'-updated_at' track by $index">
 	            <div class="col-md-4 text-center">
@@ -115,7 +114,7 @@
 	                        <h3>{{post.postTitle}}<br>
 	                            <small>{{post.username}}</small>
 	                        </h3>
-	                        <p>{{post.displayPost}}</p>
+	                        <p>{{post.sampleText}}</p>
 	                        <a class="btn btn-primary" href="#blog-post/{{post._id}}">Read More <i class="fa fa-angle-right"></i></a>
 	                    </div>
 	                </div>

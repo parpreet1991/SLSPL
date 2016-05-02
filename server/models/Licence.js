@@ -8,6 +8,8 @@ var licenceSchema = new Schema({
   uploadedBy: String,
   assignedToUser: String,
   assignedToName: String,
+  paymentDueDate: Date,
+  isPaid: Boolean,
   filePath: String,
   invoicePath: String,
   otherPath: String,

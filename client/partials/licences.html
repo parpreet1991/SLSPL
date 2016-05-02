@@ -1,9 +1,11 @@
     <!-- Page Content -->
     <div class="container" ng-controller = "LicenceCtrl">
+
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Licenses
-                </h1>
+		         <h1 class="page-header text-center">
+		             <small>Licenses</small>
+		         </h1>
             </div>
         </div>
         <!-- /.row -->
@@ -24,13 +26,7 @@
 		   <tbody>
 		      <tr ng-repeat = "licence in licences | orderBy:'-updated_at' track by $index">
 		         <td>{{licence.created_at | date:"MM/dd/yyyy"}}</td>
-		         <td>
-			         <h4>
-	                    {{licence.displayInfo}}
-	                </h4>
-	                <p>Assigned to <i>{{licence.assignedToName}}</i>
-	                </p>
-                </td>
+		         <td>{{licence.displayInfo}}</td>
 		         <td>
 		         	<button ng-click="download(licence.filePath)">Download</button>
 				</td>

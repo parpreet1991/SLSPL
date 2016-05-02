@@ -12,6 +12,8 @@ var User = new Schema({
   designation: String,
   department: String,
   phone: String,
+  landline: String,
+  companyAddress: String,
   passwordResetToken: String,
   passwordResetExpires: Date,
   passwordRegisterToken: String,

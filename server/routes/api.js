@@ -9,7 +9,6 @@ var UserDetails = require('../models/userDetails.js');
 
 
 router.post('/validateForgotPassword', function(req, res) {
-	console.log("Start forgotPassword");
 	/*req.check('usename', 'Email is not valid').isEmail();
 	req.check('password', 'Password must be at least 4 characters long').len(4);
 	req.check('confirmPassword', 'Passwords do not match').equals(req.body.password);
@@ -78,11 +77,11 @@ router.get('/forgotPassword', function(req, res) {
 	           		        	  service: "Gmail",
 	           		        	  auth: {
 	           		        	    XOAuth2: {
-	           		        	      user: "ajitsangwan2006@gmail.com", // Your gmail address.
-	           		        	                                            // Not @developer.gserviceaccount.com
-	           		        	      clientId: "249105079815-2khvuvp0t2ut7kpj59rtthh3b9an3pod.apps.googleusercontent.com",
-	           		        	      clientSecret: "Lz765CtEI44k1TcrCdivCmlO",
-	           		        	      refreshToken: "1/Be_Z3-NVqH8mylDyNLiJomG8o669vCcYml2meEyP5_8MEudVrK5jSpoR30zcRFq6"
+	      	   		        	      user: "info@silverleafsolutions.in", // Your gmail address.
+                                         // Not @developer.gserviceaccount.com
+									   clientId: "788024534285-cjfka2olosa2hg585grvv6fqccocjmm1.apps.googleusercontent.com",
+									   clientSecret: "2F9GngBikoSARKnhxlDr8paO",
+									   refreshToken: "1/_TKbaUtBYn_vZiJ9GmNmaw3Jr6ySL7_Ko98L9kt_GK8"
 	           		        	    }
 	           		        	  }
 	           		        	});
@@ -107,7 +106,12 @@ router.get('/forgotPassword', function(req, res) {
 		           		          		{username : req.query.username },
 		           		          		{ $set : {passwordResetToken : token, passwordResetExpires: Date.now() + 3600000}},
 		           		          		function(err, result){
-		           		          			if(err) res.status(500).json({err: err});
+		           		          			if(err) {
+		           		          				console.log("Error: "+err.stack)
+		           		          				res.statusCode = 500;
+			           		                 res.setHeader('content-type', 'text/plain');
+			           		                 res.end('Oops, there was a problem!\n');
+		           		          			}
 		           		          		}
 		           		          	);
 	           		        	  }
@@ -175,6 +179,8 @@ router.post('/register', function(req, res) {
 	   		 company: req.body.company,
 	   		 department: req.body.department,
 	   		 phone: req.body.phone,
+	   		 landline: req.body.landline,
+	   		companyAddress: req.body.companyAddress,
 	   		 admin: false
 	   		 });
 	   	 console.log("user instance created :"+user);
@@ -196,11 +202,11 @@ router.post('/register', function(req, res) {
 	   		        	  service: "Gmail",
 	   		        	  auth: {
 	   		        	    XOAuth2: {
-	   		        	      user: "ajitsangwan2006@gmail.com", // Your gmail address.
+	   		        	      user: "info@silverleafsolutions.in", // Your gmail address.
 	   		        	                                            // Not @developer.gserviceaccount.com
-	   		        	      clientId: "249105079815-2khvuvp0t2ut7kpj59rtthh3b9an3pod.apps.googleusercontent.com",
-	   		        	      clientSecret: "Lz765CtEI44k1TcrCdivCmlO",
-	   		        	      refreshToken: "1/Be_Z3-NVqH8mylDyNLiJomG8o669vCcYml2meEyP5_8MEudVrK5jSpoR30zcRFq6"
+	   		        	      clientId: "788024534285-cjfka2olosa2hg585grvv6fqccocjmm1.apps.googleusercontent.com",
+	   		        	      clientSecret: "2F9GngBikoSARKnhxlDr8paO",
+	   		        	      refreshToken: "1/_TKbaUtBYn_vZiJ9GmNmaw3Jr6ySL7_Ko98L9kt_GK8"
 	   		        	    }
 	   		        	  }
 	   		        	});
@@ -210,10 +216,17 @@ router.post('/register', function(req, res) {
 	   		        	  to: user.username,
 	   		        	  subject: "Welcome to Silver Leaf Solutions IT Asset Managment Portal",
 	   		        	  generateTextFromHTML: true,
-	   		        	  html: 'Dear Sir/Madam,<br/><br/><b>You are receiving this email because you (or someone else) have registered on Silver Leaf Solutions portal.\n\n' +
-	   			            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-	   			            'http://' + req.headers.host + '/#/register/' + token + '\n\n' +
-	   			            'If you did not request this, please ignore this email.</b>\n'
+	   		        	  html: 'Dear Sir/Madam,<br/><br/>' +
+	   			            'Welcome to the Silver Leaf Solutions IT Asset Management Portal Registration process !<br/><br/>' +
+	   			            'We sincerely thank you for your trust and partnership with Silver Leaf Solutions.<br/><br/>' +
+	   			            'As part of our Value Added Services, we are delighted to share with you the link to access our Real Time IT Asset Management Portal that will help you to manage all your IT assets centrally.<br/><br/>' +
+	   			            'Request you to please click on the link below to complete the registration process.<br/><br/>' +
+	   			            'http://' + req.headers.host + '/#/register/' + token + '<br/><br/>' +
+	   			            'Incase of any query or clarification please write to info@silverleafsolutions.in<br/><br/>' +
+	   			            'Look forward to a long term trustworthy partnership with your organization.<br/><br/>' +
+	   			            'Thanks,<br/><br/>' +
+	   			            'Best Regards,<br/><br/>' +
+	   			            'Silver Leaf Solutions Team'
 	   		        	};
 
 	   		        	smtpTransport.sendMail(mailOptions, function(error, response) {

@@ -5,8 +5,9 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><small>Join Us</small>
-                </h1>
+		         <h1 class="page-header text-center">
+		             <small>Join Us</small>
+		         </h1>
             </div>
         </div>
         <!-- /.row -->
@@ -40,7 +41,7 @@
 		            <div class="control-group form-group">
               			<div class="controls">
               				<label >Upload Resume:</label>
-				          	<input class="form-control" id="inputName2" type="file" placeholder="Upload Resume"  ngf-select ng-model="up.file" name="file" ngf-pattern="'*/*'" accept="*/*" ngf-max-size="2MB"/>
+				          	<input class="form-control" id="inputName2" type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'*/*'" accept="*/*" ngf-max-size="2MB"/>
 				            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
 				            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
 				            {{up.file.size / 1000000|number:1}}MB: max 2M</i>
