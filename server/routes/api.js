@@ -208,9 +208,9 @@ router.post('/register', function(req, res) {
 	   		        	var mailOptions = {
 	   		        	  from: "ajitsangwan2006@gmail.com",
 	   		        	  to: user.username,
-	   		        	  subject: "Confirmation from Silver Leaf Solutions",
+	   		        	  subject: "Welcome to Silver Leaf Solutions IT Asset Managment Portal",
 	   		        	  generateTextFromHTML: true,
-	   		        	  html: '<b>You are receiving this email because you (or someone else) have registered on Silver Leaf Solutions portal.\n\n' +
+	   		        	  html: 'Dear Sir/Madam,<br/><br/><b>You are receiving this email because you (or someone else) have registered on Silver Leaf Solutions portal.\n\n' +
 	   			            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
 	   			            'http://' + req.headers.host + '/#/register/' + token + '\n\n' +
 	   			            'If you did not request this, please ignore this email.</b>\n'
@@ -267,6 +267,7 @@ router.post('/login', function(req, res, next) {
       }
       if(user.passwordRegisterToken == '' || user.passwordRegisterToken == null || user.passwordRegisterToken == undefined){
 		  console.log("User logged in with username : "+ user.username + " | Is Admin : "+user.admin);
+		  req.session.user = user;
 		  res.status(200).json({status: 'Login successful!', user: user});
 	  }else{
 		  res.status(500).json({err: "Please complete the validation process."}); 
@@ -278,6 +279,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.get('/logout', function(req, res) {
+//	req.session.reset();
   req.logout();
   res.status(200).json({status: 'Bye!'});
 });

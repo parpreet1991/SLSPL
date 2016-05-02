@@ -8,11 +8,6 @@
                 <h1 class="page-header">Contact
                     <small>Our Current Offices</small>
                 </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#main">Home</a>
-                    </li>
-                    <li class="active">Contact</li>
-                </ol>
             </div>
         </div>
         <!-- /.row -->
@@ -97,7 +92,7 @@
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Phone Number:</label>
-                            <input type="tel" ng-model="contact.phone" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+                            <input type='tel' pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' title='Phone Number (Format: +99(99)9999-9999)' ng-model="contact.phone" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
                         </div>
                     </div>
                     <div class="control-group form-group">

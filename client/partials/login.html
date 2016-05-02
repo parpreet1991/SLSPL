@@ -4,12 +4,24 @@
             <h1 class="text-center login-title">Sign in to continue</h1>
             <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
             <div class="account-wall">
-                <form class="form-signin" ng-submit="login()">
-                <input type="text" class="form-control" placeholder="Email" ng-model="loginForm.username" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" ng-model="loginForm.password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Sign in</button>
-                <a href="#forgotPassword" class="pull-right need-help">Forgot Password</a><span class="clearfix"></span>
+                <form name="myForm" class="form-signin" ng-submit="login()">
+                	<p>
+	                	<input type="email" class="form-control" placeholder="Email" name="username" ng-model="loginForm.username" required autofocus>
+	                	<span style="color:red" ng-show="myForm.username.$dirty && myForm.username.$invalid">
+							<span ng-show="myForm.username.$error.required">Email is required.</span>
+							<span ng-show="myForm.username.$error.email">Invalid email address.</span>
+						</span>
+					</p>
+					<p>
+						<input type="password" class="form-control" placeholder="Password" name="password" ng-model="loginForm.password" required>
+	                	<span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+						<span ng-show="myForm.password.$error.required">Password is required.</span>
+						</span>
+	                </p>
+					<button class="btn btn-lg btn-primary btn-block" type="submit"ng-disabled="myForm.username.$invalid ||  
+					myForm.password.$invalid">
+	                    Sign in</button>
+	                <a href="#forgotPassword" class="pull-right need-help">Forgot Password</a><span class="clearfix"></span>
                 </form>
             </div>
             <a href="#register" class="text-center new-account">Create an account </a>

@@ -5,13 +5,8 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Career
+                <h1 class="page-header"><small>Join Us</small>
                 </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#main">Home</a>
-                    </li>
-                    <li class="active">Contact</li>
-                </ol>
             </div>
         </div>
         <!-- /.row -->
@@ -20,7 +15,6 @@
         <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
         <div class="row" ng-controller="CareerCtrl as up">
             <div class="col-md-8">
-                <h3>Send us your profile</h3>
                 <form name="up.upload_form" id="careerForm" novalidate role="form">
                 <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 				<div ng-show="success" class="alert alert-success">{{successMessage}}</div>
@@ -46,7 +40,7 @@
 		            <div class="control-group form-group">
               			<div class="controls">
               				<label >Upload Resume:</label>
-				          	<input class="form-control" id="inputName2" type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'*/*'" accept="*/*" ngf-max-size="2MB"/>
+				          	<input class="form-control" id="inputName2" type="file" placeholder="Upload Resume"  ngf-select ng-model="up.file" name="file" ngf-pattern="'*/*'" accept="*/*" ngf-max-size="2MB"/>
 				            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
 				            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
 				            {{up.file.size / 1000000|number:1}}MB: max 2M</i>
@@ -62,6 +56,10 @@
                     <!-- For success/fail messages -->
                     <button class="btn btn-primary" ng-click="up.submit()">Submit</button>
                 </form>
+            </div>
+            
+            <div class="col-md-4">
+                <img class="img-responsive" src="img/join_us.jpg" alt="">
             </div>
 
         </div>

@@ -3,9 +3,9 @@ angular.module('myApp').factory('AuthService',
   function ($q, $timeout, $http) {
 
     // create user variable
-    var user = null;
+    var user = false;
     var username = null;
-    var admin = null;
+    var admin = false;
     // return available functions for use in controllers
     return ({
       isLoggedIn: isLoggedIn,

@@ -11,6 +11,14 @@
 
     <!-- Navigation -->
     <!-- <div w3-include-HTML="nav-bar.html"></div> -->
+<style>
+
+      .nav-tabs > li > a {
+    border: 1px solid #000;
+    font-size: 20px;
+}
+
+    </style>
 
     <!-- Page Content -->
     <div class="container">
@@ -20,11 +28,6 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Services
                 </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#main">Home</a>
-                    </li>
-                    <li class="active">Services</li>
-                </ol>
             </div>
         </div>
         <!-- /.row -->
@@ -35,203 +38,94 @@
             
             <uib-tabset active="active" >
 			    <uib-tab index="0" heading="Advisory">
-                       <h4>Advisory</h4>
-                       <p>License Advisory Services are IT consulting services that provide software licensing best practices to organizations with mid-to-large sized enterprise application portfolios such as Oracle, Microsoft, IBM, VMWare, SAP and Networking. Benefits include reduced waste, mitigated risks, increased awareness and transparency, and efficiency gains.</p>
+                       <h2>Advisory</h2>
+                       <h3><p>License Advisory Services are IT consulting services that provide software licensing best practices to organizations with mid-to-large sized enterprise application portfolios such as Oracle, Microsoft, IBM, VMWare, SAP and Networking. Benefits include reduced waste, mitigated risks, increased awareness and transparency, and efficiency gains.</p></h3>
                        <p></p>
                        <uib-accordion close-others="true">
 				    	<uib-accordion-group is-open="false" is-disabled="false">
 					      <uib-accordion-heading>
-					        Software Licencing <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+					       Software Licensing <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 					      </uib-accordion-heading>
-					      <h2>Evaluation of Existing Licensing Portfolio</h2>
-							<p>This process sets the stage for everything that comes next, and involves gathering in-depth data to determine your actual software assets and how they are currently being used. We provide you with extensive physical and conceptual guidelines for how this data should be collected, in order to achieve maximum accuracy and efficiency. Our proprietary questionnaire and customer interviews help you fine-tune the data so you will know exactly the installed software you have versus purchased assets. This also lays the groundwork for the creation of an internal, strategic roadmap of vendor-specific requirements. Using this data, we generate a comprehensive Reconciliation Report which translates the dry facts and figures into an easily-understood format you can use for decision-making. We will also dig through the data to search for potential points of leverage for the upcoming negotiation phase.</p>
-							<p>As the first step, we will analyze your corporate software assets and conduct extensive interviews to produce gap analysis and reconciliation reports. We will also help you generate potential scenarios that map out your needs for the next 3 to 6 years in order to determine the best software licensing package for you now, and the next critical years in your company's development.</p>
-							
-							<h2>Licensing Transparency and Cost Reduction</h2>
-							
-							
-							<p>Using our vast knowledge of the inner workings with all major software vendors, we can demystify the complexity of licensing terms and options. Our methodology defines the goals, determines the strategy and planning, and prepares you and your team for the complex and lengthy negotiation process.</p>
-							<p>Silver Leaf Solutions has developed a methodology for optimizing your software licensing agreement negotiations with all major software vendors. To thoroughly implement this comprehensive process, we recommend beginning 6 to 9 months before your licensing agreement's renewal date so you can optimize your existing agreements.</p>
-							
-							<h2>Contract Evaluation & Optimization Services</h2>
-							
-							<p>Licensing experts negotiate agreements like yours every day and their licensing documentation changes upwards of a hundred pages each year. Having an expert on your side during your Agreement negotiations can reduce your costs, and make a substantial difference in the outcome of your negotiated agreement. You may breathe a sigh of relief once the agreement has been signed, but Silver Leaf Solutions will still periodically review your licensing reconciliation and assets to determine that the forecasted use of resources was correct and that you are utilizing the benefits gained to their fullest.</p>
-							
-							<h2>Benchmarking RFP and Negotiation Support</h2>
-							<p>As part of the strategy for your software licensing service, we perform in-depth competitive Benchmarking Analytics based on the priceless data we have curated from a variety of sources, including past agreements we have helped negotiate. We customize the data for each engagement, so you will receive the data relevant to your industry, vertical market, region, and any other important factors that must be considered. We will create a comprehensive spreadsheet that maps out your expected customer engagements with major software vendors, balanced against agreements that other corporations of similar size and with similar product-specific requirements have negotiated. The purpose of this phase is to remove the sense of isolation that often occurs during the negotiation process. Corporations are often told their needs are unique and therefore difficult to compare to other customer agreements. We empower your negotiation team by providing this comparison in advance.</p>
-							<p>We will create and present you with a comprehensive readiness document which defines the software licensing strategies and stages that are critical to the success of the final negotiation. The Readiness and Strategy document provides not only your expected negotiation strategy, but vendors expected responses.</p>
-							
-							<h2><i><b>Silver Leaf Solutions License Advisory Services</b></i></h2>
-							<p>SLS license advisory services cover the full Microsoft, Oracle , IBM and SAP suite, on premises to cloud, and include a comprehensive licensing optimization engagement as well as its individual components: high-level licensing strategy, license sales, software compliance, software audit assistance, and software asset management (SAM).</p>
-							
-							<h2><i><b>Why Choose Silver Leaf Solutions?</b></i></h2>
-							<p>Silver Leaf Solutions team has been working with major Software OEMs for decades. For an affordable fixed rate, we conduct an end-to-end licensing review, recommend paths to compliance, and implement a thorough, confidential, efficient, and repeatable process that takes future changes and initiatives into account. The result is superior peace of mind, time management, transparency, and risk mitigation in the ever-changing world of  Software Licensing.</p> 
-					      
+					      <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/Advisory_1.JPG"/>
 					     </uib-accordion-group>
 					     <uib-accordion-group>
 					      <uib-accordion-heading>
 					        Asset Management <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 					      </uib-accordion-heading>
-					      <ng-include src="'/partials/assetMgmt.html'" scope="" onload=""></ng-include>
+					      <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/Advisory_2.JPG"/>
 					     </uib-accordion-group>
 					     <uib-accordion-group>
 					      <uib-accordion-heading>
 					        Strategic Sourcing <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 					      </uib-accordion-heading>
+					      <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/Advisory_3.JPG"/>
 					     </uib-accordion-group>
 					     <uib-accordion-group>
 					      <uib-accordion-heading>
 					        Cloud <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 					      </uib-accordion-heading>
-						      <h2>CLOUD Strategy MADE SIMPLE -Start building a rock-solid cloud deployment strategy with one conversation.</h2>
-
-								<p>IT professionals would like to make more use of the cloud, but the complexity of migration and integration is holding them back.1 Silver Leaf Solutions Cloud Consulting Services cuts through the complexity to help you map out a straightforward cloud migration strategy that prioritizes your individual needs and long-term goals. We offer vendor-neutral recommendations that work with your IT requirements and budget. A proper cloud strategy should take into account the strategic and technological fit for each application and environment. In addition, the expected investment cost and business benefit should be modeled and planned for accordingly.</p>
-								<p>Silver Leaf Solutions will help you assess your business goals and objectives to identify areas where the cloud can be a valuable and appropriate resource. Strengths of the cloud will be mapped with business and application needs in order to identify the most significant areas of value. Once these key strategic areas are identified, systems and applications will be assessed for cloud viability. Each application will be planned for and modeled in order to ensure that all relevant factors are considered before migrating to a cloud-based environment. The result will be a strategic plan that guides your organization so that you may leverage the benefits of cloud computing while minimizing the downside risks</p>
-								
-								<h2>Cloud Design -Why You Need It</h2>
-								
-								<p>You have a strategic plan in place to solve critical business challenges by leveraging cloud computing but your current physical architecture may not allow for a straightforward lift and shift migration. And, you’d like to maximize your benefit by architecting your site to get the most of the available cloud resources. Factors like latency, fault tolerance, monitoring and management, database sizing, and disk I/O requirements all must be taken into consideration for an effective site design.</p>
-								
-								<h2>Our Approach</h2>
-								<p>Silver Leaf Solutions follows a proven methodology to discover your requirements and design a suitable cloud architecture to meet those requirements.</p>
-								<p><ui>
-									<li>Business requirements</li>
-									<li>Technical requirements</li>
-									<li>Security requirements</li>
-									<li>DR requirements</li>
-									<li>Current state</li>
-									<li>Target state</li>
-								</ui></p>
-								<p>The design process is iterative and flexible. Foghorn can work collaboratively with your existing IT team or provide a turnkey design-whichever fits your IT model best.</p>
-								
-								<h2>One-Day Cloud Workshop</h2>
-								<p>This one-day, onsite workshop provides an overview of cloud services and ways your company can benefit from the cloud. By the end of the workshop, you'll be able to:</p>
-								<ui>
-									<li>Recognize existing on-premise data center, application and security strategies.</li>
-									<li>Identify applications and business functions you could migrate to the cloud.</li>
-									<li>Identify potential migration challenges and key efficiencies gained from cloud deployment.</li>
-									<li>Share the included report of use cases and recommendations with senior management</li>
-								</ui>
-								<h2>Cloud Implementation: Why You Need It</h2>
-								<p>Although you have a completed design based on best practices, often there are nuances of your application, use patterns, or configuration which may result in the implemented design failing to meet production criteria. In order to ensure that your move to the cloud yields the expected benefits, you want to ensure that your infrastructure is up to the task.</p>
-								
-								<h2>Our Approach</h2>
-								
-								<p>Foghorn follows a proven methodology to take your initial cloud design and transform into a production capable virtual infrastructure. As part of the implementation, Foghorn not only implements the design as per the documentation, but then tests for functional, performance, and availability compliance. If the implementation of the initial design does not pass requirements, Foghorn executes root cause analysis, design iteration, re-implementaion, and again re-tests for compliance. This process ultimately ends with the certification of a production ready infrastructure.</p>
-								<ui>
-									<li>Initial implementation</li>
-									<li>Functional/Performance/Availability Testing</li>
-									<li>Design Iteration</li>
-									<li>Final Implementation</li>
-									<li>Final Testing</li>
-								</ui>
-								<h2>Why You Need It</h2>
-								
-								<a class="btn btn-default btn-block" style="width: 20%" href="#contact">Contact Us Today</a> 
-								
-								<p>You have designed your cloud architecture and are ready to put your cloud strategy into production. Your current production site is highly utilized, so migrating to your new architecture seems like changing the tires on a moving car. You need to ensure data integrity and that SLA's are met. Impact to users during and after the migration must be minimized and managed properly.</p>
-								
-								<h2>Our Approach</h2>
-								
-								<p>Foghorn follows a proven methodology to plan for and execute your migration to the cloud. We place a heavy emphasis on planning, proof of concept and testing. When combined with an incredibly detailed and choreographed cutover and rollback process, the risk of unplanned downtime is dramatically mitigated.</p>
-								<ui>
-									<li>Project Planning</li>
-									<li>Cutover Planning</li>
-									<li>Cutover Proof of Concept</li>
-									<li>Command Center Planning and Execution</li>
-									<li>Risk Mitigation</li>
-								</ui>														      
+						      <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/Advisory_4.JPG"/>														      
 						 </uib-accordion-group>
 					     <uib-accordion-group>
 					      <uib-accordion-heading>
 					        Network Services <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 					      </uib-accordion-heading>
-					      <p>Today organizations face intense pressure to stay agile and responsive to a volatile business environment. Emerging technologies cloud, virtualization, mobility, big data and analytics are driving new avenues of innovations and forcing organizations to rethink the way they do business. It is critical that your IT systems are aligned and geared up to meet your business needs. For today and future.</p>
-							<p></p>
-							<p>At Silverleaf, we're committed to meet this need by helping you make informed decisions across the lifecycle of infrastructure services delivery. Our team of consultants provide the rare blend of strategic vision, proven expertise and practical experience to empower the value of your business with technology.</p>
-							<h2>Network Services</h2>
-							<p>There has been sharp increase in network bandwidth requirements for all organizations with the emergence of phone, video and other compute traffic. The need is for designing a robust yet simple network infrastructure that is easy to manage across network and voice services.</p>
-							
-							<p>Leveraging our understanding to build secure networks across large enterprises, we can offer solutions on Network strategy, design, optimization and management integrated with security management technologies across the network.</p>
-							<b><i>1.	Networking Strategy and Optimization Services</i></b>
-							<p>Align your networking infrastructure to enterprise wide objectives and initiatives that lead to performance improvement, enhanced efficiency and cost reduction.
-							<ui>
-								<li>Enterprise Network and communications Strategy</li>
-								<li>Network Application Optimization</li>
-							</ui>
-							<br>
-							<b><i>2.	Network Assessment and Audit</i></b>
-							
-							<p>Simplify the nitty gritty of various components of network with an assessment by our expert team. The audit report gives a comprehensive take about the network infrastructure to improve operational efficiency, network quality and asset utilization.</p>
-					      
+					      	<img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/Advisory_5.JPG"/>
 					     </uib-accordion-group>
 					     <uib-accordion-group>
 					      <uib-accordion-heading>
-					        Technology Evangenlization <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+					        Technology Evangelization <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 					      </uib-accordion-heading>
+					      <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/Advisory_6.JPG"/>
 					     </uib-accordion-group>
 					</uib-accordion>
 			    </uib-tab>
 			    <uib-tab index="1" heading="IT Services">
-			    	<h4>IT Services</h4>
-                        <p>Complex technologies, dynamic business environments and process excellence are among the main challenges organizations face on their path to growth. Understanding the complexities of the IT environment, Silverleaf extends its expertise in IT services to ensure that the technology is in line with your business objectives, no matter the size and nature of your organization.</p>
+			    	<h2>IT Services</h2>
+                        <h3><p>Complex technologies, dynamic business environments and process excellence are among the main challenges organizations face on their path to growth. Understanding the complexities of the IT environment, Silverleaf extends its expertise in IT services to ensure that the technology is in line with your business objectives, no matter the size and nature of your organization.</p></h3>
                         <uib-accordion close-others="true">
 					    	<uib-accordion-group is-open="true" is-disabled="false">
 						      <uib-accordion-heading>
-						        Product Implementation <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						        <h3>Product Implementation <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': !status.open, 'glyphicon-chevron-right': status.open}"></i></h3>
 						      </uib-accordion-heading>
-						      <p>We take pride in working collaboratively with our customers towards achieving operational excellence, maximizing efficiency and bringing about technology enabled business transformation.</p>
-								<h2>Network Integration Services</h2>
-								<p>Silverleaf services can take end to end ownership of your network to plan, design and implement to improve operational efficiency, network quality and asset utilization.</p>
-									<li>LAN/WAN Services</li>
-									<li>Wireless Network Services</li>
-									<li>Security Services</li>
-						      
+						        <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/IT_Services_1.JPG"/>
 						     </uib-accordion-group>
 					    	<uib-accordion-group>
 						      <uib-accordion-heading>
-						        Cloud Deployment <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						        <h3>Cloud Deployment <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></h3>
 						      </uib-accordion-heading>
+						      <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/IT_Services_2.JPG"/>
 						      </uib-accordion-group>
 					    	<uib-accordion-group>
 						      <uib-accordion-heading>
-						        Support & Maintenance <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						        <h3>Support & Maintenance <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></h3>
 						      </uib-accordion-heading>
+						      <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/IT_Services_3.JPG"/>
 						     </uib-accordion-group>
 					    	<uib-accordion-group>
 						      <uib-accordion-heading>
-						        Training & Enablement <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						        <h3>Training & Enablement <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></h3>
 						      </uib-accordion-heading>
+						      <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/IT_Services_4.JPG"/>
 						     </uib-accordion-group>
 						 </uib-accordion>
 			    </uib-tab>
 			    <uib-tab index="2" heading="Strategic Reselling">
-			    	<h4>Strategic Reselling</h4>
-                        <p>It is impossible to manage software suppliers effectively unless you can influence sourcing. The major players are so big and powerful that they usually have the upper hand in discussions about maintenance renewals and service levels. Even small software providers can build immovable, entrenched positions in their chosen niches. Silver Leaf Solutions explains how to build this connection, by creating formal categorization of your software suppliers and using it to influence software category sourcing strategies. You therefore need different people handling each side, but collaborating closely with each other.</p>
+			    	<h2>Strategic Reselling</h2>
+                        <h3><p>It is impossible to manage software suppliers effectively unless you can influence sourcing. The major players are so big and powerful that they usually have the upper hand in discussions about maintenance renewals and service levels. Even small software providers can build immovable, entrenched positions in their chosen niches. Silver Leaf Solutions explains how to build this connection, by creating formal categorization of your software suppliers and using it to influence software category sourcing strategies. You therefore need different people handling each side, but collaborating closely with each other.</p></h3>
                         
                         <uib-accordion close-others="true">
 					    	<uib-accordion-group is-open="true" is-disabled="false">
 						      <uib-accordion-heading>
-						        Software Licenses <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						        <h3>Software Licenses <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></h3>
 						      </uib-accordion-heading>
-						      <h2>What Is Software License Sales?</h2>
-								<p>Software License sales consulting encompasses everything involved in the procurement of various software. This includes new software sales, software upgrades, planning, pricing, licensing policies, distribution and end-user agreements, ordering, and business/best practices.</p>
-								
-								<h2>Silver Leaf Solutions Software License Sales</h2>
-								<p>Silver Leaf is an authorized License Reseller with Microsoft and IBM. We offer consulting on new Oracle license sales as well as upgrades for the entire Oracle software suite. Choose a comprehensive software sales engagement or one of its components: high-level strategy and planning, license metrics, usage rights, support agreements, license migrations, cloud vs. on-prem, and numerous others.</p>
-								
-								<h2>Tail End / Industry Specific - Software Procurement Services</h2>
-								<p>The "tail" end Inductry Specific spend refers to the 20% of noncore transactions that go unmanaged, usually due to a high volume of suppliers and limited in-house resources dedicated to managing them.  In fact, many of these transactions are either too small or made too infrequently to be handled by internal strategic sourcing staff.  Effectively managing the tail end Software spend remains both a great challenge and opportunity for many procurement departments.  Improved process efficiency and better allocation of time and resources for tail end Software spend can result in significant cost savings and increased ROI for the company as a whole.</p>
-								
-								<h2>Real Time Online Portal for Software Licenses</h2>
-								
-								<p>Obtain real-time visibility of all software assets procured to increase procurement control. You can Track all software assets procured along with all documents related to procurement of Software like contract documents, agreements, purchase orders and respective invoices.</p>
-						      
+						      	<img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/Strategic_1.JPG"/>
 						     </uib-accordion-group>
 					    	<uib-accordion-group>
 						      <uib-accordion-heading>
-						        Network & Software Appliances <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						        <h3>Network & Software Appliances <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></h3>
 						      </uib-accordion-heading>
+						      <img class="img-responsive img-hover" style="width:50%; padding-top:10px" src="../img/Strategic_2.JPG"/>
 						     </uib-accordion-group>
 						</uib-accordion>
 			    </uib-tab>

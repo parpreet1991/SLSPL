@@ -154,6 +154,9 @@ var upload = multer({ //multer settings
 
 /** API path that will upload the files */
 router.post('/upload', function(req, res) {
+	if (!req.isAuthenticated()) {
+		res.redirect('/login');
+	  }
     upload(req,res,function(err){
         if(err){
              res.json({error_code:1,err_desc:err});
@@ -222,6 +225,9 @@ var uploadLicense = multer({ //multer settings
 
 /** API path that will upload the files */
 router.post('/uploadLicence', uploadLicense, function(req, res) {
+	if (!req.isAuthenticated()) {
+		res.redirect('/login');
+	  }
 	var licence = new Licence({
     	displayInfo: req.body.displayInfo,
     	uploadedBy: req.body.uploadedBy,

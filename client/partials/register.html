@@ -5,16 +5,46 @@
 			  <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 			  <div ng-show="success" class="alert alert-success">{{successMessage}}</div>
             <div class="account-wall">
-                <form class="form-signin" ng-submit="register()">
-                <input type="email" class="form-control" placeholder="Email"  ng-model="registerForm.username" required autofocus/>
-                <input type="password" class="form-control" placeholder="Password" ng-model="registerForm.password" required/>
-                <input type="password" class="form-control" placeholder="Confirm Password" ng-model="registerForm.confirmPassword" required/>
-                <input type="text" class="form-control" placeholder="Name" ng-model="registerForm.name" required/>
-                <input type="text" class="form-control" placeholder="Company Name" ng-model="registerForm.company" required/>
-                <input type="text" class="form-control" placeholder="Designation" ng-model="registerForm.designation"/>
-                <input type="text" class="form-control" placeholder="Department" ng-model="registerForm.department"/>
-                <input type="text" class="form-control" placeholder="Phone" ng-model="registerForm.phone"/>
-			    <button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="disabled">Submit</button>
+                <form name="myForm" class="form-signin" ng-submit="register()"  novalidate>
+                	<p>
+	                	<input type="email" class="form-control" placeholder="Email" name="username"  ng-model="registerForm.username" required autofocus/>
+						<span style="color:red" ng-show="myForm.username.$dirty && myForm.username.$invalid">
+							<span ng-show="myForm.username.$error.required">Email is required.</span>
+							<span ng-show="myForm.username.$error.email">Invalid email address.</span>
+						</span>
+					</p>
+					<p>
+	                	<input type="password" class="form-control" placeholder="Password" name="password" ng-model="registerForm.password" required/>
+	                	<span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+						<span ng-show="myForm.password.$error.required">Password is required.</span>
+						</span>
+	                </p>
+					<p>
+	                	<input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" ng-model="registerForm.confirmPassword" required/>
+	                	<span style="color:red" ng-show="myForm.confirmPassword.$dirty && myForm.confirmPassword.$invalid">
+						<span ng-show="myForm.confirmPassword.$error.required">Confirm Password is required.</span>
+						</span>
+	                </p>
+					<p>
+	                	<input type="text" class="form-control" placeholder="Name" name="name" ng-model="registerForm.name" required/>
+	                	<span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+						<span ng-show="myForm.name.$error.required">Name is required.</span>
+						</span>
+	                </p>
+	                <p>
+	                	<input type="text" class="form-control" placeholder="Company Name" name="company" ng-model="registerForm.company" required/>
+	                	<span style="color:red" ng-show="myForm.company.$dirty && myForm.company.$invalid">
+						<span ng-show="myForm.company.$error.required">Company name is required.</span>
+						</span>
+					</p>
+	                <input type="text" class="form-control" placeholder="Designation" ng-model="registerForm.designation"/>
+	                <input type="text" class="form-control" placeholder="Department" ng-model="registerForm.department"/>
+	                <input type="text" class="form-control" placeholder="Phone" ng-model="registerForm.phone"/>
+				    <button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="myForm.username.$invalid ||  
+					myForm.password.$invalid || 
+					myForm.confirmPassword.$invalid ||
+					myForm.name.$invalid ||
+					myForm.company.$invalid">Submit</button>
                 </form>
             </div>
         </div>
