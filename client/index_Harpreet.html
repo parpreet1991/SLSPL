@@ -1,0 +1,283 @@
+<!-- Color blue #0070C0, green #00B050 -->
+<!DOCTYPE html>
+<html ng-app="myApp" lang="en" >
+
+<head>	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Silver Leaf Solutions</title>
+    <script src="lib/w3-include-HTML.js"></script>
+    <!-- Angular -->    
+	<script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-route.min.js"></script>
+  <script src="lib/angular/angular-sanitize.min.js"></script>
+  <script src='lib/textAngular.min.js'></script>
+    <!-- Bower Depedencies -->
+
+    <!-- Bootstrap Core CSS -->
+    <!-- Plugin css -->
+		<!-- Demo css -->
+		<link rel="stylesheet" href="css/font-awesome.css">
+	    <link rel="stylesheet" href="css/normalize.css">
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
+    
+    <!-- <link rel="stylesheet" href="css/top-bar.css"> -->
+	
+	<script src="js/modernizr.js"></script>	
+    
+    
+	
+	<!-- File Upload -->
+	<script src="lib/file-upload/FileAPI.min.js"></script>
+	<script src="lib/file-upload/ng-file-upload-all.min.js"></script>
+	<script src="lib/file-upload/ng-file-upload.min.js"></script>
+	<script src="lib/file-upload/ng-file-upload-shim.min.js"></script>
+	
+	<!-- App js files -->
+	<script src="main.js"></script>
+	<script src="services.js"></script>
+	<script src="controllers.js"></script>
+	
+	
+    <script src="lib/ui-bootstrap-tpls-1.2.4.min.js"></script>
+		<link rel="stylesheet" href="css/signin.css">
+		
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<style type="text/css">
+			.text-center {
+			  text-align: center;
+			}
+			.nav.navbar-nav.navbar-right li a {
+			    color: gray;
+			}
+			.navbar-default .navbar-nav > li > a:hover,
+			.navbar-default .navbar-nav > li > a:focus {
+			    color: black;
+			}
+			 .navbar-fixed-top {
+			    min-height: 70px;
+			}
+			
+			.navbar-fixed-top .navbar-collapse {
+			    max-height: 80px;
+			    margin-top: 1%;
+			}
+			
+			@media (min-width: 768px) {
+			    .navbar-fixed-top .navbar-collapse {
+			        max-height: 50px;
+			    }
+			}
+			
+		</style>
+		<!-- <script language="javascript">
+			document.onmousedown=disableclick;
+			status="Right Click Disabled";
+			function disableclick(event)
+			{
+			  if(event.button==2)
+			   {
+			     alert(status);
+			     return false;    
+			   }
+			}
+		</script> -->
+    <link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
+     <link href="css/responsive-slider.css" rel="stylesheet">
+</head>
+
+<!-- <body oncontextmenu="return false"> -->
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" style="background-color: white">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#main"><img src="img/logo.jpg" style="width:60%;"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#about"><b>The Company</b></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#services"><b>Services</b> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#services">Advisory</a></li>
+            <li><a href="#services">IT Services</a></li>
+            <li><a href="#services">Strategic Reselling</a></li>
+          </ul>
+        </li>
+        <li><a href="#events"><b>New & Events</b></a></li>
+        <li><a href="#career"><b>Join Us</b></a></li>
+        <li><a href="#blogs"><b>Blogs</b></a></li>
+        <li ng-show="$root.AuthService.isAdmin()"><a href="#admin"><b>Admin</b></a></li>
+        <li ng-show="$root.AuthService.isLoggedIn"><a href="#licences" title="IT Asset Management Portal"><b>ITAMP</b></a></li>
+        <li class='last'><a href="#contact"><b>Contact Us</b></a></li>
+      </ul>
+      <ul ng-controller="logoutController" class="nav navbar-nav navbar-right" style="text-color: gray">        
+        <!-- <li><a href="#licences"><span class="glyphicon"></span><i><b>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</b></i></a></li> -->
+        <li><a href="#licences" ><span class="glyphicon"></span><i><b>{{$root.AuthService.getUserName()}}</b></i></a></li>
+      	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login"><span class="glyphicon glyphicon-user"></span><i><b>Customer Login</b></i></a></li>
+      	<li ng-show="$root.AuthService.isLoggedIn"><a href="#" ng-click='logout()' ><span class="glyphicon glyphicon-user"></span><i><b>Logout</b></i></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div ng-controller="mainController" class="container">
+
+<div class="responsive-slider " data-spy="responsive-slider" data-autoplay="true" >
+        <div class="slides" data-group="slides">
+      		<ul>
+  	    		<li>
+	              <div class="slide-body" data-group="slide" >
+	                <img src="img/aboutus.png" style="width: 100% !important">
+	              </div>
+  	    		</li>
+  	    		<li>
+	              <div class="slide-body" data-group="slide">
+	                <img src="../img/slide2.jpg" style="width: 100% !important">
+	                <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500" data-length="300">
+	                  <h2>We Believe In… (Core Values)</h2>
+	                </div>
+	                
+	                  <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="600" data-length="300">
+		                  <p>Core Values are Values that are Core to each one of us</p>
+		                  <p>It's not necessary to have core values but it's exemplary to live by them</p>
+		                  <p>Business without Core Values is like Life without Oxygen</p>
+	                  </div>
+	                <div class="caption core" data-animate="slideAppearDownToUp" data-delay="200">
+	                  <img src="../img/core.png">
+	                </div>
+	                <div class="caption passion" data-animate="slideAppearUpToDown" data-delay="300">
+	                  <img src="../img/passion.png">
+	                </div>
+	                <div class="caption execution" data-animate="slideAppearUpToDown" data-delay="400">
+	                  <img src="../img/execution.png">
+	                </div>
+	                <div class="caption customer" data-animate="slideAppearUpToDown" data-delay="500">
+	                  <img src="../img/customer.png">
+	                </div>
+	                <div class="caption integrity" data-animate="slideAppearUpToDown" data-delay="600">
+	                  <img src="../img/integrity.png">
+	                </div>
+	                <div class="caption transparency" data-animate="slideAppearUpToDown" data-delay="700">
+	                  <img src="../img/transparency.png">
+	                </div>
+	                <div class="caption respact" data-animate="slideAppearUpToDown" data-delay="800">
+	                  <img src="../img/respact.png">
+	                </div>
+	                <div class="caption agility" data-animate="slideAppearUpToDown" data-delay="900">
+	                  <img src="../img/agility.png">
+	                </div>
+	                <div class="caption trust" data-animate="slideAppearUpToDown" data-delay="1000">
+	                  <img src="../img/trust.png">
+	                </div>
+	                <div class="caption dot" data-animate="slideAppearUpToDown" data-delay="1100">
+	                  <img src="../img/dot.jpg">
+	                </div>
+	              </div>
+  	    		</li>
+  	    		<li>
+	              <div class="slide-body" data-group="slide">
+	                <img src="../img/slide2.jpg" style="width: 100% !important">
+	                <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500" data-length="300">
+	                  <h2>Custom animations</h2>
+	                  <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">For any caption you use!</div>
+	                </div>
+	                <div class="caption img-jquery" data-animate="slideAppearDownToUp" data-delay="200">
+	                  <img src="../img/jquery.png">
+	                </div>
+	              </div>
+  	    		</li>
+  	    	</ul>
+        </div>
+        <a class="slider-control left" href="#" data-jump="prev"><i class="fa fa-angle-left fa-3x"></i></a>
+        <a class="slider-control right" href="#" data-jump="next"><i class="fa fa-angle-right fa-3x"></i></a>
+        <div class="pages">
+          <a class="page" href="#" data-jump-to="1">1</a>
+          <a class="page" href="#" data-jump-to="2">2</a>
+          <a class="page" href="#" data-jump-to="3">3</a>
+        </div>
+    	</div>
+
+	<!-- <div id="carousel-example" class="carousel slide" data-ride="carousel" style='display:{{$root.currentPage}}'>
+	  <ol class="carousel-indicators">
+	    <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+	    <li data-target="#carousel-example" data-slide-to="1"></li>
+	    <li data-target="#carousel-example" data-slide-to="2"></li>
+	  </ol>
+	
+	  <div class="carousel-inner">
+	    <div class="item active">
+	      <a href="#"><img src="img/aboutus.png"  style="width:100%;"/></a>
+	      <div class="carousel-caption">
+	        <p>To enable business leaders with forward-thinking and simplified approach that helps drive efficient and effective IT decisions</p>
+	      </div>
+	    </div>
+	    <div class="item">
+	      <a href="#"><img src="img/main_Page_2.jpg" /></a>
+	      <div class="carousel-caption">
+	        <h3>Meow</h3>
+	        <p>Just Kitten Around</p>
+	      </div>
+	    </div>
+	    <div class="item">
+	      <a href="#"><img src="http://placekitten.com/1600/600" /></a>
+	      <div class="carousel-caption">
+	        <h3>Meow</h3>
+	        <p>Just Kitten Around</p>
+	      </div>
+	    </div>
+	  </div>
+	
+	  <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left"></span>
+	  </a>
+	  <a class="right carousel-control" href="#carousel-example" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right"></span>
+	  </a>
+	</div> -->
+</div>
+    
+   
+    
+   <div ng-view></div>
+   
+   
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+            	<img class="img-responsive img-hover" style="width:100%; padding-top:5px" src="img/footer_line.JPG"/>
+            	<div class="col-lg-8">
+            		<img class="img-responsive img-hover pull-right" style="width:40%; padding-top:5px" src="img/footer_image.JPG"/>
+            	</div>
+                <div class="col-lg-4" style="align: right">
+                    <p class="pull-right">Copyright &copy; Silver Leaf Solutions 2016</p>
+                </div>
+            </div>
+        </footer>
+</body>
+	<script src="js/jquery.js"></script>
+    <script src="js/jquery.event.move.js"></script>
+    <script src="js/responsive-slider.js"></script>
+
+</html>

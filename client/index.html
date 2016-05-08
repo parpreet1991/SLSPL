@@ -26,7 +26,6 @@
 		<link rel="stylesheet" href="css/font-awesome.css">
 	    <link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/demo2.css">
-		<link rel="stylesheet" href="css/demo1.css">
 
     <!-- Custom CSS -->
     <link href="css/modern-business.css" rel="stylesheet">
@@ -76,7 +75,7 @@
 			.navbar-default .navbar-nav > li > a:focus {
 			    color: black;
 			}
-			.carousel-inner{
+			/* .carousel-inner{
 			  width: 120%;
 			  margin-left: -10%;
 			  height: 350px;
@@ -88,7 +87,7 @@
 			    margin: 0;
 			  	margin-top: 1%;
 			  }
-			}
+			} */
 			
 			 .navbar-fixed-top {
 			    min-height: 70px;
@@ -117,6 +116,12 @@
 			   }
 			}
 		</script>
+		<!-- Animate.css library -->
+		<link href="css/animate.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+	<script src="js/jquery.animateSlider.js"></script>
+		
 </head>
 
 <body oncontextmenu="return false">
@@ -159,28 +164,50 @@
   </div>
 </nav>
 
-<div ng-controller="mainController">
-<div   style='display:{{$root.currentPage}}'>
-<!-- Start WOWSlider.com BODY section -->
-<div id="wowslider-container1">
-<div class="ws_images"><ul>
-		<li><a href="#"><img src="data1/images/aboutus.png" title="" id="wows1_0"/></a></li>
-		<li><img src="data1/images/main_2.png" alt="" title="" id="wows1_1"/>Core Values are Values that are Core to each one of us<br/><br/>
-It's not necessary to have core values<br/><br/>
-But it's exemplary to live by them<br/><br/>
-Business without Core Values is like Life without Oxygen<br/><br/><br/></li>
-	</ul></div>
-	<div class="ws_bullets"><div>
-		<a href="#" title=""><span><img src="data1/tooltips/aboutus.png" alt=""/>1</span></a>
-		<a href="#" title=""><span><img src="data1/tooltips/main_2.png" alt=""/>2</span></a>
-	</div></div>
-<div class="ws_shadow"></div>
-</div>	
-<script type="text/javascript" src="engine1/wowslider.js"></script>
-<script type="text/javascript" src="engine1/script.js"></script>
-<!-- End WOWSlider.com BODY section -->
-</div>
-</div>
+<!-- <div w3-include-HTML="main.html"></div> -->
+    <div ng-controller="mainController" >
+      <ul style='display:{{$root.currentPage}}' class="anim-slider">
+
+		<!-- Slide No1 -->
+		<li class="anim-slide animated fadeOutLeftBig anim-slide-this">
+		</li>
+
+		<!-- Slide No2 -->
+		<li class="anim-slide animated fadeOutLeftBig anim-slide-this">
+			<h1 id="looks" class="animated">We Believe</h1>
+			<h1 id="amazing" class="animated">In…</h1>
+			<h1 id="place" class="animated">(Core Values)</h1>
+			
+			<h2 id="line1" class="animated">Core Values are Values that are Core to each one of us</h2>
+			<h2 id="line2" class="animated">It's not necessary to have core values but it's exemplary to live by them</h2>
+			<h2 id="line3" class="animated">Business without Core Values is like Life without Oxygen</h2>
+			
+			<img src="img/core.png" alt="c1" id="c1" class="img-responsive">
+			<img src="img/passion.png" alt="c2" id="c2" class="img-responsive">
+			<img src="img/execution.png" alt="c3" id="c3" class="img-responsive">
+			<img src="img/customer.png" alt="c4" id="c4" class="img-responsive">
+			<img src="img/integrity.png" alt="c5" id="c5" class="img-responsive">
+			<img src="img/transparency.png" alt="c6" id="c6" class="img-responsive">
+			<img src="img/respact.png" alt="c7" id="c7" class="img-responsive">
+			<img src="img/agility.png" alt="c8" id="c8" class="img-responsive">
+			<img src="img/trust.png" alt="c9" id="c9" class="img-responsive">
+			<img src="img/dot.jpg" alt="dot" id="dot" class="img-responsive">
+		</li>
+
+		<!-- Arrows -->
+		<nav class="anim-arrows">
+			<span class="anim-arrows-prev">
+				<i class="fa fa-angle-left fa-3x"></i>
+			</span>
+			<span class="anim-arrows-next">
+				<i class="fa fa-angle-right fa-3x"></i>
+			</span>
+		</nav>
+		<!-- Dynamically created dots -->
+		
+		<div class="anim-dots"><span class=""></span><span class="anim-dots-this"></span><span class=""></span></div>
+	</ul>
+	</div>
     
    
     
@@ -194,14 +221,59 @@ Business without Core Values is like Life without Oxygen<br/><br/><br/></li>
         <footer>
             <div class="row">
             	<img class="img-responsive img-hover" style="width:100%; padding-top:5px" src="img/footer_line.JPG"/>
-            	<div class="col-lg-8">
-            		<img class="img-responsive img-hover pull-right" style="width:40%; padding-top:5px" src="img/footer_image.JPG"/>
+            	<div class="col-lg-4">
+                    
+                </div>
+            	<div class="col-lg-5">
+            		<img class="img-responsive img-hover" style="width:60%; padding-top:5px" src="img/footer_image.JPG"/>
             	</div>
-                <div class="col-lg-4" style="align: right">
-                    <p class="pull-right">Copyright &copy; Silver Leaf Solutions 2016</p>
+                <div class="col-lg-3" style="align: right">
+                    <p>Copyright &copy; Silver Leaf Solutions 2016</p>
                 </div>
             </div>
         </footer>
+    
+    <!-- Bower Depedencies -->
+		<!-- <script src="js/jquery.min.js"></script>
+
+    Bootstrap Core JavaScript
+    <script src="js/bootstrap.min.js"></script> -->
+    
+	<!-- <script src="lib/w3-include-HTML.js"></script> -->
+		<script>
+		 $(".anim-slider").animateSlider(
+		 	{
+		 		autoplay	:true,
+		 		interval	:5500,
+		 		animations 	: 
+				{
+					0	: 	//Slide No1
+					{
+						li	: {show: "fadeIn", hide: "fadeOutLeftBig", delayShow: "delay0-5s" },
+					},
+					1	: 
+					{
+						li	: {show: "fadeIn", hide: "fadeOutLeftBig", delayShow: "delay0-5s" } ,
+	 					"#looks":{show : "rotateInUpLeft",delayShow : "delay1s"},
+	 					"#amazing":{show : "rotateInUpLeft",delayShow : "delay1-5s"},
+	 					"#place":{show : "rotateInUpLeft",delayShow : "delay2s"},
+	 					"#line1":{show: "fadeIn", hide: "fadeOutDownBig", delayShow : "delay2s"},
+	 					"#line2":{show: "fadeIn", hide: "fadeOutDownBig", delayShow : "delay2-5s"},
+	 					"#line3":{show: "fadeIn", hide: "fadeOutDownBig", delayShow : "delay3s"},
+						"#c1" :{show: "zoomIn", hide: "slideOutLeft",delayShow : "delay3-5s"},
+						"#c2" :{show: "bounceInLeft", hide: "slideOutLeft",delayShow : "delay3-5s"},
+						"#c3" :{show : "bounceInLeft", hide: "flipOutY", delayShow : "delay4s"},
+						"#c4" :{show : "bounceInUp", hide: "flipOutY", delayShow : "delay4-5s"},
+						"#c5" :{show : "bounceInRight", hide: "flipOutY", delayShow : "delay5s"},
+						"#c6" :{show : "bounceInRight", hide: "flipOutY", delayShow : "delay5-5s"},
+						"#c7" :{show : "bounceInDown", hide: "flipOutY", delayShow : "delay6s"},
+						"#c8" :{show : "bounceInDown", hide: "flipOutY", delayShow : "delay6-5s"},
+						"#c9" :{show : "bounceInDown", hide: "flipOutY", delayShow : "delay6-5s"},
+						"#dot" :{show : "bounceInDown", hide: "bounceOutDown", delayShow : "delay7s"},
+					}
+				}
+		 	});
+		</script>
 </body>
 
 </html>

@@ -1,23 +1,41 @@
 .anim-slider{background-color: #fff;}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .anim-slider {
+    width: 50%;
+    height: 50%;
+  }
+}
+@media (max-width: 480px) {
+  .anim-slider {
+    width: 30%;
+    height: 30%;
+  }
+}
 .anim-slide{opacity: 0;}
 .anim-slide-this{opacity: 1;}
 
-.anim-slide img#c1{left: 4%;top: 35%;}
-.anim-slide img#c2{left: 24%;top: 35%;}
-.anim-slide img#c3{left: 44%;top: 35%;}
-.anim-slide img#c4{left: 64%;top: 35%;}
-.anim-slide img#c5{left: 84%;top: 35%;}
-.anim-slide img#c6{left: 4%;top: 70%;}
-.anim-slide img#c7{left: 24%;top: 70%;}
-.anim-slide img#c8{left: 44%;top: 70%;}
-.anim-slide img#c9{left: 64%;top: 70%;}
-.anim-slide img#c10{left: 84%;top: 70%;}
 
-li.anim-slide:nth-of-type(1){background:#fff url("../img/island-view.jpg") 100%/cover;}
-li.anim-slide:nth-of-type(2){background:#fff url("../img/summer-experience.jpg") 100%/cover;}
-li.anim-slide:nth-of-type(3){background:#fff url("../img/beach.jpg") 100%/cover;}
+.anim-slide h2#line1{left: 5%;top: 15%; }
+.anim-slide h2#line2{left: 5%;top: 25%;}
+.anim-slide h2#line3{left: 5%;top: 35%;}
+.anim-slide img#c1{left: 59.2%;top: 41.1%; }
+.anim-slide img#c2{left: 52%;top: 37.6%;}
+.anim-slide img#c3{left: 52.1%;top: 12.6%;}
+.anim-slide img#c4{left: 58.5%;top: 12.5%;}
+.anim-slide img#c5{left: 64.7%;top: 12.4%;}
+.anim-slide img#c6{left: 66.8%;top: 38%;}
+.anim-slide img#c7{left: 64.6%;top: 60.9%;}
+.anim-slide img#c8{left: 58.3%;top: 69.8%;}
+.anim-slide img#c9{left: 52.1%;top: 60.9%;}
+.anim-slide img#c10{left: 52%;top: 61%;}
 
-li.anim-slide:nth-of-type(1)>h1
+li.anim-slide:nth-of-type(1){background:#fff url("../img/aboutus.png") 100%/cover;}
+li.anim-slide:nth-of-type(2){background:#fff url("../img/slide2.jpg") 100%/cover;}
+
+
+li.anim-slide:nth-of-type(2)>h1
 {
 	position: static;
 	display: inline-block;
@@ -25,12 +43,19 @@ li.anim-slide:nth-of-type(1)>h1
 	font-size:40px;
 	padding: 0px 25px;
 }
-h1#looks{background-color:#fff;color:#34495e;}
+h1#looks{background-color:#3498db;color:#fff;}
 h1#amazing{background-color:#34495e;color:#fff;margin: 0px -5px;}
 h1#place{background-color:#3498db;color:#fff;}
 
+li.anim-slide:nth-of-type(2)>h2
+{
+	margin: 0;
+	font-size:25px;
+	color: #000;
+	padding: 0px 5px;
+}
 
-li.anim-slide:nth-of-type(2)>div
+/* li.anim-slide:nth-of-type(2)>div
 {
 	width: 100%;
 	height: 100%;
@@ -50,11 +75,11 @@ h1#r{top:30%;left: 28%;}
 h1#y{top:30%;left: 30%;}
 h1#i{top:30%;left: 35%;}
 h1#t{top:30%;left: 37%;}
-h1#mark{top:30%;left: 39%;}
+h1#mark{top:30%;left: 39%;} 
 
 div#demo{text-align: center;}
 div#demo>a{display:inline-block;text-decoration: none;}
 div#demo>a>h4{padding: 5px 8px;margin: 20px;background-color: #225A86;color: #fff;box-shadow:inset 0 -2px 0 rgba(0,0,0,0.15);}
 p#credits{z-index:-1;position: fixed;bottom: 0px;width: 100%;text-align: center;font-size: 14px;}
 p#credits>a{font-weight: bold;color: #999;text-decoration: none;}
-img#github-logo{z-index:-1;position: fixed;bottom: -20px;right: 2%;opacity: 0.4;}
+img#github-logo{z-index:-1;position: fixed;bottom: -20px;right: 2%;opacity: 0.4;}*/

@@ -1,0 +1,264 @@
+<!-- Color blue #0070C0, green #00B050 -->
+<!DOCTYPE html>
+<html ng-app="myApp" lang="en" >
+
+<head>	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>S L S</title>
+    <script src="lib/w3-include-HTML.js"></script>
+    <!-- Angular -->    
+	<script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-route.min.js"></script>
+  <script src="lib/angular/angular-sanitize.min.js"></script>
+  <script src='lib/textAngular.min.js'></script>
+    <!-- Bower Depedencies -->
+		<script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <!-- <link href="css/modern-business.css" rel="stylesheet"> -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Plugin css -->
+		<link rel="stylesheet" href="css/jquery.animateSlider.css">
+		<!-- Demo css -->
+		<link rel="stylesheet" href="css/font-awesome.css">
+	    <link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/demo2.css">
+		<link rel="stylesheet" href="css/demo1.css">
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
+    
+    <link rel="stylesheet" href="css/top-bar.css">
+	
+	<script src="js/modernizr.js"></script>	
+	<!-- Load the plugin -->
+	<script src="js/jquery.animateSlider.js"></script>
+    
+    
+	
+	<!-- File Upload -->
+	<script src="lib/file-upload/FileAPI.min.js"></script>
+	<script src="lib/file-upload/ng-file-upload-all.min.js"></script>
+	<script src="lib/file-upload/ng-file-upload.min.js"></script>
+	<script src="lib/file-upload/ng-file-upload-shim.min.js"></script>
+	
+	<!-- App js files -->
+	<script src="main.js"></script>
+	<script src="services.js"></script>
+	<script src="controllers.js"></script>
+	
+	
+    <script src="lib/ui-bootstrap-tpls-1.2.4.min.js"></script>
+</head>
+
+<body >
+
+	<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #0070C0">
+        <!-- <div class="container"> -->
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only"><i><b>S L S</b></i></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#main">S L S</a>
+            </div>
+            <div id='cssmenu'>				
+				<ul>
+				   <li><a href="#about">About</a></li>
+				   <li class='active has-sub'><a href='#services'><span>Services</span></a>
+				      <ul>
+				         <li class='has-sub'><a href="#advisory">Advisory</a>
+				            <ul>
+				               <li><a href='#'><span>Software Licensing</span></a></li>
+				               <li><a href='#'><span>Asset Management</span></a></li>
+				               <li><a href='#'><span>Strategic Sourcing</span></a></li>
+				               <li><a href='#'><span>Cloud</span></a></li>
+				               <li><a href='#'><span>Network Services</span></a></li>
+				               <li class='last'><a href='#'><span>Technology Evangenlization</span></a></li>
+				            </ul>
+				         </li>
+				         <li class='has-sub'><a href="#it_services">IT Services</a>
+				            <ul>
+				               <li><a href='#'><span>Product Implementation</span></a></li>
+				               <li><a href='#'><span>Cloud Deployment</span></a></li>
+				               <li><a href='#'><span>Support & Maintenance</span></a></li>
+				               <li class='last'><a href='#'><span>Training & Enablement</span></a></li>
+				            </ul>
+				         </li>
+				         <li class='has-sub'><a href="#statregic_reselling">Strategic Reselling</a>
+				            <ul>
+				               <li><a href='#'><span>Software Licenses</span></a></li>
+				               <li class='last'><a href='#'><span>Network & Software Appliances</span></a></li>
+				            </ul>
+				         </li>
+				      </ul>
+				   </li>
+				   <!-- <li><a href="#partners">Partners</a></li> -->
+				   
+                    <li><a href="#events">New & Events</a></li>
+                    <li><a href="#career">Career</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li ng-show="$root.AuthService.isAdmin()"><a href="#admin">Admin</a></li>
+                    <li class='last'><a href="#contact">Contact</a></li>
+				</ul>
+			</div>
+			
+			<div class="navbar-collapse collapse">				
+			    <ul ng-controller="logoutController" class="nav navbar-nav pull-right">
+			    	<li><a  href="#licences"><i><b>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</b></i></a></li>
+			      	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login"><i><b>Login</b></i></a></li>
+			      	<li ng-show="$root.AuthService.isLoggedIn">
+			      		<a ng-click='logout()' ><i><b>Logout</b></i></a>
+			      	</li>
+			    </ul>
+			</div>
+            <!-- /.navbar-collapse -->
+        <!-- </div> -->
+        <!-- /.container -->
+    </nav>
+    <!-- <div w3-include-HTML="main.html"></div> -->
+    <div ng-controller="mainController" >
+      <ul style='display:{{$root.currentPage}}' class="anim-slider">
+
+		<!-- Slide No1 -->
+		<li class="anim-slide animated fadeOutLeftBig anim-slide-this">
+			<h1 id="looks" class="animated">WE KNOW</h1>
+			<h1 id="amazing" class="animated">YOUR</h1>
+			<h1 id="place" class="animated">CHALLENGE</h1>
+			
+			<h2 id="plugin" class="animated fadeInUpBig delay2s"><span>and offer solution to that fit!</span></h2>
+			
+			<img src="img/challenge_1.jpg" alt="c1" id="c1" class="animated flipOutY">
+			<img src="img/challenge_2.jpg" alt="c2" id="c2" class="animated flipOutY">
+			<img src="img/challenge_3.jpg" alt="c3" id="c3" class="animated flipOutY">
+			<img src="img/challenge_4.jpg" alt="c4" id="c4" class="animated flipOutY">
+			<img src="img/challenge_5.jpg" alt="c5" id="c5" class="animated flipOutY">
+			<img src="img/challenge_6.jpg" alt="c6" id="c6" class="animated flipOutY">
+			<img src="img/challenge_7.jpg" alt="c7" id="c7" class="animated flipOutY">
+			<img src="img/challenge_8.jpg" alt="c8" id="c8" class="animated flipOutY">
+			<img src="img/challenge_9.jpg" alt="c9" id="c9" class="animated flipOutY">
+			<img src="img/challenge_10.jpg" alt="c10" id="c10" class="animated flipOutY">
+		</li>
+
+		
+		<!-- Slide No2 -->
+		<li class="anim-slide animated fadeOutDownBig">
+			<h1 id="T" class="animated">T</h1>
+			<h1 id="r" class="animated">r</h1>
+			<h1 id="y" class="animated">y</h1>
+			<h1 id="i" class="animated">i</h1>
+			<h1 id="t" class="animated">t</h1>
+			<h1 id="mark" class="animated">!</h1>
+		</li>
+
+		<!-- Arrows -->
+		<nav class="anim-arrows">
+			<span class="anim-arrows-prev">
+				<i class="fa fa-angle-left fa-3x"></i>
+			</span>
+			<span class="anim-arrows-next">
+				<i class="fa fa-angle-right fa-3x"></i>
+			</span>
+		</nav>
+		<!-- Dynamically created dots -->
+		
+		<div class="anim-dots"><span class=""></span><span class="anim-dots-this"></span><span class=""></span></div>
+	</ul>
+	</div>
+    
+   
+    
+   <div ng-view></div>
+   
+   
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+            	<img class="img-responsive img-hover" style="width:100%; padding-top:5px" src="img/footer_line.JPG"/>
+            	<div class="col-lg-4">
+                    
+                </div>
+            	<div class="col-lg-5">
+            		<img class="img-responsive img-hover" style="width:60%; padding-top:5px" src="img/footer_image.JPG"/>
+            	</div>
+                <div class="col-lg-3" style="align: right">
+                    <p>Copyright &copy; Silver Leaf Solutions 2016</p>
+                </div>
+            </div>
+        </footer>
+    
+    <!-- Bower Depedencies -->
+		<!-- <script src="js/jquery.min.js"></script>
+
+    Bootstrap Core JavaScript
+    <script src="js/bootstrap.min.js"></script> -->
+    
+	<!-- <script src="lib/w3-include-HTML.js"></script> -->
+		<script>
+		 $(".anim-slider").animateSlider(
+		 	{
+		 		autoplay	:true,
+		 		interval	:5500,
+		 		animations 	: 
+				{
+					0	: 	//Slide No1
+					{
+						li	: {show: "fadeIn", hide: "fadeOutLeftBig", delayShow: "delay0.5s" },
+	 					h2:{show: "bounceInRight", hide: "fadeOutDownBig", delayShow : "delay2s"},
+	 					"#looks":{show : "rotateInUpLeft",delayShow : "delay1s"},
+	 					"#amazing":{show : "rotateInUpLeft",delayShow : "delay1-5s"},
+	 					"#place":{show : "rotateInUpLeft",delayShow : "delay2s"},
+	 					"#place":{show : "rotateInUpLeft",delayShow : "delay2s"} ,
+						"img#c1" :{show : "flipInY", hide: "flipOutY", delayShow : "delay2-5s"},
+						"img#c1" :{hide : "flipInY", show: "flipOutY", delayShow : "delay2-5s"},
+						"img#c2" :{show : "flipInY", hide: "flipOutY", delayShow : "delay3s"},
+						"img#c3" :{show : "flipInY", hide: "flipOutY", delayShow : "delay3-5s"},
+						"img#c4" :{show : "flipInY", hide: "flipOutY", delayShow : "delay4s"},
+						"img#c5" :{show : "flipInY", hide: "flipOutY", delayShow : "delay4-5s"},
+						"img#c6" :{show : "flipInY", hide: "flipOutY", delayShow : "delay5s"},
+						"img#c7" :{show : "flipInY", hide: "flipOutY", delayShow : "delay5-5s"},
+						"img#c8" :{show : "flipInY", hide: "flipOutY", delayShow : "delay6s"},
+						"img#c9" :{show : "flipInY", hide: "flipOutY", delayShow : "delay6-5s"},
+						"img#c10" :{show : "flipInY", hide: "flipOutY", delayShow : "delay6-5s"}
+					},
+					1	: 
+					{
+						li	:{show : "fadeInUp", hide : "fadeOutDownBig", delayShow : "delay0-5s"},
+						"#T":{show : "slideInLeft", delayShow : "delay1-5s"},
+						"#r":{show : "bounceInRight", delayShow  : "delay2s"},
+						"#y":{show : "fadeInRight", delayShow : "delay2-5s"},
+						"#i":{show : "rollIn", delayShow  : "delay3s"},
+						"#t":{show : "rollIn",delayShow   : "delay3s"},
+						"#mark"	:{show: "rotateIn", delayShow   : "delay3-5s"},
+					}
+				}
+		 	});
+		</script>
+</body>
+
+</html>
