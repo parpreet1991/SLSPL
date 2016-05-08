@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>S L S</title>
+    <title>Silver Leaf Solutions</title>
     <script src="lib/w3-include-HTML.js"></script>
     <!-- Angular -->    
 	<script src="lib/angular/angular.min.js"></script>
@@ -18,20 +18,8 @@
   <script src="lib/angular/angular-sanitize.min.js"></script>
   <script src='lib/textAngular.min.js'></script>
     <!-- Bower Depedencies -->
-		<script src="js/jquery.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <!-- <link href="css/modern-business.css" rel="stylesheet"> -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <!-- Plugin css -->
 		<link rel="stylesheet" href="css/jquery.animateSlider.css">
 		<!-- Demo css -->
@@ -45,8 +33,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/script.js"></script>
     
-    <link rel="stylesheet" href="css/top-bar.css">
-    <link rel="stylesheet" href="css/animate.min.css" />
+    <!-- <link rel="stylesheet" href="css/top-bar.css"> -->
 	
 	<script src="js/modernizr.js"></script>	
 	<!-- Load the plugin -->
@@ -67,78 +54,117 @@
 	
 	
     <script src="lib/ui-bootstrap-tpls-1.2.4.min.js"></script>
+		<link rel="stylesheet" href="css/signin.css">
+		
+		<!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
+		
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<style type="text/css">
+			.text-center {
+			  text-align: center;
+			}
+			.nav.navbar-nav.navbar-right li a {
+			    color: gray;
+			}
+			.navbar-default .navbar-nav > li > a:hover,
+			.navbar-default .navbar-nav > li > a:focus {
+			    color: black;
+			}
+			/* .carousel-inner{
+			  width: 120%;
+			  margin-left: -10%;
+			  height: 350px;
+			}
+			
+			@media (min-width: 768px){
+			  .carousel-inner{
+			    width: 100%;
+			    margin: 0;
+			  	margin-top: 1%;
+			  }
+			} */
+			
+			 .navbar-fixed-top {
+			    min-height: 70px;
+			}
+			
+			.navbar-fixed-top .navbar-collapse {
+			    max-height: 80px;
+			    margin-top: 1%;
+			}
+			
+			@media (min-width: 768px) {
+			    .navbar-fixed-top .navbar-collapse {
+			        max-height: 50px;
+			    }
+			}
+		</style>
+		<script language="javascript">
+			document.onmousedown=disableclick;
+			status="Right Click Disabled";
+			function disableclick(event)
+			{
+			  if(event.button==2)
+			   {
+			     alert(status);
+			     return false;    
+			   }
+			}
+		</script>
+		<!-- Animate.css library -->
+		<link href="css/animate.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+	<script src="js/jquery.animateSlider.js"></script>
+		
 </head>
 
-<body >
+<body oncontextmenu="return false">
 
-	<!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #0070C0">
-        <!-- <div class="container"> -->
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only"><i><b>S L S</b></i></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#main">S L S</a>
-            </div>
-            <div id='cssmenu'>				
-				<ul>
-				   <li><a href="#about">About</a></li>
-				   <li class='active has-sub'><a href='#services'><span>Services</span></a>
-				      <ul>
-				         <li class='has-sub'><a href="#advisory">Advisory</a>
-				            <ul>
-				               <li><a href='#'><span>Software Licensing</span></a></li>
-				               <li><a href='#'><span>Asset Management</span></a></li>
-				               <li><a href='#'><span>Strategic Sourcing</span></a></li>
-				               <li><a href='#'><span>Cloud</span></a></li>
-				               <li><a href='#'><span>Network Services</span></a></li>
-				               <li class='last'><a href='#'><span>Technology Evangenlization</span></a></li>
-				            </ul>
-				         </li>
-				         <li class='has-sub'><a href="#it_services">IT Services</a>
-				            <ul>
-				               <li><a href='#'><span>Product Implementation</span></a></li>
-				               <li><a href='#'><span>Cloud Deployment</span></a></li>
-				               <li><a href='#'><span>Support & Maintenance</span></a></li>
-				               <li class='last'><a href='#'><span>Training & Enablement</span></a></li>
-				            </ul>
-				         </li>
-				         <li class='has-sub'><a href="#statregic_reselling">Strategic Reselling</a>
-				            <ul>
-				               <li><a href='#'><span>Software Licenses</span></a></li>
-				               <li class='last'><a href='#'><span>Network & Software Appliances</span></a></li>
-				            </ul>
-				         </li>
-				      </ul>
-				   </li>
-				   <!-- <li><a href="#partners">Partners</a></li> -->
-				   
-                    <li><a href="#events">New & Events</a></li>
-                    <li><a href="#career">Career</a></li>
-                    <li><a href="#blogs">Blogs</a></li>
-                    <li ng-show="$root.AuthService.isAdmin()"><a href="#admin">Admin</a></li>
-                    <li class='last'><a href="#contact">Contact</a></li>
-				</ul>
-			</div>
-			
-			<div class="navbar-collapse collapse">				
-			    <ul ng-controller="logoutController" class="nav navbar-nav pull-right">
-			    	<li><a  href="#licences"><i><b>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</b></i></a></li>
-			      	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login"><i><b>Login</b></i></a></li>
-			      	<li ng-show="$root.AuthService.isLoggedIn">
-			      		<a ng-click='logout()' ><i><b>Logout</b></i></a>
-			      	</li>
-			    </ul>
-			</div>
-            <!-- /.navbar-collapse -->
-        <!-- </div> -->
-        <!-- /.container -->
-    </nav>
-    <!-- <div w3-include-HTML="main.html"></div> -->
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" style="background-color: white">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#main"><img src="img/logo.jpg" style="width:60%;"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#about"><b>The Company</b></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#services"><b>Services</b> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#services">Advisory</a></li>
+            <li><a href="#services">IT Services</a></li>
+            <li><a href="#services">Strategic Reselling</a></li>
+          </ul>
+        </li>
+        <li><a href="#events"><b>New & Events</b></a></li>
+        <li><a href="#career"><b>Join Us</b></a></li>
+        <li><a href="#blogs"><b>Blogs</b></a></li>
+        <li ng-show="$root.AuthService.isAdmin()"><a href="#admin"><b>Admin</b></a></li>
+        <li ng-show="$root.AuthService.isLoggedIn"><a href="#licences" title="IT Asset Management Portal"><b>ITAMP</b></a></li>
+        <li class='last'><a href="#contact"><b>Contact Us</b></a></li>
+      </ul>
+      <ul ng-controller="logoutController" class="nav navbar-nav navbar-right" style="text-color: gray">        
+        <!-- <li><a href="#licences"><span class="glyphicon"></span><i><b>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</b></i></a></li> -->
+        <li><a href="#licences" ><span class="glyphicon"></span><i><b>{{$root.AuthService.getUserName()}}</b></i></a></li>
+      	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login"><span class="glyphicon glyphicon-user"></span><i><b>Customer Login</b></i></a></li>
+      	<li ng-show="$root.AuthService.isLoggedIn"><a href="#" ng-click='logout()' ><span class="glyphicon glyphicon-user"></span><i><b>Logout</b></i></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- <div w3-include-HTML="main.html"></div> -->
     <div ng-controller="mainController" >
       <ul style='display:{{$root.currentPage}}' class="anim-slider">
 

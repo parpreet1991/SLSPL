@@ -125,7 +125,7 @@
   max-width: 100%;
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+/* @media (min-width: 481px) and (max-width: 767px) {
   .responsive-slider .slides ul li .slide-body .caption.core {
     width: 100%;
   }
@@ -134,15 +134,16 @@
   .responsive-slider .slides ul li .slide-body .caption.core {
     width: 33%;
   }
-}
+} */
 .responsive-slider .slides ul li .slide-body .caption.passion {
   top: 35%;
   left: 51%;
+  //position: relative;
 }
-.responsive-slider .slides ul li .slide-body .caption.passion img {
+/* .responsive-slider .slides ul li .slide-body .caption.passion img {
   width: 33%;
   max-width: 100%;
-}
+} */
 .responsive-slider .slides ul li .slide-body .caption.execution {
   top: 5%;
   left: 51.3%;
