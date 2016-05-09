@@ -116,97 +116,113 @@
 }
 
 
-.responsive-slider .slides ul li .slide-body .caption.core {
-  top: 41.1%;
-  left: 59.2%;
+.responsive-slider .slides ul li .slide-body .caption.1 {
+  top: 66%;
+  right: 12%;
+  width: 33%;
 }
-.responsive-slider .slides ul li .slide-body .caption.core img {
+.responsive-slider .slides ul li .slide-body .caption.1 img {
   
   max-width: 100%;
 }
 
-/* @media (min-width: 481px) and (max-width: 767px) {
-  .responsive-slider .slides ul li .slide-body .caption.core {
+
+.responsive-slider .slides ul li .slide-body .caption.2 {
+  top: 66%;
+  right: 12%;
+  width: 33%;
+}
+.responsive-slider .slides ul li .slide-body .caption.2 img {
+  
+  max-width: 100%;
+}
+
+
+.responsive-slider .slides ul li .slide-body .caption.3 {
+  top: 66%;
+  right: 12%;
+  width: 33%;
+}
+.responsive-slider .slides ul li .slide-body .caption.3 img {
+  
+  max-width: 100%;
+}
+
+
+.responsive-slider .slides ul li .slide-body .caption.4 {
+  top: 66%;
+  right: 12%;
+  width: 33%;
+}
+.responsive-slider .slides ul li .slide-body .caption.4 img {
+  
+  max-width: 100%;
+}
+
+
+.responsive-slider .slides ul li .slide-body .caption.5 {
+  top: 66%;
+  right: 12%;
+  width: 33%;
+}
+.responsive-slider .slides ul li .slide-body .caption.5 img {
+  
+  max-width: 100%;
+}
+
+
+.responsive-slider .slides ul li .slide-body .caption.6 {
+  top: 66%;
+  right: 12%;
+  width: 33%;
+}
+.responsive-slider .slides ul li .slide-body .caption.6 img {
+  
+  max-width: 100%;
+}
+
+
+.responsive-slider .slides ul li .slide-body .caption.7 {
+  top: 66%;
+  right: 12%;
+  width: 33%;
+}
+.responsive-slider .slides ul li .slide-body .caption.7 img {
+  
+  max-width: 100%;
+}
+
+
+.responsive-slider .slides ul li .slide-body .caption.8 {
+  top: 66%;
+  right: 12%;
+  width: 33%;
+}
+.responsive-slider .slides ul li .slide-body .caption.8 img {
+  
+  max-width: 100%;
+}
+
+
+.responsive-slider .slides ul li .slide-body .caption.9 {
+  top: 66%;
+  right: 12%;
+  width: 33%;
+}
+.responsive-slider .slides ul li .slide-body .caption.9 img {
+  
+  max-width: 100%;
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .responsive-slider .slides ul li .slide-body .caption.9 {
     width: 100%;
   }
 }
 @media (max-width: 480px) {
-  .responsive-slider .slides ul li .slide-body .caption.core {
+  .responsive-slider .slides ul li .slide-body .caption.9 {
     width: 33%;
   }
-} */
-.responsive-slider .slides ul li .slide-body .caption.passion {
-  top: 35%;
-  left: 51%;
-  //position: relative;
-}
-/* .responsive-slider .slides ul li .slide-body .caption.passion img {
-  width: 33%;
-  max-width: 100%;
-} */
-.responsive-slider .slides ul li .slide-body .caption.execution {
-  top: 5%;
-  left: 51.3%;
-}
-.responsive-slider .slides ul li .slide-body .caption.execution img {
-  width: 33%;
-  max-width: 100%;
-}
-.responsive-slider .slides ul li .slide-body .caption.customer {
-  top: 12.5%;
-  left: 58.5%;
-}
-.responsive-slider .slides ul li .slide-body .caption.customer img {
-  width: 33%;
-  max-width: 100%;
-}
-.responsive-slider .slides ul li .slide-body .caption.integrity {
-  top: 12.4%;
-  left: 64.7%;
-}
-.responsive-slider .slides ul li .slide-body .caption.integrity img {
-  width: 33%;
-  max-width: 100%;
-}
-.responsive-slider .slides ul li .slide-body .caption.transparency {
-  top: 38%;
-  left: 66.8%;
-}
-.responsive-slider .slides ul li .slide-body .caption.transparency img {
-  width: 33%;
-  max-width: 100%;
-}
-.responsive-slider .slides ul li .slide-body .caption.respact {
-  top: 60.9%;
-  left: 64.6%;
-}
-.responsive-slider .slides ul li .slide-body .caption.respact img {
-  width: 33%;
-  max-width: 100%;
-}
-.responsive-slider .slides ul li .slide-body .caption.agility {
-  top: 69.8%;
-  left: 58.3%;
-}
-.responsive-slider .slides ul li .slide-body .caption.agility img {
-  width: 33%;
-  max-width: 100%;
-}
-.responsive-slider .slides ul li .slide-body .caption.trust {
-  top: 60.9%;
-  left: 52.1%;
-}
-.responsive-slider .slides ul li .slide-body .caption.trust img {
-  width: 33%;
-  max-width: 100%;
-}
-.responsive-slider .slides ul li .slide-body .caption.dot {
-  top: 60.9%;
-  left: 52.1%;
-}
-.responsive-slider .slides ul li .slide-body .caption.dot img {
-  width: 33%;
-  max-width: 100%;
 }
 
 .responsive-slider .slider-control {

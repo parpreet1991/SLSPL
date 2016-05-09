@@ -16,26 +16,24 @@
 .anim-slide{opacity: 0;}
 .anim-slide-this{opacity: 1;}
 
+.anim-slide img#slide_2_1{left: 0%;top: 25%; opacity: 0.6;}
+.anim-slide img#slide_2_2{left: 0%;top: 45%; opacity: 0.6;}
+.anim-slide img#c1{left: 60%;top: 5%; }
+.anim-slide img#c2{left: 60%;top: 5%; }
+.anim-slide img#c3{left: 60%;top: 5%; }
+.anim-slide img#c4{left: 60%;top: 5%; }
+.anim-slide img#c5{left: 60%;top: 5%; }
+.anim-slide img#c6{left: 60%;top: 5%; }
+.anim-slide img#c7{left: 60%;top: 5%; }
+.anim-slide img#c8{left: 60%;top: 5%; }
+.anim-slide img#c9{left: 60%;top: 5%; }
+.anim-slide img#c10{left: 60%;top: 5%; }
 
-.anim-slide h2#line1{left: 5%;top: 15%; }
-.anim-slide h2#line2{left: 5%;top: 25%;}
-.anim-slide h2#line3{left: 5%;top: 35%;}
-.anim-slide img#c1{left: 59.2%;top: 41.1%; }
-.anim-slide img#c2{left: 52%;top: 37.6%;}
-.anim-slide img#c3{left: 52.1%;top: 12.6%;}
-.anim-slide img#c4{left: 58.5%;top: 12.5%;}
-.anim-slide img#c5{left: 64.7%;top: 12.4%;}
-.anim-slide img#c6{left: 66.8%;top: 38%;}
-.anim-slide img#c7{left: 64.6%;top: 60.9%;}
-.anim-slide img#c8{left: 58.3%;top: 69.8%;}
-.anim-slide img#c9{left: 52.1%;top: 60.9%;}
-.anim-slide img#c10{left: 52%;top: 61%;}
-
-li.anim-slide:nth-of-type(1){background:#fff url("../img/aboutus.png") 100%/cover;}
-li.anim-slide:nth-of-type(2){background:#fff url("../img/slide2.jpg") 100%/cover;}
+li.anim-slide:nth-of-type(1){background:#fff url("../img/aboutus.png") ; width: 100%}
+li.anim-slide:nth-of-type(2){background:#fff url("../img/slide2.jpg") ; width: 100%}
 
 
-li.anim-slide:nth-of-type(2)>h1
+/* li.anim-slide:nth-of-type(2)>h1
 {
 	position: static;
 	display: inline-block;
@@ -45,15 +43,15 @@ li.anim-slide:nth-of-type(2)>h1
 }
 h1#looks{background-color:#3498db;color:#fff;}
 h1#amazing{background-color:#34495e;color:#fff;margin: 0px -5px;}
-h1#place{background-color:#3498db;color:#fff;}
+h1#place{background-color:#3498db;color:#fff;} */
 
-li.anim-slide:nth-of-type(2)>h2
+/* li.anim-slide:nth-of-type(2)>h2
 {
 	margin: 0;
-	font-size:25px;
+	font-size:20px;
 	color: #000;
 	padding: 0px 5px;
-}
+} */
 
 /* li.anim-slide:nth-of-type(2)>div
 {

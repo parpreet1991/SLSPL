@@ -21,9 +21,11 @@
 
     <!-- Bootstrap Core CSS -->
     <!-- Plugin css -->
+		<link rel="stylesheet" href="css/jquery.animateSlider.css">
 		<!-- Demo css -->
 		<link rel="stylesheet" href="css/font-awesome.css">
 	    <link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/demo2.css">
 
     <!-- Custom CSS -->
     <link href="css/modern-business.css" rel="stylesheet">
@@ -34,6 +36,8 @@
     <!-- <link rel="stylesheet" href="css/top-bar.css"> -->
 	
 	<script src="js/modernizr.js"></script>	
+	<!-- Load the plugin -->
+	<script src="js/jquery.animateSlider.js"></script>
     
     
 	
@@ -52,6 +56,11 @@
     <script src="lib/ui-bootstrap-tpls-1.2.4.min.js"></script>
 		<link rel="stylesheet" href="css/signin.css">
 		
+		<!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
+		
     <link href="css/bootstrap.min.css" rel="stylesheet">
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -66,6 +75,20 @@
 			.navbar-default .navbar-nav > li > a:focus {
 			    color: black;
 			}
+			/* .carousel-inner{
+			  width: 120%;
+			  margin-left: -10%;
+			  height: 350px;
+			}
+			
+			@media (min-width: 768px){
+			  .carousel-inner{
+			    width: 100%;
+			    margin: 0;
+			  	margin-top: 1%;
+			  }
+			} */
+			
 			 .navbar-fixed-top {
 			    min-height: 70px;
 			}
@@ -80,9 +103,8 @@
 			        max-height: 50px;
 			    }
 			}
-			
 		</style>
-		<!-- <script language="javascript">
+		<script language="javascript">
 			document.onmousedown=disableclick;
 			status="Right Click Disabled";
 			function disableclick(event)
@@ -93,13 +115,16 @@
 			     return false;    
 			   }
 			}
-		</script> -->
-    <link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
-     <link href="css/responsive-slider.css" rel="stylesheet">
+		</script>
+		<!-- Animate.css library -->
+		<link href="css/animate.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+	<script src="js/jquery.animateSlider.js"></script>
+		
 </head>
 
-<!-- <body oncontextmenu="return false"> -->
-<body>
+<body oncontextmenu="return false">
 
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" style="background-color: white">
   <div class="container-fluid">
@@ -139,121 +164,55 @@
   </div>
 </nav>
 
-<div ng-controller="mainController" class="container">
+<!-- <div w3-include-HTML="main.html"></div> -->
+    <div ng-controller="mainController" >
+      <ul style='display:{{$root.currentPage}}' class="anim-slider">
 
-<div class="responsive-slider " data-spy="responsive-slider" data-autoplay="true" >
-        <div class="slides" data-group="slides">
-      		<ul>
-  	    		<li>
-	              <div class="slide-body" data-group="slide" >
-	                <img src="img/aboutus.png" style="width: 100% !important">
-	              </div>
-  	    		</li>
-  	    		<li>
-	              <div class="slide-body" data-group="slide">
-	                <img src="../img/slide2.jpg" style="width: 100% !important">
-	                <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500" data-length="300">
-	                  <h2>We Believe In… (Core Values)</h2>
-	                </div>
-	                
-	                  <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="600" data-length="300">
-		                  <p>Core Values are Values that are Core to each one of us</p>
-		                  <p>It's not necessary to have core values but it's exemplary to live by them</p>
-		                  <p>Business without Core Values is like Life without Oxygen</p>
-	                  </div>
-	                <div class="caption core" data-animate="slideAppearDownToUp" data-delay="200">
-	                  <img src="../img/core.png">
-	                </div>
-	                <div class="caption passion" data-animate="slideAppearUpToDown" data-delay="300">
-	                  <img src="../img/passion.png">
-	                </div>
-	                <div class="caption execution" data-animate="slideAppearUpToDown" data-delay="400">
-	                  <img src="../img/execution.png">
-	                </div>
-	                <div class="caption customer" data-animate="slideAppearUpToDown" data-delay="500">
-	                  <img src="../img/customer.png">
-	                </div>
-	                <div class="caption integrity" data-animate="slideAppearUpToDown" data-delay="600">
-	                  <img src="../img/integrity.png">
-	                </div>
-	                <div class="caption transparency" data-animate="slideAppearUpToDown" data-delay="700">
-	                  <img src="../img/transparency.png">
-	                </div>
-	                <div class="caption respact" data-animate="slideAppearUpToDown" data-delay="800">
-	                  <img src="../img/respact.png">
-	                </div>
-	                <div class="caption agility" data-animate="slideAppearUpToDown" data-delay="900">
-	                  <img src="../img/agility.png">
-	                </div>
-	                <div class="caption trust" data-animate="slideAppearUpToDown" data-delay="1000">
-	                  <img src="../img/trust.png">
-	                </div>
-	                <div class="caption dot" data-animate="slideAppearUpToDown" data-delay="1100">
-	                  <img src="../img/dot.jpg">
-	                </div>
-	              </div>
-  	    		</li>
-  	    		<li>
-	              <div class="slide-body" data-group="slide">
-	                <img src="../img/slide2.jpg" style="width: 100% !important">
-	                <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500" data-length="300">
-	                  <h2>Custom animations</h2>
-	                  <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">For any caption you use!</div>
-	                </div>
-	                <div class="caption img-jquery" data-animate="slideAppearDownToUp" data-delay="200">
-	                  <img src="../img/jquery.png">
-	                </div>
-	              </div>
-  	    		</li>
-  	    	</ul>
-        </div>
-        <a class="slider-control left" href="#" data-jump="prev"><i class="fa fa-angle-left fa-3x"></i></a>
-        <a class="slider-control right" href="#" data-jump="next"><i class="fa fa-angle-right fa-3x"></i></a>
-        <div class="pages">
-          <a class="page" href="#" data-jump-to="1">1</a>
-          <a class="page" href="#" data-jump-to="2">2</a>
-          <a class="page" href="#" data-jump-to="3">3</a>
-        </div>
-    	</div>
+		<!-- Slide No1 -->
+		<li class="anim-slide animated fadeOutLeftBig anim-slide-this">
+			<!-- <font alt="f1" id="f1"  face="centaur" size="20">
+			<p>To enable business leaders with<br/>forward-thinking and simplified approch<br/>that helps drive efficient and effective IT decisions</p>
+			</font> -->
+		</li>
 
-	<!-- <div id="carousel-example" class="carousel slide" data-ride="carousel" style='display:{{$root.currentPage}}'>
-	  <ol class="carousel-indicators">
-	    <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-	    <li data-target="#carousel-example" data-slide-to="1"></li>
-	    <li data-target="#carousel-example" data-slide-to="2"></li>
-	  </ol>
-	
-	  <div class="carousel-inner">
-	    <div class="item active">
-	      <a href="#"><img src="img/aboutus.png"  style="width:100%;"/></a>
-	      <div class="carousel-caption">
-	        <p>To enable business leaders with forward-thinking and simplified approach that helps drive efficient and effective IT decisions</p>
-	      </div>
-	    </div>
-	    <div class="item">
-	      <a href="#"><img src="img/main_Page_2.jpg" /></a>
-	      <div class="carousel-caption">
-	        <h3>Meow</h3>
-	        <p>Just Kitten Around</p>
-	      </div>
-	    </div>
-	    <div class="item">
-	      <a href="#"><img src="http://placekitten.com/1600/600" /></a>
-	      <div class="carousel-caption">
-	        <h3>Meow</h3>
-	        <p>Just Kitten Around</p>
-	      </div>
-	    </div>
-	  </div>
-	
-	  <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-	    <span class="glyphicon glyphicon-chevron-left"></span>
-	  </a>
-	  <a class="right carousel-control" href="#carousel-example" data-slide="next">
-	    <span class="glyphicon glyphicon-chevron-right"></span>
-	  </a>
-	</div> -->
-</div>
+		<!-- Slide No2 -->
+		<li class="anim-slide animated fadeOutLeftBig anim-slide-this">
+			<!-- <h1 id="looks" class="animated">We Believe</h1>
+			<h1 id="amazing" class="animated">In…</h1>
+			<h1 id="place" class="animated">(Core Values)</h1>
+			
+			<h2 id="line1" class="animated">Core Values are Values that are Core to each one of us</h2>
+			<h2 id="line2" class="animated">It's not necessary to have core values but it's exemplary to live by them</h2>
+			<h2 id="line3" class="animated">Business without Core Values is like Life without Oxygen</h2> -->
+			<img src="img/slide_2_1.png" alt="slide_2_1" id="slide_2_1" class="img-responsive">
+			<img src="img/slide_2_2.png" alt="slide_2_2" id="slide_2_2" class="img-responsive">
+			
+			<img src="img/1.png" alt="c1" id="c1" class="img-responsive">
+			<img src="img/2.png" alt="c2" id="c2" class="img-responsive">
+			<img src="img/3.png" alt="c3" id="c3" class="img-responsive">
+			<img src="img/4.png" alt="c4" id="c4" class="img-responsive">
+			<img src="img/5.png" alt="c5" id="c5" class="img-responsive">
+			<img src="img/6.png" alt="c6" id="c6" class="img-responsive">
+			<img src="img/7.png" alt="c7" id="c7" class="img-responsive">
+			<img src="img/8.png" alt="c8" id="c8" class="img-responsive">
+			<img src="img/9.png" alt="c9" id="c9" class="img-responsive">
+			<img src="img/dot.jpg" alt="dot" id="dot" class="img-responsive">
+		</li>
+
+		<!-- Arrows -->
+		<nav class="anim-arrows">
+			<span class="anim-arrows-prev">
+				<i class="fa fa-angle-left fa-3x"></i>
+			</span>
+			<span class="anim-arrows-next">
+				<i class="fa fa-angle-right fa-3x"></i>
+			</span>
+		</nav>
+		<!-- Dynamically created dots -->
+		
+		<div class="anim-dots"><span class=""></span><span class="anim-dots-this"></span></div>
+	</ul>
+	</div>
     
    
     
@@ -267,17 +226,55 @@
         <footer>
             <div class="row">
             	<img class="img-responsive img-hover" style="width:100%; padding-top:5px" src="img/footer_line.JPG"/>
-            	<div class="col-lg-8">
-            		<img class="img-responsive img-hover pull-right" style="width:40%; padding-top:5px" src="img/footer_image.JPG"/>
+            	<div class="col-lg-4">
+                    
+                </div>
+            	<div class="col-lg-5">
+            		<img class="img-responsive img-hover" style="width:60%; padding-top:5px" src="img/footer_image.JPG"/>
             	</div>
-                <div class="col-lg-4" style="align: right">
-                    <p class="pull-right">Copyright &copy; Silver Leaf Solutions 2016</p>
+                <div class="col-lg-3" style="align: right">
+                    <p>Copyright &copy; Silver Leaf Solutions 2016</p>
                 </div>
             </div>
         </footer>
+    
+    <!-- Bower Depedencies -->
+		<!-- <script src="js/jquery.min.js"></script>
+
+    Bootstrap Core JavaScript
+    <script src="js/bootstrap.min.js"></script> -->
+    
+	<!-- <script src="lib/w3-include-HTML.js"></script> -->
+		<script>
+		 $(".anim-slider").animateSlider(
+		 	{
+		 		autoplay	:true,
+		 		interval	:5500,
+		 		animations 	: 
+				{
+					0	: 	//Slide No1
+					{
+						li	: {show: "fadeIn", hide: "fadeOutLeftBig", delayShow: "delay0-5s" }
+					},
+					1	: 
+					{
+						li	: {show: "fadeIn", hide: "fadeOutLeftBig", delayShow: "delay0-5s" } ,
+	 					"#slide_2_1":{show: "fadeIn", hide: "flipOutY", delayShow : "delay1s"},
+	 					"#slide_2_2":{show: "fadeIn", hide: "flipOutY", delayShow : "delay2s"},
+						"#c1" :{show: "zoomIn", hide: "slideOutLeft",delayShow : "delay3s"},
+						"#c2" :{show: "bounceInLeft", hide: "slideOutLeft",delayShow : "delay3-5s"},
+						"#c3" :{show : "bounceInLeft", hide: "flipOutY", delayShow : "delay4s"},
+						"#c4" :{show : "bounceInUp", hide: "flipOutY", delayShow : "delay4-5s"},
+						"#c5" :{show : "bounceInRight", hide: "flipOutY", delayShow : "delay5s"},
+						"#c6" :{show : "bounceInRight", hide: "flipOutY", delayShow : "delay5-5s"},
+						"#c7" :{show : "bounceInDown", hide: "flipOutY", delayShow : "delay6s"},
+						"#c8" :{show : "bounceInDown", hide: "flipOutY", delayShow : "delay6-5s"},
+						"#c9" :{show : "bounceInDown", hide: "flipOutY", delayShow : "delay6-5s"},
+						"#dot" :{show : "bounceInDown", hide: "bounceOutDown", delayShow : "delay8s"},
+					}
+				}
+		 	});
+		</script>
 </body>
-	<script src="js/jquery.js"></script>
-    <script src="js/jquery.event.move.js"></script>
-    <script src="js/responsive-slider.js"></script>
 
 </html>

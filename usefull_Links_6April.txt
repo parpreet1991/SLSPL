@@ -1,0 +1,14 @@
+https://www.sitepoint.com/community/t/spicing-up-the-bootstrap-carousel-with-css3-animations/114965/10
+http://shane-heyns.github.io/jquery.animateSlider.js/
+http://www.sitepoint.com/bootstrap-carousel-with-css3-animations/
+
+Animate Plus:
+http://www.jqueryscript.net/animation/Animate-Html-Elements-with-jQuery-animate-css-Animate-Plus-js.html
+https://github.com/bendc/animateplus
+https://github.com/telmomarques/animate-plus.js/
+
+Image Download:
+http://www.stockphotosforfree.com/member/dashboard/
+
+Remove background
+http://editphotosforfree.com/photoapps/remove-background-from-image-online/#
