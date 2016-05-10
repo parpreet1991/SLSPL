@@ -93,16 +93,33 @@
 			    min-height: 70px;
 			}
 			
-			.navbar-fixed-top .navbar-collapse {
+			 .navbar-fixed-top .navbar-collapse {
 			    max-height: 80px;
 			    margin-top: 1%;
-			}
+			} 
 			
+			.navbar-inverse .navbar-toggle {
+			    background-color: #333;
+			}
+			.anim-dots{
+				z-index: 1000 !important;
+			}
+			.anim-dots span{
+				background: gray;
+			}
 			@media (min-width: 768px) {
 			    .navbar-fixed-top .navbar-collapse {
 			        max-height: 50px;
 			    }
 			}
+			@media (max-width: 480px) {
+				.navbar-fixed-top .navbar-collapse {
+				    max-height: 100% !important;
+				    margin-top: 4%;
+				    overflow: hidden;
+				    z-index: 2000;
+				} 
+  			 }
 		</style>
 		<script language="javascript">
 			document.onmousedown=disableclick;
@@ -147,7 +164,7 @@
             <li><a href="#services">Strategic Reselling</a></li>
           </ul>
         </li>
-        <li><a href="#events"><b>New & Events</b></a></li>
+        <!-- <li><a href="#events"><b>New & Events</b></a></li> -->
         <li><a href="#career"><b>Join Us</b></a></li>
         <li><a href="#blogs"><b>Blogs</b></a></li>
         <li ng-show="$root.AuthService.isAdmin()"><a href="#admin"><b>Admin</b></a></li>
@@ -157,8 +174,8 @@
       <ul ng-controller="logoutController" class="nav navbar-nav navbar-right" style="text-color: gray">        
         <!-- <li><a href="#licences"><span class="glyphicon"></span><i><b>Welcome {{$root.AuthService.isLoggedIn?$root.AuthService.getUserName():"Guest"}}</b></i></a></li> -->
         <li><a href="#licences" ><span class="glyphicon"></span><i><b>{{$root.AuthService.getUserName()}}</b></i></a></li>
-      	<li ng-show="!$root.AuthService.isLoggedIn"><a href="#login"><span class="glyphicon glyphicon-user"></span><i><b>Customer Login</b></i></a></li>
-      	<li ng-show="$root.AuthService.isLoggedIn"><a href="#" ng-click='logout()' ><span class="glyphicon glyphicon-user"></span><i><b>Logout</b></i></a></li>
+      	<li id="login"><a href="#login"><span class="glyphicon glyphicon-user"></span><i><b>Customer Login</b></i></a></li>
+      	<li id="logout" style="display: none"><a href="#" ng-click='logout()' ><span class="glyphicon glyphicon-user"></span><i><b>Logout</b></i></a></li>
       </ul>
     </div>
   </div>
@@ -233,7 +250,7 @@
             		<img class="img-responsive img-hover" style="width:60%; padding-top:5px" src="img/footer_image.JPG"/>
             	</div>
                 <div class="col-lg-3" style="align: right">
-                    <p>Copyright &copy; Silver Leaf Solutions India Pvt. Ltd. 2016</p>
+                    <p>Copyright &copy; Silver Leaf Solutions Pvt. Ltd. 2016</p>
                 </div>
             </div>
         </footer>

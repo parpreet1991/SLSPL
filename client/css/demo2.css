@@ -1,4 +1,3 @@
-
 .fa-angle-left:before {
 	content: "\f104";
   color: black;
@@ -7,7 +6,26 @@
   content: "\f105";
   color: black;
 }
-
+.list-style{
+	list-style: none;
+	font-weight: 700;
+	padding: 0px;
+}
+.list-style li{
+	margin-bottom: 9px;
+	padding: 10px;
+}
+.list-style li:nth-child(n){
+	background: #66cc99;
+	
+}
+.list-style li:nth-child(2n){
+	background: #66b3ff;
+	
+}
+.panel-body{
+	padding: 10px !important;
+}
 .anim-slider{background-color: #fff;}
 
 

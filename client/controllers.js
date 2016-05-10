@@ -21,6 +21,8 @@ angular.module('myApp').controller('loginController',
           $scope.disabled = false;
           $scope.loginForm = {};
           $rootScope.AuthService = AuthService;
+          jQuery('#login').hide();
+      	jQuery('#logout').show();
         })
         // handle error
         .catch(function () {
@@ -45,6 +47,8 @@ angular.module('myApp').controller('logoutController',
       // call logout from service
       AuthService.logout()
         .then(function () {
+        	jQuery('#login').show();
+        	jQuery('#logout').hide();
           $location.path('/login');
         });
 
