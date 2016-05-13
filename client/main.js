@@ -48,8 +48,7 @@ myApp.config(function ($routeProvider) {
     })
     .when('/services', {
     	templateUrl: 'partials/services.html',
-      controller: 'servicesController',
-      access: {restricted: false}
+      controller: 'servicesController'
     })
     .when('/partners', {
     	templateUrl: 'partials/partners.html',

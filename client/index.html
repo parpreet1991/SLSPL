@@ -12,7 +12,8 @@
 
     <title>Silver Leaf Solutions</title>
     <script src="lib/w3-include-HTML.js"></script>
-    <!-- Angular -->    
+    <!-- Angular -->  
+    <script src="js/jquery.min.js"></script>  
 	<script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular/angular-route.min.js"></script>
   <script src="lib/angular/angular-sanitize.min.js"></script>
@@ -55,14 +56,11 @@
 	
     <script src="lib/ui-bootstrap-tpls-1.2.4.min.js"></script>
 		<link rel="stylesheet" href="css/signin.css">
-		
-		<!-- Start WOWSlider.com HEAD section -->
-<link rel="stylesheet" type="text/css" href="engine1/style.css" />
-<script type="text/javascript" src="engine1/jquery.js"></script>
+
 <!-- End WOWSlider.com HEAD section -->
 		
     <link href="css/bootstrap.min.css" rel="stylesheet">
-		<script src="js/jquery.min.js"></script>
+		
 		<script src="js/bootstrap.min.js"></script>
 		<style type="text/css">
 			.text-center {
@@ -159,9 +157,9 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#services"><b>Services</b> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#services">Advisory</a></li>
-            <li><a href="#services">IT Services</a></li>
-            <li><a href="#services">Strategic Reselling</a></li>
+            <li><a id="advSer" href="#services" >Advisory</a></li>
+            <li><a id="itSer" href="#services" >IT Services</a></li>
+            <li><a id="stSer" href="#services" >Strategic Reselling</a></li>
           </ul>
         </li>
         <!-- <li><a href="#events"><b>New & Events</b></a></li> -->
@@ -187,22 +185,10 @@
 
 		<!-- Slide No1 -->
 		<li class="anim-slide animated fadeOutLeftBig anim-slide-this">
-			<!-- <font alt="f1" id="f1"  face="centaur" size="20">
-			<p>To enable business leaders with<br/>forward-thinking and simplified approch<br/>that helps drive efficient and effective IT decisions</p>
-			</font> -->
 		</li>
 
 		<!-- Slide No2 -->
 		<li class="anim-slide animated fadeOutLeftBig anim-slide-this">
-			<!-- <h1 id="looks" class="animated">We Believe</h1>
-			<h1 id="amazing" class="animated">In…</h1>
-			<h1 id="place" class="animated">(Core Values)</h1>
-			
-			<h2 id="line1" class="animated">Core Values are Values that are Core to each one of us</h2>
-			<h2 id="line2" class="animated">It's not necessary to have core values but it's exemplary to live by them</h2>
-			<h2 id="line3" class="animated">Business without Core Values is like Life without Oxygen</h2> -->
-			<!-- <img src="img/slide_2_1.png" alt="slide_2_1" id="slide_2_1" class="img-responsive" style="width: 45%;">
-			<img src="img/slide_2_2.png" alt="slide_2_2" id="slide_2_2" class="img-responsive" style="width: 45%;"> -->
 			
 			<img src="img/1.png" alt="c1" id="c1" class="img-responsive" style="width: 22%;">
 			<img src="img/2.png" alt="c2" id="c2" class="img-responsive" style="width: 22%;">
@@ -254,14 +240,6 @@
                 </div>
             </div>
         </footer>
-    
-    <!-- Bower Depedencies -->
-		<!-- <script src="js/jquery.min.js"></script>
-
-    Bootstrap Core JavaScript
-    <script src="js/bootstrap.min.js"></script> -->
-    
-	<!-- <script src="lib/w3-include-HTML.js"></script> -->
 		<script>
 		 $(".anim-slider").animateSlider(
 		 	{
@@ -291,6 +269,30 @@
 					}
 				}
 		 	});
+		 $(document).ready(function(){
+			 $('#myNavbar ul li a').click(function(){
+				 $('#myNavbar').toggleClass('in');
+				 
+			 });	
+			 $('#advSer').click(function() {
+				 $('#advisory').addClass('active');
+				 $('#it').removeClass('active');
+				 $('#strategic').removeClass('active');
+				 $('#advisory a').click();
+			 });
+			 $('#itSer').click(function() {
+				 $('#advisory').removeClass('active');
+				 $('#it').addClass('active');
+				 $('#strategic').removeClass('active');
+				 $('#it a').click();
+			 });
+			 $('#stSer').click(function() {
+				 $('#advisory').removeClass('active');
+				 $('#it').removeClass('active');
+				 $('#strategic').addClass('active');
+				 $('#strategic a').click();
+			 });			
+		 });
 		</script>
 </body>
 
