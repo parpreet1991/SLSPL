@@ -7,12 +7,12 @@ var express = require('express'),
     Reply = require('../models/Reply.js');
     multer  = require('multer');
     var nodemailer = require('nodemailer');
-    
+
     var path = require('path');
     var mime = require('mime');
     var fs = require('fs');
 var fileName = "";
-   
+
 var errorHandler = function(err, res){
 	console.log("Error: "+err.stack)
 	res.statusCode = 500;
@@ -25,7 +25,7 @@ router.get('/Posts', function(req, res) {
 	  Post.find({isDeleted:'N', postType:'blog'}, function(err, posts) {
 		  if (err) errorHandler(err, res);
 		  res.status(200).json(posts);
-		});	  
+		});
 });
 
 router.get('/Events', function(req, res) {
@@ -33,7 +33,7 @@ router.get('/Events', function(req, res) {
 	  Post.find({isDeleted:'N', postType:'event'}, function(err, posts) {
 		  if (err) errorHandler(err, res);
 		  res.status(200).json(posts);
-		});	  
+		});
 });
 
 router.post('/fetchLicences', function(req, res) {
@@ -41,17 +41,17 @@ router.post('/fetchLicences', function(req, res) {
 	if (!req.isAuthenticated()) {
 		res.redirect('/login');
 	  }
-	  
+
 	if(req.query.isAdmin){
 	  Licence.find({isDeleted:'N'}, function(err, licences) {
 			  if (err) errorHandler(err, res);
 			  res.status(200).json(licences);
-		});	 
+		});
 	}else{
 		Licence.find({isDeleted:'N', assignedToUser: req.body.username}, function(err, licences) {
 		  if (err) errorHandler(err, res);
 		  res.status(200).json(licences);
-		});	
+		});
 	}
 });
 
@@ -70,7 +70,7 @@ console.log("mime type = "+mimetype+" File name = "+filename);
   filestream.pipe(res);
 	//res.download(req.body.path);
 });
-    
+
 router.get('/getPostDetails', function(req, res) {
 	// object of all the users
 	console.log('inside getPostDetails '+req.query.postId);
@@ -80,7 +80,7 @@ router.get('/getPostDetails', function(req, res) {
 		  console.log('inside getPostDetails');
 		});
 });
-    
+
 router.post('/PostData', function(req, res) {
 	var post = new Post({
 		  username: req.body.username,
@@ -96,7 +96,7 @@ router.post('/PostData', function(req, res) {
 			});
 		});
 });
-    
+
 router.post('/DeletePost', function(req, res) {
 	// get a user with ID of 1
 	Post.findById(req.body.postID, function(err, post) {
@@ -118,7 +118,7 @@ router.post('/DeletePost', function(req, res) {
 
 	});
 });
-    
+
 router.post('/Replies', function(req, res) {
 	Reply.find({postID: req.body.postID}, function(err, replies) {
 		  if (err) errorHandler(err, res);
@@ -126,12 +126,12 @@ router.post('/Replies', function(req, res) {
 		  res.status(200).json(replies);
 		});
 });
-    
+
 router.post('/PostReply', function(req, res) {
 	var reply = new Reply({
 			postID: req.body.postID,
 			username: req.body.username,
-			postDetails: req.body.replyDetails		  
+			postDetails: req.body.replyDetails
 		});
 	reply.save(function(err) {
 		  if (err) errorHandler(err, res);
@@ -240,18 +240,25 @@ router.post('/uploadLicence', uploadLicense, function(req, res) {
     	assignedToUser: req.body.assignedToUser,
     	assignedToName: req.body.assignedToName,
     	additionalInfo: req.body.additionalInfo,
-    	filePath: 'uploads/'+req.files['file'][0].filename,
-    	invoicePath: 'uploads/'+req.files['file1'][0].filename,
-    	otherPath: 'uploads/'+req.files['file2'][0].filename,
     	isDeleted: 'N'
   	});
+  	if(req.files['file'] != undefined){
+  		licence.filePath = 'uploads/'+req.files['file'][0].filename;
+	}
+	if(req.files['file1'] != undefined){
+	    licence.invoicePath= 'uploads/'+req.files['file1'][0].filename;
+	}
+	if(req.files['file2'] != undefined){
+    	licence.otherPath= 'uploads/'+req.files['file2'][0].filename;
+	}
+
 	console.log("licence : "+licence);
-	
+
 	licence.save(function(err) {
-    	  if (err) errorHandler(err, res);	      	  
-			
+    	  if (err) errorHandler(err, res);
+
     	});
-    
+
     Licence.find({isDeleted:'N'}, function(err, licences) {
 		  if (err) errorHandler(err, res);
 		  res.status(200).json({licences: licences});
@@ -288,7 +295,7 @@ var sendEmail = function(toEmail, emailSubject, content){
        	  }
        	  smtpTransport.close();
        	});
-} 
+}
 
 /** API path that will save contact */
 router.post('/ContactSave', function(req, res) {
@@ -299,8 +306,8 @@ router.post('/ContactSave', function(req, res) {
 	  message: req.body.message,
 	  isDeleted: 'N'
 	});
-    sendEmail("info@silverleafsolutions.in", 
-    		"Contact Us Alert!", 
+    sendEmail("info@silverleafsolutions.in",
+    		"Contact Us Alert!",
     		"Name : "+contact.name+"<br/>"+
     		"From : "+contact.email+"<br/>"+
     		"Phone : "+contact.phone+"<br/><br/>"+

@@ -10,9 +10,9 @@
         </div>
         <!-- /.row -->
 		<div ng-show="licences.length<=0"><i><h2>No License Purchased</h2></i></div>
-        
+
         <table ng-show="licences.length>0" class = "table table-striped">
-		   
+
 		   <thead>
 		      <tr>
 		         <th>Date</th>
@@ -22,23 +22,23 @@
 		         <th>Agreements</th>
 		      </tr>
 		   </thead>
-		   
+
 		   <tbody>
 		      <tr ng-repeat = "licence in licences | orderBy:'-updated_at' track by $index">
 		         <td>{{licence.created_at | date:"MM/dd/yyyy"}}</td>
 		         <td>{{licence.displayInfo}}</td>
 		         <td>
-		         	<button ng-click="download(licence.filePath)">Download</button>
+		         	<button class="btn btn-primary active" ng-disabled = "licence.filePath.length == undefined" ng-click="download(licence.filePath)">Download</button>
 				</td>
 		         <td>
-		         	<button ng-click="download(licence.invoicePath)">Download</button>
+		         	<button class="btn btn-primary active" ng-disabled = "licence.invoicePath.length == undefined" ng-click="download(licence.invoicePath)">Download</button>
 				</td>
 		         <td>
-		         	<button ng-click="download(licence.otherPath)">Download</button>
+		         	<button class="btn btn-primary active" ng-disabled = "licence.otherPath.length == undefined" ng-click="download(licence.otherPath)">Download</button>
 				</td>
 		      </tr>
 		   </tbody>
-		   
+
 		</table>
 
     </div>

@@ -119,7 +119,7 @@ angular.module('myApp').controller('registerValidationController',
 					  $scope.errorMessage = response.data.message;
 						$scope.error = true;
 				  });
-			  
+
 		}]);
 
 
@@ -145,7 +145,7 @@ angular.module('myApp').controller('forgotPasswordController',
 							$scope.error = true;
 					  });
 			  }
-			  
+
 		}]);
 
 
@@ -155,15 +155,15 @@ angular.module('myApp').controller('validateForgotPasswordController',
 			  $rootScope.currentPage = "none";
 			  $scope.submit = function(){
 				  $http.post('/user/validateForgotPassword', {
-					  username: $scope.username, 
-					  password: $scope.password, 
-					  confirmPassword: $scope.confirmPassword, 
+					  username: $scope.username,
+					  password: $scope.password,
+					  confirmPassword: $scope.confirmPassword,
 					  token: $routeParams.token
-					  
+
 					  })
 				    // handle success
 				    .success(function (data, status) {
-				    	if(status == 200){ 
+				    	if(status == 200){
 					       	  $scope.success = true;
 					       	  $scope.successMessage = "Password reset is success, you can login now.";
 				        } else {
@@ -172,7 +172,7 @@ angular.module('myApp').controller('validateForgotPasswordController',
 				        }
 				    });
 			  }
-			  
+
 		}]);
 
 angular.module('myApp').controller('mainController',
@@ -218,12 +218,12 @@ angular.module('myApp').controller('blogPostController',
 
 angular.module('myApp').controller('adminController',
 		  ['$scope', '$rootScope','$location', 'AuthService',
-		  function ($scope, $rootScope, $location, AuthService) {			  
-			  $rootScope.currentPage = "none";			  
+		  function ($scope, $rootScope, $location, AuthService) {
+			  $rootScope.currentPage = "none";
 			  $scope.mytime = new Date();
 			  $scope.hstep = 1;
 			  $scope.mstep = 15;
-			  
+
 			  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 			  $scope.format = $scope.formats[0];
 			  $scope.altInputFormats = ['M!/d!/yyyy'];
@@ -231,12 +231,12 @@ angular.module('myApp').controller('adminController',
 			  $scope.popup1 = {
 			    opened: false
 			  };
-			  
+
 			  $scope.open1 = function() {
 				    $scope.popup1.opened = true;
 				  };
-				  
-				  
+
+
 
 
 			  $scope.dateOptions = {
@@ -253,7 +253,7 @@ angular.module('myApp').controller('adminController',
 			      mode = data.mode;
 			    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
 			  }
-			  
+
 			  $scope.status = {
 					    isopen: false
 					  };
@@ -276,7 +276,7 @@ angular.module('myApp').controller('adminController',
 
 function ListUsersCtrl($scope, $http)
 {
-	
+
 	// send a post request to the server
     $http.get('/user/userDetails', {})
       // handle success
@@ -295,7 +295,7 @@ function ListUsersCtrl($scope, $http)
 }
 
 function chatCtrl($scope, $http){
-	
+
 }
 
 
@@ -311,7 +311,7 @@ angular.module('myApp').controller('ShowBlogCtrl',
 	        	$scope.posts = data;
 	        }
 	      });
-  
+
  }]);
 
 angular.module('myApp').controller('PostDataCtrl',
@@ -329,15 +329,15 @@ angular.module('myApp').controller('PostDataCtrl',
 	        	$scope.posts = data;
 	        }
 	      });
-	    
-	
+
+
 	  var vm = this;
 	    vm.submit = function(postType){ //function to call on form submit
 	    if (vm.upload_form.file.$valid && vm.file) { //check if form is valid
 	        vm.upload(vm.file, postType); //call upload function
 	    }
 	}
-	
+
 	vm.upload = function (file, postType) {
 	    Upload.upload({
 	        url: '/post/upload', //webAPI exposed to upload the file
@@ -361,16 +361,16 @@ angular.module('myApp').controller('PostDataCtrl',
 	        console.log('Error status: ' + resp.status);
 	        $scope.error = true;
 	       	$scope.errorMessage = "Some problem occurred.";
-	    }, function (evt) { 
+	    }, function (evt) {
 	        console.log(evt);
 	        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
 	        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
 	        vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
 	        });
 	    };
-	    
-	    
-	  /*$scope.postData = function() 
+
+
+	  /*$scope.postData = function()
 	  {
 		  $scope.comment=true;
 		  $http.post('/post/PostData', {postDetails: $scope.post.postDetails, username: AuthService.getUserName()})
@@ -391,19 +391,19 @@ angular.module('myApp').controller('PostDataCtrl',
 	  $scope.modalPosts = [];
 	  $scope.post.postDetails = "";
 	  };
-	  
+
 	  $scope.showModal=function()
 	  {
 		  $scope.showModalWindow=true;
 	  };
-	  
+
 	  $scope.hideModal = function()
 	  {
 		  $scope.showModalWindow=false;
 		  $scope.modalPosts = [];
 		  $scope.post.postDetails = "";
 	  }*/
-  
+
  }]);
 
 angular.module('myApp').controller('EventDataCtrl',
@@ -425,13 +425,13 @@ angular.module('myApp').controller('ContactCtrl',
 		  ['$window', '$scope', '$rootScope', '$http', 'AuthService',
 		  function ($window, $scope, $rootScope, $http, AuthService) {
 			  $rootScope.currentPage = "none";
-	
+
 	  $scope.saveContact = function(){
 		  // send a post request to the server
 		$http.post('/post/ContactSave', {name: $scope.contact.name, phone: $scope.contact.phone, email: $scope.contact.email, message: $scope.contact.message})
 	    // handle success
 	    .success(function (data, status) {
-	    	if(status == 200){ 
+	    	if(status == 200){
 		       	  $scope.success = true;
 		       	  $scope.successMessage = "Message Sent.";
 		       	  document.getElementById('contactForm').reset();
@@ -448,14 +448,14 @@ angular.module('myApp').controller('CareerCtrl',
 		  ['Upload','$window', '$scope', '$rootScope', '$http', 'AuthService',
 		  function (Upload, $window, $scope, $rootScope, $http, AuthService) {
 			  $rootScope.currentPage = "none";
-	
+
 			  var vm = this;
 			    vm.submit = function(){ //function to call on form submit
 			    if (vm.upload_form.file.$valid && vm.file) { //check if form is valid
 			        vm.upload(vm.file); //call upload function
 			    }
 			}
-			
+
 			vm.upload = function (file) {
 			    Upload.upload({
 			        url: '/post/uploadResume', //webAPI exposed to upload the file
@@ -478,7 +478,7 @@ angular.module('myApp').controller('CareerCtrl',
 			        console.log('Error status: ' + resp.status);
 			        $scope.error = true;
 			       	$scope.errorMessage = "Some problem occurred.";
-			    }, function (evt) { 
+			    }, function (evt) {
 			        console.log(evt);
 			        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
 			        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
@@ -492,11 +492,11 @@ angular.module('myApp').controller('LicenceCtrl',
 		  ['Upload','$window', '$scope', '$rootScope', '$http', 'AuthService',
 		  function (Upload, $window, $scope, $rootScope, $http, AuthService) {
 			  $rootScope.currentPage = "none";
-			  
+
 			  $http.post('/post/fetchLicences', {username: AuthService.getUserName(), isAdmin: AuthService.isAdmin()})
 			// handle success
 			.success(function (data, status) {
-				if(status == 200){ 
+				if(status == 200){
 			       	  $scope.success = true;
 			       	  $scope.licences = data;
 			    } else {
@@ -504,24 +504,25 @@ angular.module('myApp').controller('LicenceCtrl',
 			       	$scope.errorMessage = "Some problem occurred.";
 			        }
 			    });
-			
+
 			  var vm = this;
 			    vm.submit = function(){ //function to call on form submit
-			if (vm.upload_form.file.$valid && vm.file && vm.upload_form.file1.$valid && vm.file1 && vm.upload_form.file2.$valid && vm.file2) { //check if form is valid
+			if ((vm.upload_form.file.$valid && vm.file) || (vm.upload_form.file1.$valid && vm.file1) || (vm.upload_form.file2.$valid && vm.file2)) { //check if form is valid
+
 			    vm.upload(vm.file, vm.file1, vm.file2); //call upload function
 			    }
 			}
-			
+
 			vm.upload = function (file, file1, file2) {
 			    Upload.upload({
 			        url: '/post/uploadLicence', //webAPI exposed to upload the file
-			        data:{file:file, fileName: file.name, file1:file1, fileName1: file.name1, file2:file2, fileName2: file.name2, displayInfo: $scope.licence.displayInfo, uploadedBy: AuthService.getUserName(), assignedToUser: $scope.licence.assignedToUser, assignedToName: $scope.licence.assignedToName, additionalInfo: $scope.licence.additionalInfo} //pass file as data, should be user ng-model
+			        data:{file:file,  file1:file1,  file2:file2,  displayInfo: $scope.licence.displayInfo, uploadedBy: AuthService.getUserName(), assignedToUser: $scope.licence.assignedToUser, assignedToName: $scope.licence.assignedToName, additionalInfo: $scope.licence.additionalInfo} //pass file as data, should be user ng-model
 			    }).then(function (resp) { //upload function returns a promise
 			        if(resp.status === 200){ //validate success
 				       	  $scope.success = true;
 				       	  $scope.successMessage = "Profile uploaded successfuly.";
 				       	  $scope.licences = resp.data.licences;
-				       	  
+
 			            //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
 			        } else {
 			        	$scope.error = true;
@@ -531,31 +532,31 @@ angular.module('myApp').controller('LicenceCtrl',
 			        console.log('Error status: ' + resp.status);
 			        $scope.error = true;
 			       	$scope.errorMessage = "Some problem occurred.";
-			    }, function (evt) { 
+			    }, function (evt) {
 			        console.log(evt);
 			        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
 			        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
 			        vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
 			        });
 			    };
-			    
+
 	$scope.download = function($path){
 		$http.post('/post/download', {path: $path},{responseType: 'arraybuffer'} ).
 		  success(function(data, status, headers, config) {
 		    //$window.open('/download'); //does the download
-			  
+
 			  var file = new Blob([ data ], {
                   type : 'application/pdf'
               });
               //trick to download store a file having its URL
               var fileURL = URL.createObjectURL(file);
               var a         = document.createElement('a');
-              a.href        = fileURL; 
+              a.href        = fileURL;
               a.target      = '_blank';
               a.download    = 'file.pdf';
               document.body.appendChild(a);
               a.click();
-			  
+
 		  }).
 		  error(function(data, status, headers, config) {
 		    console.log('ERROR: could not download file');
@@ -567,8 +568,8 @@ angular.module('myApp').controller('LicenceCtrl',
 
 
 function PostDataFooterCtrl($scope, $http, AuthService)
-{  
-  
+{
+
   $scope.comment=false;
   $scope.innerComment = [];
   $scope.datas=[];
@@ -576,7 +577,7 @@ function PostDataFooterCtrl($scope, $http, AuthService)
   $scope.innercmt=false;
   $scope.postRepBtn=true;
   $scope.selectedPost=null;
-	
+
 	  $scope.showInnerComment=function($index, post)
 	  {
 	    //console.log($index)
@@ -594,10 +595,10 @@ function PostDataFooterCtrl($scope, $http, AuthService)
 		      }
 		    });
 	  }
-	
+
 	  $scope.postReplied=function(txt1)
 	  {
-		  
+
 		// send a post request to the server
 		    $http.post('/post/PostReply', {postID: $scope.selectedPost._id, username: AuthService.getUserName(), replyDetails: txt1})
 		      // handle success
@@ -609,9 +610,9 @@ function PostDataFooterCtrl($scope, $http, AuthService)
 	    $scope.innercmt=true;
 	    $scope.txt1='';
 	  }
-	
+
 	  $scope.deletePost=function(txt1, post)
-	  {		  
+	  {
 		// send a post request to the server
 		    $http.post('/post/DeletePost', {postID: post._id, username: AuthService.getUserName()})
 		      // handle success
@@ -621,6 +622,6 @@ function PostDataFooterCtrl($scope, $http, AuthService)
 		        }
 		      })
 	  }
-  
-  
+
+
 }
